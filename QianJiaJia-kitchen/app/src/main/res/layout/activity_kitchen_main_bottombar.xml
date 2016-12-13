@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="58dp"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <RadioGroup
+        android:id="@+id/rdoGrp_tab_list"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rdoBtn_tab_home"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/spacing_margin_micro"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:checked="false"
+            android:drawablePadding="@dimen/spacing_padding_micro"
+            android:drawableTop="@drawable/main_tab_bottom_home_selector"
+            android:gravity="center"
+            android:text="@string/main_tab_home"
+            android:textColor="@drawable/main_tab_bottom_textview_selector" />
+
+        <RadioButton
+            android:id="@+id/rdoBtn_tab_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/spacing_margin_micro"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:checked="false"
+            android:drawablePadding="@dimen/spacing_padding_micro"
+            android:drawableTop="@drawable/main_tab_bottom_sort_selector"
+            android:gravity="center"
+            android:text="@string/main_tab_sort"
+            android:textColor="@drawable/main_tab_bottom_textview_selector" />
+
+        <RadioButton
+            android:id="@+id/rdoBtn_tab_shop"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/spacing_margin_micro"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:checked="false"
+            android:drawablePadding="@dimen/spacing_padding_micro"
+            android:drawableTop="@drawable/main_tab_bottom_shop_selector"
+            android:gravity="center"
+            android:text="@string/main_tab_shop"
+            android:textColor="@drawable/main_tab_bottom_textview_selector" />
+
+        <RadioButton
+            android:id="@+id/rdoBtn_tab_me"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/spacing_margin_micro"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:button="@null"
+            android:checked="false"
+            android:drawablePadding="@dimen/spacing_padding_micro"
+            android:drawableTop="@drawable/main_tab_bottom_shop_selector"
+            android:gravity="center"
+            android:text="@string/main_tab_me"
+            android:textColor="@drawable/main_tab_bottom_textview_selector" />
+
+
+    </RadioGroup>
+
+</android.support.v7.widget.CardView>

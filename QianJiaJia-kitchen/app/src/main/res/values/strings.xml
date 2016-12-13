@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">QianJiaJia-kitchen</string>
+    <string name="app_name">kitchen</string>
+
+    <!--main bottom tab-->
+    <string name="main_tab_home">首页</string>
+    <string name="main_tab_sort">分类</string>
+    <string name="main_tab_shop">购物车</string>
+    <string name="main_tab_me">我页</string>
+
 </resources>
