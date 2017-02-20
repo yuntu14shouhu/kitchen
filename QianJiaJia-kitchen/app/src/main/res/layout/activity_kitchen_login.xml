@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/ic_main_login"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/ic_launcher"/>
+        <LinearLayout
+            android:id="@+id/ll_mian_login"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/ic_main_login"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/main_login_edit_border"
+            android:orientation="vertical">
+            
+            <EditText
+                android:id="@+id/et_main_login_username"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                style="?android:attr/textViewStyle"
+                android:background="@null"
+                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/ic_login_user"
+                android:drawableStart="@drawable/ic_login_user"
+                android:hint="输入手机号/邮箱"
+                android:singleLine="true"
+                android:textSize="15sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e1e4e5"/>
+
+            <EditText
+                android:id="@+id/et_main_login_password"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@null"
+                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/ic_login_password"
+                android:drawableStart="@drawable/ic_login_password"
+                android:hint="输入密码"
+                android:inputType="textPassword"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_main_login"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_alignLeft="@id/ll_mian_login"
+            android:layout_below="@id/btn_main_login_forgetpw"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/main_login_btn_shape"
+            android:text="登录"
+            android:textColor="#ffffff"
+            android:textSize="16sp"/>
+        <Button
+            android:id="@+id/btn_main_login_forgetpw"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/ll_mian_login"
+            android:layout_marginLeft="15dp"
+            android:background="#00000000"
+            android:text="忘记密码?"
+            android:textColor="@drawable/main_login_tx_forgetpw_selector"
+            android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/btn_main_login_register"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/ll_mian_login"
+            android:layout_marginRight="15dp"
+            android:background="#00000000"
+            android:text="新用户注册"
+            android:textColor="@drawable/main_login_tx_forgetpw_selector"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

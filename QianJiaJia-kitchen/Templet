@@ -1,0 +1,52 @@
+android studio注释模板：
+设置步骤：
+File---->Editor---->File and code Templates---->Files{Class/Interface/Enum/AnnotationType}
+
+
+1------------类注释：
+/**
+ * @author qianjiajia
+ * @Date ${YEAR}-${MONTH}-${DAY} ${TIME}
+
+#if (${description} && ${description} != "") * @Description ${description}#end
+
+ * @version 1.0
+ */
+public class ${NAME} {
+}
+
+2------------接口注释模板
+/**
+ * @author qianjiajia
+ * @Date ${YEAR}-${MONTH}-${DAY} ${TIME}
+
+#if (${description} && ${description} != "") * @Description ${description}#end
+
+ * @version 1.0
+ */
+public interface ${NAME} {
+}
+
+3------enmu注释模板
+/**
+ * @author qianjiajia
+ * @Date ${YEAR}-${MONTH}-${DAY} ${TIME}
+
+#if (${description} && ${description} != "") * @Description ${description}#end
+
+ * @version 1.0
+ */
+public enum ${NAME} {
+}
+
+4-----------注释类模板
+/**
+ * @author qianjiajia
+ * @Date ${YEAR}-${MONTH}-${DAY} ${TIME}
+
+#if (${description} && ${description} != "") * @Description ${description}#end
+
+ * @version 1.0
+ */
+public @interface ${NAME} {
+}
