@@ -1,5 +1,6 @@
 package com.jiajiaqian.kitchen.ui.shop;
 
+import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.ui.base.BaseFragment;
 
 /**
@@ -9,9 +10,13 @@ import com.jiajiaqian.kitchen.ui.base.BaseFragment;
 
 public class ShopFragment extends BaseFragment {
 
+    public static ShopFragment newInstance(){
+        return new ShopFragment();
+    }
+
     @Override
     protected int getLayoutResId() {
-        return 0;
+        return R.layout.fragment_tab_shop;
     }
 
     @Override

@@ -5,7 +5,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.jiajiaqian.kitchen.R;
-import com.jiajiaqian.kitchen.common.ACache;
+import com.jiajiaqian.kitchen.common.appglobal.ACache;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 
 import org.json.JSONException;

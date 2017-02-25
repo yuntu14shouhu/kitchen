@@ -1,4 +1,4 @@
-package com.jiajiaqian.kitchen.common;
+package com.jiajiaqian.kitchen.common.appglobal;
 
 import android.content.Context;
 import android.graphics.Bitmap;

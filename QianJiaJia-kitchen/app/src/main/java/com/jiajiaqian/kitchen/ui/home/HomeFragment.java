@@ -1,5 +1,8 @@
 package com.jiajiaqian.kitchen.ui.home;
 
+import android.support.v4.app.Fragment;
+
+import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.ui.base.BaseFragment;
 
 /**
@@ -9,9 +12,13 @@ import com.jiajiaqian.kitchen.ui.base.BaseFragment;
 
 public class HomeFragment extends BaseFragment {
 
+    public static HomeFragment newInstance(){
+        return new HomeFragment();
+    }
+
     @Override
     protected int getLayoutResId() {
-        return 0;
+        return R.layout.fragment_tab_home;
     }
 
     @Override
