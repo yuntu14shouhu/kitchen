@@ -1,9 +1,15 @@
 package com.jiajiaqian.kitchen.ui.home;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.jiajiaqian.kitchen.R;
+import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
 import com.jiajiaqian.kitchen.common.utils.GlideImageLoader;
 import com.jiajiaqian.kitchen.common.utils.PicassoImageLoader;
 import com.jiajiaqian.kitchen.ui.base.BaseFragment;
@@ -17,13 +23,18 @@ import java.util.List;
  * 首页fragment
  */
 
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{
 
     private BannerLayout mBanner;
+    private RecyclerView mYouHuiListView;
+    private RecyclerView mTuanGouListView;
+    private RecyclerView mTuiJianListView;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     private List<String> mBannerImageUrls;
+    private HomeGridAdapter mHomeGridAdapter;
 
-    public static HomeFragment newInstance(){
+    public static HomeFragment newInstance() {
         return new HomeFragment();
     }
 
@@ -34,13 +45,30 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-
         mBanner = (BannerLayout) mRootView.findViewById(R.id.banner);
+        mYouHuiListView = (RecyclerView) mRootView.findViewById(R.id.rcy_youhui);
+        mTuanGouListView = (RecyclerView) mRootView.findViewById(R.id.rcy_tuangou);
+        mTuiJianListView = (RecyclerView) mRootView.findViewById(R.id.rcy_tuijian);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.swipeRefreshLayout);
+
+        //set views attrs
+        mYouHuiListView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        mYouHuiListView.setHasFixedSize(true);
+        mYouHuiListView.setItemAnimator(new DefaultItemAnimator());
+        mTuanGouListView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        mTuanGouListView.setHasFixedSize(true);
+        mTuanGouListView.setItemAnimator(new DefaultItemAnimator());
+        mTuiJianListView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        mTuiJianListView.setHasFixedSize(true);
+        mTuiJianListView.setItemAnimator(new DefaultItemAnimator());
+        mSwipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
     }
 
     @Override
     protected void initListener() {
         super.initListener();
+
+        mSwipeRefreshLayout.setOnRefreshListener(this);
 
         mBanner.setOnBannerItemClickListener(new BannerLayout.OnBannerItemClickListener() {
             @Override
@@ -48,6 +76,11 @@ public class HomeFragment extends BaseFragment {
                 Toast.makeText(getActivity(), String.valueOf(position), Toast.LENGTH_SHORT).show();
             }
         });
+
+    }
+
+    @Override
+    public void onRefresh() {
 
     }
 
@@ -63,5 +96,23 @@ public class HomeFragment extends BaseFragment {
         mBannerImageUrls.add("http://img5.imgtn.bdimg.com/it/u=2583054979,2860372508&fm=23&gp=0.jpg");
         mBanner.setImageLoader(new GlideImageLoader());
         mBanner.setViewUrls(mBannerImageUrls);
+
+        ProductBean productBean1 = new ProductBean();
+        productBean1.setDiscountPrice(34.33);
+        productBean1.setDiscountPrice(55.33);
+        productBean1.setProductId("32423");
+
+        List<ProductBean> dataList = new ArrayList<>();
+        dataList.add(productBean1);
+        dataList.add(productBean1);
+        dataList.add(productBean1);
+        dataList.add(productBean1);
+        dataList.add(productBean1);
+        dataList.add(productBean1);
+        mHomeGridAdapter = new HomeGridAdapter(dataList,R.layout.listitem_home_product_list,getActivity());
+        mYouHuiListView.setAdapter(mHomeGridAdapter);
+        mTuanGouListView.setAdapter(mHomeGridAdapter);
+        mTuiJianListView.setAdapter(mHomeGridAdapter);
+
     }
 }
