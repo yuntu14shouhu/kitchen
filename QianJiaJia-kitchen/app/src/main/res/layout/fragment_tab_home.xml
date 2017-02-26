@@ -61,7 +61,7 @@
             android:src="@drawable/ic_menu_search" />
     </LinearLayout>
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <com.jiajiaqian.kitchen.common.uielements.SwipeRefreshLayout
         android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -399,6 +399,6 @@
 
         </android.support.v4.widget.NestedScrollView>
 
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </com.jiajiaqian.kitchen.common.uielements.SwipeRefreshLayout>
 
 </LinearLayout>

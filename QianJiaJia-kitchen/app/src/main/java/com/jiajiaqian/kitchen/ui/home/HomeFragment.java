@@ -2,7 +2,6 @@ package com.jiajiaqian.kitchen.ui.home;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +9,7 @@ import android.widget.Toast;
 
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
+import com.jiajiaqian.kitchen.common.uielements.SwipeRefreshLayout;
 import com.jiajiaqian.kitchen.common.utils.GlideImageLoader;
 import com.jiajiaqian.kitchen.common.utils.PicassoImageLoader;
 import com.jiajiaqian.kitchen.ui.base.BaseFragment;
@@ -52,13 +52,49 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         mSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.swipeRefreshLayout);
 
         //set views attrs
-        mYouHuiListView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),3){
+            @Override
+            public boolean canScrollHorizontally() {
+                return false;
+            }
+
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+
+        GridLayoutManager gridLayoutManager2 = new GridLayoutManager(getActivity(),3){
+            @Override
+            public boolean canScrollHorizontally() {
+                return false;
+            }
+
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+
+        GridLayoutManager gridLayoutManager3 = new GridLayoutManager(getActivity(),3){
+            @Override
+            public boolean canScrollHorizontally() {
+                return false;
+            }
+
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+
+        mYouHuiListView.setLayoutManager(gridLayoutManager);
         mYouHuiListView.setHasFixedSize(true);
         mYouHuiListView.setItemAnimator(new DefaultItemAnimator());
-        mTuanGouListView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        mTuanGouListView.setLayoutManager(gridLayoutManager2);
         mTuanGouListView.setHasFixedSize(true);
         mTuanGouListView.setItemAnimator(new DefaultItemAnimator());
-        mTuiJianListView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
+        mTuiJianListView.setLayoutManager(gridLayoutManager3);
         mTuiJianListView.setHasFixedSize(true);
         mTuiJianListView.setItemAnimator(new DefaultItemAnimator());
         mSwipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(getActivity(), R.color.colorPrimary));
@@ -81,7 +117,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 
     @Override
     public void onRefresh() {
-
+        
     }
 
     @Override
