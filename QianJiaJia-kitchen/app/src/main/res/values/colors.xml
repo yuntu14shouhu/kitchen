@@ -11,5 +11,10 @@
     <!--Primary color-->
     <color name="con_blue">#2B77C1</color>
     <color name="con_middle_blue">#7AAAD9</color>
+    <color name="gray_light">#E0E0E0</color>
+    <color name="con_font_gray">#B1BDC4</color>
+    <color name="con_font_gray2">#E5E5E5</color>
+    <color name="con_yellow">#FFB22F</color>
+
 
 </resources>
