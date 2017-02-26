@@ -1,5 +1,7 @@
 package com.jiajiaqian.kitchen.ui.base;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +15,8 @@ import android.view.ViewGroup;
 
 public abstract class BaseFragment extends Fragment{
 
+    protected View mRootView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -22,6 +26,7 @@ public abstract class BaseFragment extends Fragment{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mRootView = view;
         initView();
         initData();
         initListener();
