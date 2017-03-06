@@ -7,4 +7,9 @@
     <string name="main_tab_shop">购物车</string>
     <string name="main_tab_me">我页</string>
 
+    <string-array name="leftmenu_register_way">
+        <item>手机注册</item>
+        <item>邮箱注册</item>
+    </string-array>
+
 </resources>

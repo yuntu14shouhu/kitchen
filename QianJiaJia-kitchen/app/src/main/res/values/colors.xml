@@ -16,5 +16,7 @@
     <color name="con_font_gray2">#E5E5E5</color>
     <color name="con_yellow">#FFB22F</color>
 
+    <color name="dis_add_bt">#06aff1</color>
+
 
 </resources>

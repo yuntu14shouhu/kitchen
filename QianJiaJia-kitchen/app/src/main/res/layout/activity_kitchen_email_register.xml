@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include layout="@layout/activity_top_bar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#d8e0e8">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true">
+
+            <EditText
+                android:id="@+id/et_login_register_email"
+                style="?android:attr/textViewStyle"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:background="@drawable/login__register_et_selector"
+                android:gravity="center"
+                android:hint="请输入您的邮箱"/>
+
+            <EditText
+                android:id="@+id/et_login_register_emailpw"
+                style="?android:attr/textViewStyle"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/login__register_et_selector"
+                android:gravity="center"
+                android:maxLength="18"
+                android:inputType="textPassword"
+                android:hint="请输入6~18位密码"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:textSize="11sp"
+                android:hint="密码长度为6~18位，由数字字母字符任意两种组成"/>
+
+            <EditText
+                android:id="@+id/et_login_register_emailpw_agin"
+                style="?android:attr/textViewStyle"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/login__register_et_selector"
+                android:gravity="center"
+                android:maxLength="18"
+                android:inputType="textPassword"
+                android:hint="请确认密码"/>
+
+            <Button
+                android:id="@+id/btn_login_emaillogin_register"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text="注册"
+                android:background="@drawable/login_register_btn_shape"
+                android:textColor="#ffffff"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:textSize="11sp"
+                android:hint="您点击注册按钮，即代表你同意本协议，感谢您的支持"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
