@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <include layout="@layout/activity_top_bar"/>
+    <View
+        android:id="@+id/view_one"
+        android:layout_marginTop="50dp"
+        style="@style/view_big"/>
+    <LinearLayout
+        android:layout_below="@id/view_one"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#ffffff">
+            <RelativeLayout
+                android:id="@+id/rl_show_address"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp">
+                <TextView
+                    android:id="@+id/tv_personal_info_add_address_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="qianjiajia"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@id/tv_personal_info_add_address_name"
+                    android:id="@+id/tv_personal_info_add_address_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1848217219"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@id/tv_personal_info_add_address_phone"
+                    android:id="@+id/tv_personal_info_add_address_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textSize="16sp"
+                    android:text="四川省成都市一环路南四段16号西南民族大学"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/rl_show_address">
+                <ImageView
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toLeftOf="@id/tv_edit_address"
+                    android:src="@drawable/ic_personal_info_address_line"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true">
+
+                <TextView
+                    android:id="@+id/tv_edit_address"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="编辑"
+                    android:layout_marginRight="10dp"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <View
+            style="@style/view_small"/>
+    </LinearLayout>
+
+</RelativeLayout>
