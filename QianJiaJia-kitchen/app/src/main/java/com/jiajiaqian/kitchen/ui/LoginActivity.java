@@ -13,8 +13,6 @@ import com.jiajiaqian.kitchen.common.appglobal.ACache;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 import com.jiajiaqian.kitchen.utils.ActivityUtil;
 
-import org.json.JSONException;
-
 /**
  * Created by jiajiaQian on 2017/2/18.
  * 登录
@@ -149,8 +147,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     /**
      * 保存数据到本地
-     *
-     * @throws JSONException
      */
 //    private void saveToLocalCache() throws JSONException {
 //        mCache.put("nickname", getByKey("userNickname"));
