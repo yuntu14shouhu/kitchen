@@ -59,11 +59,11 @@
                     android:layout_centerInParent="true"
                     android:layout_marginBottom="20dp"
                     android:layout_marginTop="20dp"
-                    android:layout_toLeftOf="@id/tv_edit_address"
                     android:src="@drawable/ic_personal_info_address_line"/>
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rl_edit_address"
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true">

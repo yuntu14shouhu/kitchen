@@ -335,10 +335,10 @@
                     android:layout_toRightOf="@id/iv_info_setting"
                     android:text="设置"/>
 
-                <!--<ImageButton-->
-                    <!--android:id="@+id/ib_info_setting"-->
-                    <!--style="@style/PersonalInfoMoreStyle"-->
-                    <!--android:src="@drawable/ic_personal_info_more"/>-->
+                <ImageButton
+                    android:id="@+id/ib_info_setting"
+                    style="@style/PersonalInfoMoreStyle"
+                    android:src="@drawable/ic_personal_info_more"/>
             </RelativeLayout>
 
             <View

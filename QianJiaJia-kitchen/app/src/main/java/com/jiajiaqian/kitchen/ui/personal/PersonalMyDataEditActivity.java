@@ -5,10 +5,11 @@ import com.jiajiaqian.kitchen.ui.base.BaseFragment;
 /**
  * @author qianjiajia
  * @version 1.0
- * @Date 2017-03-09 9:06
- * @Description 联系客服类
+ * @Date 2017-03-08 23:08
+ * @Description 用户个人资料编辑
  */
-public class PersonalRelationFragment extends BaseFragment{
+public class PersonalMyDataEditActivity extends BaseFragment{
+
     @Override
     protected int getLayoutResId() {
         return 0;
@@ -25,7 +26,7 @@ public class PersonalRelationFragment extends BaseFragment{
     }
 
     @Override
-    protected void initListener(){
-
+    protected void initListener() {
+        super.initListener();
     }
 }

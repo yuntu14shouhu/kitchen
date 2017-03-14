@@ -40,7 +40,7 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
     private ImageButton mInfoMyDataIb;
     private ImageButton mInfoAddressIb;
     private ImageButton mInfoRelationIb;
-    private ImageView mInfoSettingIv;
+    private ImageButton mInfoSettingIb;
     private ImageView mInfoPowerIv;
     private UserBean mUserBean;
     private ACache mACache;
@@ -67,7 +67,7 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
         mInfoMyDataIb = (ImageButton) mRootView.findViewById(R.id.ib_info_mydata);
         mInfoAddressIb = (ImageButton) mRootView.findViewById(R.id.ib_info_address);
         mInfoRelationIb = (ImageButton) mRootView.findViewById(R.id.ib_info_relation);
-        mInfoSettingIv = (ImageView) mRootView.findViewById(R.id.iv_info_power);
+        mInfoSettingIb = (ImageButton) mRootView.findViewById(R.id.ib_info_setting);
         mInfoPowerIv = (ImageView) mRootView.findViewById(R.id.iv_info_power);
 
         mACache = ACache.get(this.getActivity());
@@ -76,36 +76,52 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
     @Override
     protected void initListener() {
         super.initListener();
-        mInfoOrderIb.setOnClickListener(this);
-        mInfoMyDataIb.setOnClickListener(this);
+        mInfoOrderIb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),PersonalMyOrderActivity.class);
+                startActivity(intent);
+            }
+        });
+        mInfoMyDataIb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),PersonalMyDataActivity.class);
+                startActivity(intent);
+            }
+        });
         mInfoAddressIb.setOnClickListener(this);
         mInfoRelationIb.setOnClickListener(this);
-        mInfoSettingIv.setOnClickListener(this);
+        mInfoSettingIb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),PersonalSettingActivity.class);
+                startActivity(intent);
+            }
+        });
         mInfoPowerIv.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.ib_info_order:
-                Intent intent = new Intent();
-                intent.setClass(getActivity(),PersonalMyOrderFragment.class);
+//            case R.id.ib_info_order:
+
             case R.id.ib_info_mydata:
                 Intent intent1 = new Intent();
-                intent1.setClass(getActivity(),PersonalMyDataFragment.class);
+                intent1.setClass(getActivity(),PersonalMyDataActivity.class);
             case R.id.ib_info_address:
                 Intent intent2 = new Intent();
                 intent2.setClass(getActivity(),PersonalAddressFragment.class);
             case R.id.ib_info_relation:
                 Intent intent3 = new Intent();
-                intent3.setClass(getActivity(),PersonalRelationFragment.class);
-            case R.id.iv_info_setting:
-                Intent intent4 = new Intent();
-                intent4.setClass(getActivity(),PersonalSettingFragment.class);
+                intent3.setClass(getActivity(),PersonalRelationActivity.class);
+//            case R.id.iv_info_setting:
+
             case R.id.iv_info_power:
                 getActivity().finish();
 //                Intent intent5 = new Intent();
-//                intent5.setClass(getActivity(),PersonalPowerFragment.class);
+//                intent5.setClass(getActivity(),PersonalPowerActivity.class);
                 break;
             default:
                 break;
