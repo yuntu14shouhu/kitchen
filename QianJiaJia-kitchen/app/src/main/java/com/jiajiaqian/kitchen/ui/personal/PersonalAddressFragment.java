@@ -45,9 +45,9 @@ public class PersonalAddressFragment extends BaseFragment{
     protected void initData() {
         mAddressBean = new ArrayList<>();
         AddressBean addressBean = new AddressBean();
-        addressBean.setName("qianjiajia");
+/*        addressBean.setName("qianjiajia");
         addressBean.setPhone("18482173219");
-        addressBean.setAddress("四川省成都市一环路南四段16号");
+        addressBean.setAddress("四川省成都市一环路南四段16号");*/
         mAddressBean.add(addressBean);
         mAddressBean.add(addressBean);
     }

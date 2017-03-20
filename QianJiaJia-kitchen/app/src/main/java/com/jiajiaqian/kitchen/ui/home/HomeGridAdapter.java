@@ -2,9 +2,17 @@ package com.jiajiaqian.kitchen.ui.home;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.jiajiaqian.kitchen.R;
+import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
 
 import java.util.List;
 
@@ -12,13 +20,13 @@ import java.util.List;
  * Created by jasonxu on 2017/2/26.
  */
 
-public class HomeGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class HomeGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<ProductBean> mDataList;
     private int mResId;
     private Context mContext;
 
-    public HomeGridAdapter(List<ProductBean> mList, int resId, Context context){
+    public HomeGridAdapter(List<ProductBean> mList, int resId, Context context) {
         this.mDataList = mList;
         this.mResId = resId;
         this.mContext = context;
@@ -26,15 +34,15 @@ public class HomeGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(mResId,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(mResId, parent, false);
         return new DataListVH(view);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        DataListVH viewHolder = (DataListVH)holder;
-        initView(viewHolder,position);
-        initEvents(viewHolder,position);
+        DataListVH viewHolder = (DataListVH) holder;
+        initView(viewHolder, position);
+        initEvents(viewHolder, position);
     }
 
     @Override
@@ -42,18 +50,54 @@ public class HomeGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return mDataList.size();
     }
 
-    private void initView(DataListVH dataListVH,int position){
+    private void initView(DataListVH dataListVH, int position) {
+
+        if (mDataList != null && mDataList.size() > 0) {
+            if (mDataList.get(position).getIsDiscount() == 1 ){ //是打折优惠商品
+                dataListVH.mDashLine.setVisibility(View.VISIBLE);
+                dataListVH.mIsYouHui.setVisibility(View.VISIBLE);
+
+            }else {
+                dataListVH.mDashLine.setVisibility(View.GONE);
+                dataListVH.mIsYouHui.setVisibility(View.GONE);
+            }
+            if (!TextUtils.isEmpty(mDataList.get(position).getProductImageUrl())){
+                Glide.with(mContext)
+                        .load(mDataList.get(position).getProductImageUrl())
+                        .centerCrop()
+                        .into(dataListVH.mProductImage);
+            }
+            if (!TextUtils.isEmpty(mDataList.get(position).getProductName())){
+                dataListVH.mProductName.setText(mDataList.get(position).getProductName());
+            }
+            dataListVH.mPrice.setText("¥"+ mDataList.get(position).getPrice()+"");
+        }
+    }
+
+    private void initEvents(DataListVH dataListVH, int position) {
 
     }
 
-    private void initEvents(DataListVH dataListVH,int position) {
+    private static class DataListVH extends RecyclerView.ViewHolder {
 
-    }
-
-    private static class DataListVH extends RecyclerView.ViewHolder{
+        private TextView mIsYouHui;
+        private ImageView mProductImage;
+        private TextView mProductName;
+        private TextView mDashLine;
+        private TextView mPrice;
+        private TextView mDiscountPrice;
+        private ImageButton mShopAdd;
 
         DataListVH(View itemView) {
             super(itemView);
+            mIsYouHui = (TextView) itemView.findViewById(R.id.is_you_hui);
+            mProductImage = (ImageView) itemView.findViewById(R.id.pro_image);
+            mProductName = (TextView) itemView.findViewById(R.id.pro_name);
+            mDashLine = (TextView) itemView.findViewById(R.id.tv_line);
+            mPrice = (TextView) itemView.findViewById(R.id.price);
+            mDiscountPrice = (TextView) itemView.findViewById(R.id.discount_price);
+            mShopAdd = (ImageButton) itemView.findViewById(R.id.pro_add_btn);
+
         }
     }
 }

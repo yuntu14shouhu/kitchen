@@ -4,13 +4,26 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.jiajiaqian.kitchen.R;
+import com.jiajiaqian.kitchen.common.entity.AddressBean;
+import com.jiajiaqian.kitchen.common.entity.HomeBean;
+import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
+import com.jiajiaqian.kitchen.common.entity.microbean.SlideBean;
+import com.jiajiaqian.kitchen.common.network.KitchenHttpApi;
+import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
+import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
 import com.jiajiaqian.kitchen.common.uielements.SwipeRefreshLayout;
 import com.jiajiaqian.kitchen.common.utils.GlideImageLoader;
+import com.jiajiaqian.kitchen.common.utils.GsonUtils;
 import com.jiajiaqian.kitchen.ui.base.BaseFragment;
 import com.yyydjk.library.BannerLayout;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +40,9 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     private RecyclerView mTuanGouListView;
     private RecyclerView mTuiJianListView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
+    private TextView mDefaultAddressView;
 
-    private List<String> mBannerImageUrls;
-    private HomeGridAdapter mHomeGridAdapter;
+    private KitchenHttpApi<OkJsonRequest.OKResponseCallback> mKitchenHttpManger;
 
     public static HomeFragment newInstance() {
         return new HomeFragment();
@@ -47,6 +60,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         mTuanGouListView = (RecyclerView) mRootView.findViewById(R.id.rcy_tuangou);
         mTuiJianListView = (RecyclerView) mRootView.findViewById(R.id.rcy_tuijian);
         mSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.swipeRefreshLayout);
+        mDefaultAddressView = (TextView) mRootView.findViewById(R.id.tv_address);
 
         //set views attrs
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),3){
@@ -120,32 +134,71 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     @Override
     protected void initData() {
 
-        //广告轮播翻数据源（网络url或本地地址url）
-        mBannerImageUrls = new ArrayList<>();
-        mBannerImageUrls.add("http://img3.imgtn.bdimg.com/it/u=2674591031,2960331950&fm=23&gp=0.jpg");
-        mBannerImageUrls.add("http://img5.imgtn.bdimg.com/it/u=3639664762,1380171059&fm=23&gp=0.jpg");
-        mBannerImageUrls.add("http://img0.imgtn.bdimg.com/it/u=1095909580,3513610062&fm=23&gp=0.jpg");
-        mBannerImageUrls.add("http://img4.imgtn.bdimg.com/it/u=1030604573,1579640549&fm=23&gp=0.jpg");
-        mBannerImageUrls.add("http://img5.imgtn.bdimg.com/it/u=2583054979,2860372508&fm=23&gp=0.jpg");
-        mBanner.setImageLoader(new GlideImageLoader());
-        mBanner.setViewUrls(mBannerImageUrls);
+        mKitchenHttpManger = KitchenHttpManager.getInstance();
 
-        ProductBean productBean1 = new ProductBean();
-        productBean1.setDiscountPrice(34.33);
-        productBean1.setDiscountPrice(55.33);
-        productBean1.setProductId("32423");
+        mKitchenHttpManger.getHomeData("", new OkJsonRequest.OKResponseCallback() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e("error-home--",volleyError.getMessage()+"");
+            }
 
-        List<ProductBean> dataList = new ArrayList<>();
-        dataList.add(productBean1);
-        dataList.add(productBean1);
-        dataList.add(productBean1);
-        dataList.add(productBean1);
-        dataList.add(productBean1);
-        dataList.add(productBean1);
-        mHomeGridAdapter = new HomeGridAdapter(dataList,R.layout.listitem_home_product_list,getActivity());
-        mYouHuiListView.setAdapter(mHomeGridAdapter);
-        mTuanGouListView.setAdapter(mHomeGridAdapter);
-        mTuiJianListView.setAdapter(mHomeGridAdapter);
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                Log.e("success-home--",jsonObject+"");
+                HomeBean homeBean = GsonUtils.jsonToBean(jsonObject.toString(),HomeBean.class);
+                if (homeBean.getSlide() != null){
+                    getSlideData(homeBean.getSlide());
+                }
+                if (homeBean.getAddress() != null) {
+                    getAddressData(homeBean.getAddress());
+                }
+                if (homeBean.getDiscount() != null) {
+                    getDiscountData(homeBean.getDiscount());
+                }
+
+                if (homeBean.getGroup() != null) {
+                    getGroupData(homeBean.getGroup());
+                }
+
+                if (homeBean.getRecommend() != null) {
+                    getRecommendData(homeBean.getRecommend());
+                }
+
+            }
+        });
 
     }
+
+    private void getAddressData(ArrayList<AddressBean> addressList){
+        for (AddressBean address : addressList){
+            if (address.getIsDefault() == 1){ //默认地址
+                mDefaultAddressView.setText(address.getConsigneeAddress());
+            }
+        }
+    }
+
+    private void getSlideData(ArrayList<SlideBean> slideList){
+        List<String> mBannerImageUrls = new ArrayList<>();
+        for (SlideBean slide : slideList) {
+            mBannerImageUrls.add(slide.getProductImageUrl());
+        }
+        mBanner.setImageLoader(new GlideImageLoader());
+        mBanner.setViewUrls(mBannerImageUrls);
+    }
+
+    private void getDiscountData(ArrayList<ProductBean> discountList) {
+        HomeGridAdapter discountAdapter = new HomeGridAdapter(discountList,R.layout.listitem_home_product_list,getActivity());
+        mYouHuiListView.setAdapter(discountAdapter);
+    }
+
+    private void getGroupData(ArrayList<ProductBean> groupList) {
+        HomeGridAdapter groupAdapter = new HomeGridAdapter(groupList,R.layout.listitem_home_product_list,getActivity());
+        mTuanGouListView.setAdapter(groupAdapter);
+    }
+
+    private void getRecommendData(ArrayList<ProductBean> recommendList) {
+        HomeGridAdapter recommendAdapter = new HomeGridAdapter(recommendList,R.layout.listitem_home_product_list,getActivity());
+        mTuiJianListView.setAdapter(recommendAdapter);
+    }
+
 }
