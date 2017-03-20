@@ -9,31 +9,76 @@ import java.io.Serializable;
  * @Description 收货地址
  */
 public class AddressBean implements Serializable {
-    private String name;
-    private String phone;
-    private String address;
+    private String id;
+    private String userId;
+    private String consigneeName;
+    private String consigneePhone;
+    private String consigneeAddress;
+    private String defaultAddress;
+    private int isDefault; //1代表默认，0代表非默认
+    private int addressType;
 
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getAddress() {
-        return address;
+    public String getConsigneeName() {
+        return consigneeName;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setConsigneeName(String consigneeName) {
+        this.consigneeName = consigneeName;
+    }
+
+    public String getConsigneePhone() {
+        return consigneePhone;
+    }
+
+    public void setConsigneePhone(String consigneePhone) {
+        this.consigneePhone = consigneePhone;
+    }
+
+    public String getConsigneeAddress() {
+        return consigneeAddress;
+    }
+
+    public void setConsigneeAddress(String consigneeAddress) {
+        this.consigneeAddress = consigneeAddress;
+    }
+
+    public String getDefaultAddress() {
+        return defaultAddress;
+    }
+
+    public void setDefaultAddress(String defaultAddress) {
+        this.defaultAddress = defaultAddress;
+    }
+
+    public int getIsDefault() {
+        return isDefault;
+    }
+
+    public void setIsDefault(int isDefault) {
+        this.isDefault = isDefault;
+    }
+
+    public int getAddressType() {
+        return addressType;
+    }
+
+    public void setAddressType(int addressType) {
+        this.addressType = addressType;
     }
 }

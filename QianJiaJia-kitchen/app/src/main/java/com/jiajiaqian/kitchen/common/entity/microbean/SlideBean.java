@@ -7,7 +7,7 @@ import java.io.Serializable;
  * lun
  */
 
-public class ProductBean implements Serializable{
+public class SlideBean implements Serializable{
 
     private String id ;
     private long putawayDate;

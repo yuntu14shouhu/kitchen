@@ -1,6 +1,5 @@
 package com.jiajiaqian.kitchen.ui.home;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -8,10 +7,8 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.jiajiaqian.kitchen.R;
-import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
 import com.jiajiaqian.kitchen.common.uielements.SwipeRefreshLayout;
 import com.jiajiaqian.kitchen.common.utils.GlideImageLoader;
-import com.jiajiaqian.kitchen.common.utils.PicassoImageLoader;
 import com.jiajiaqian.kitchen.ui.base.BaseFragment;
 import com.yyydjk.library.BannerLayout;
 
