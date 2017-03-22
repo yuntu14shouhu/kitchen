@@ -13,6 +13,6 @@
         android:text="点我添加新的收货地址"
         android:textSize="20sp"
         android:textColor="#ffffff"
-        android:background="#1195db"/>
+        android:background="#0e932e"/>
 
 </RelativeLayout>

@@ -3,43 +3,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#0e932e"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/ib_personal_info_back"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/dis_add_bt"
-            android:src="@drawable/ic_back_light"/>
-
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="6"
-            android:background="#00000000"/>
-
-        <FrameLayout
-            android:id="@+id/fl_personal_info_mydata"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="1.5">
-
-            <TextView
-                android:id="@+id/tv_personal_info_mydata"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="编辑"
-                android:textColor="#ffffff"/>
-
-        </FrameLayout>
-    </LinearLayout>
+    <include layout="@layout/activity_top_bar"></include>
 
     <View
         android:id="@+id/view_info_mydata_one"
@@ -65,13 +29,14 @@
                 <TextView
                     android:id="@+id/info_mydata_name"
                     style="@style/tv_personal_info_address"
-                    android:text="用户名："/>
+                    android:text="用\t\t户\t\t名："/>
 
                 <TextView
                     android:id="@+id/tv_info_mydata_name"
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/info_mydata_name"
-                    android:hint="请输入用户名称"/>
+                    android:hint="请输入用户名称"
+                    android:text="云图"/>
             </RelativeLayout>
 
             <View
@@ -83,13 +48,14 @@
                 <TextView
                     android:id="@+id/info_mydata_nickname"
                     style="@style/tv_personal_info_address"
-                    android:text="昵称："/>
+                    android:text="昵\t\t\t\t\t\t称："/>
 
                 <TextView
                     android:id="@+id/tv_info_mydata_nickname"
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/info_mydata_nickname"
-                    android:hint="请输入用户名称"/>
+                    android:hint="请输入用户名称"
+                    android:text="守护"/>
             </RelativeLayout>
 
             <View
@@ -101,14 +67,14 @@
                 <TextView
                     android:id="@+id/info_mydata_sex"
                     style="@style/tv_personal_info_address"
-                    android:text="性别："/>
+                    android:text="性\t\t\t\t\t\t别："/>
 
                 <TextView
                     android:id="@+id/tv_info_mydata_sex"
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/info_mydata_sex"
                     android:hint="请输入用户名称"
-                    android:inputType="textEmailAddress"/>
+                    android:text="女"/>
 
 
             </RelativeLayout>
@@ -122,13 +88,14 @@
                 <TextView
                     android:id="@+id/info_mydata_birthdate"
                     style="@style/tv_personal_info_address"
-                    android:text="年龄："/>
+                    android:text="年\t\t\t\t\t\t龄："/>
 
                 <TextView
                     android:id="@+id/tv_info_mydata_birthdate"
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/info_mydata_birthdate"
                     android:hint="请输入用户名称"
+                    android:text="22"
                     android:inputType="number"/>
             </RelativeLayout>
 
@@ -170,13 +137,14 @@
                 <TextView
                     android:id="@+id/info_mydata_email"
                     style="@style/tv_personal_info_address"
-                    android:text="email："/>
+                    android:text="邮\t\t\t\t\t\t箱："/>
 
                 <TextView
                     android:id="@+id/tv_info_mydata_email"
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/info_mydata_email"
                     android:hint="请输入用户名称"
+                    android:text="qianqiandeCD@163.com"
                     android:inputType="textEmailAddress"/>
             </RelativeLayout>
 
@@ -196,6 +164,7 @@
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/info_mydata_phone"
                     android:hint="请输入用户名称"
+                    android:text="18482173219"
                     android:inputType="phone"/>
             </RelativeLayout>
 
@@ -208,13 +177,14 @@
                 <TextView
                     android:id="@+id/info_mydata_qq"
                     style="@style/tv_personal_info_address"
-                    android:text="qq号码："/>
+                    android:text="QQ\t\t号码："/>
 
                 <TextView
                     android:id="@+id/tv_info_mydata_qq"
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/info_mydata_qq"
                     android:hint="请输入用户名称"
+                    android:text="1265444865"
                     android:inputType="number"/>
             </RelativeLayout>
 

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/about_include"
+        layout="@layout/activity_top_bar"/>
+
+    <TextView
+        android:paddingTop="20dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:layout_below="@id/about_include"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="16sp"
+        android:background="#87c38f"
+        android:text="\t\t说明:\n
+        Kitchen致力于方便用户的生活.
+        目前Kitchen还不完善，会后续持续更新的.\n
+        详情移步
+        https://github.com/yuntu14shouhu/kitchen.git\n
+        您的满意,是Kitchen前进的动力."/>
+
+</RelativeLayout>

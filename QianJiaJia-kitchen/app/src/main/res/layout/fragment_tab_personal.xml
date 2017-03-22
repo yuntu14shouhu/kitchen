@@ -10,49 +10,23 @@
     <RelativeLayout
         android:id="@+id/rl_personal_info_headImg"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="@drawable/personal_info_bg"
+        android:layout_height="270dp"
         android:clipToPadding="true"
         android:fitsSystemWindows="true">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#00000000"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/dis_add_bt"/>
-
-            <ImageButton
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="6"
-                android:background="#00000000"/>
-
-            <FrameLayout
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_weight="1.5">
-            </FrameLayout>
-        </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/rl_personal_info_img"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true">
+            android:layout_height="220dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ic_personal_info_bg">
 
             <com.jiajiaqian.kitchen.utils.CircleImageView
                 android:id="@+id/ib_personal_info_head_img"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="50dp"
                 android:background="#00000000"
                 android:src="@drawable/ic_user_default"
                 roundimg:border_inside_color="#e7e7d2"
@@ -66,8 +40,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ib_personal_info_head_img"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:text="吃饭吃饭"
+                android:textColor="#ffffff"
                 android:textSize="16sp"/>
         </RelativeLayout>
 
@@ -76,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/rl_personal_info_img"
-            android:layout_marginTop="10dp">
+            android:background="#ffffff">
 
             <ImageView
                 android:id="@+id/iv_line"
@@ -84,7 +59,7 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:layout_marginBottom="10dp"
-                android:src="@drawable/ic_personal_terval_line_new"/>
+                android:src="@drawable/ic_personal_terval_line_light"/>
 
             <RelativeLayout
                 android:id="@+id/rl_left"
@@ -99,7 +74,7 @@
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
                     android:layout_marginBottom="10dp"
-                    android:src="@drawable/ic_personal_terval_line_new"/>
+                    android:src="@drawable/ic_personal_terval_line_light"/>
 
                 <TextView
                     android:id="@+id/tv_nopay_number"
@@ -116,11 +91,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_nopay_number"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginTop="2dp"
                     android:layout_toLeftOf="@id/iv_rl_left"
                     android:gravity="center"
                     android:text="未付款"
-                    android:textSize="18sp"/>
+                    android:textSize="12sp"/>
 
                 <TextView
                     android:id="@+id/tv_nosend_number"
@@ -137,11 +113,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_nosend_number"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginTop="2dp"
                     android:layout_toRightOf="@id/iv_rl_left"
                     android:gravity="center"
                     android:text="未发货"
-                    android:textSize="18sp"/>
+                    android:textSize="12sp"/>
 
 
             </RelativeLayout>
@@ -159,7 +136,7 @@
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
                     android:layout_marginBottom="10dp"
-                    android:src="@drawable/ic_personal_terval_line_new"/>
+                    android:src="@drawable/ic_personal_terval_line_light"/>
 
                 <TextView
                     android:id="@+id/tv_send_number"
@@ -176,11 +153,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_send_number"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginTop="2dp"
                     android:layout_toLeftOf="@id/iv_rl_right"
                     android:gravity="center"
                     android:text="已发货"
-                    android:textSize="18sp"/>
+                    android:textSize="12sp"/>
 
                 <TextView
                     android:id="@+id/tv_noevaluate_number"
@@ -197,27 +175,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_noevaluate_number"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginTop="2dp"
                     android:layout_toRightOf="@id/iv_rl_right"
                     android:gravity="center"
                     android:text="未评价"
-                    android:textSize="18sp"/>
+                    android:textSize="12sp"/>
 
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
 
-    <View
-        android:id="@+id/view_info_one"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_below="@id/rl_personal_info_headImg"
-        android:background="#ffffff"/>
+    <!--<View-->
+    <!--android:id="@+id/view_info_one"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="20dp"-->
+    <!--android:layout_below="@id/rl_personal_info_headImg"-->
+    <!--android:background="#ffffff"/>-->
 
     <View
         android:id="@+id/view_info_two"
         style="@style/view_big"
-        android:layout_below="@id/view_info_one"/>
+        android:layout_below="@id/rl_personal_info_headImg"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -246,7 +225,7 @@
                 <ImageButton
                     android:id="@+id/ib_info_order"
                     style="@style/PersonalInfoMoreStyle"
-                    android:src="@drawable/ic_personal_info_more"/>
+                    android:src="@drawable/ic_personal_info_green_more"/>
             </RelativeLayout>
 
             <View
@@ -269,7 +248,7 @@
                 <ImageButton
                     android:id="@+id/ib_info_mydata"
                     style="@style/PersonalInfoMoreStyle"
-                    android:src="@drawable/ic_personal_info_more"/>
+                    android:src="@drawable/ic_personal_info_green_more"/>
             </RelativeLayout>
 
             <View
@@ -292,7 +271,7 @@
                 <ImageButton
                     android:id="@+id/ib_info_address"
                     style="@style/PersonalInfoMoreStyle"
-                    android:src="@drawable/ic_personal_info_more"/>
+                    android:src="@drawable/ic_personal_info_green_more"/>
             </RelativeLayout>
 
             <View
@@ -315,7 +294,7 @@
                 <ImageButton
                     android:id="@+id/ib_info_relation"
                     style="@style/PersonalInfoMoreStyle"
-                    android:src="@drawable/ic_personal_info_more"/>
+                    android:src="@drawable/ic_personal_info_green_more"/>
             </RelativeLayout>
 
             <View
@@ -338,7 +317,7 @@
                 <ImageButton
                     android:id="@+id/ib_info_setting"
                     style="@style/PersonalInfoMoreStyle"
-                    android:src="@drawable/ic_personal_info_more"/>
+                    android:src="@drawable/ic_personal_info_green_more"/>
             </RelativeLayout>
 
             <View
@@ -356,12 +335,12 @@
                     android:id="@+id/tv_info_power"
                     style="@style/tv_info_xx"
                     android:layout_toRightOf="@id/iv_info_power"
-                    android:text="电源"/>
+                    android:text="退出应用"/>
 
                 <!--<ImageButton-->
-                    <!--android:id="@+id/ib_info_power"-->
-                    <!--style="@style/PersonalInfoMoreStyle"-->
-                    <!--android:src="@drawable/ic_personal_info_more"/>-->
+                <!--android:id="@+id/ib_info_power"-->
+                <!--style="@style/PersonalInfoMoreStyle"-->
+                <!--android:src="@drawable/ic_personal_info_green_more"/>-->
             </RelativeLayout>
 
             <View

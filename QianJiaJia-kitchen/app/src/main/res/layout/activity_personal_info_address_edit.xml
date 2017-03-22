@@ -24,7 +24,7 @@
                 <TextView
                     android:id="@+id/tv_personal_info_address_name"
                     style="@style/tv_personal_info_address"
-                    android:text="收货人："/>
+                    android:text="收\t\t货\t\t人："/>
                 <EditText
                     android:id="@+id/et_personal_info_address_name"
                     android:layout_toRightOf="@id/tv_personal_info_address_name"
@@ -60,6 +60,7 @@
                 <!--android:layout_toRightOf="@id/tv_personal_info_address_city"-->
                 <!--android:hint="选择你所在城市"/>-->
                 <Spinner
+                    android:layout_toRightOf="@id/tv_personal_info_address_city"
                     android:layout_width="100dp"
                     android:layout_height="match_parent"
                     android:gravity="end|center"
@@ -76,7 +77,7 @@
                 <TextView
                     style="@style/tv_personal_info_address"
                     android:id="@+id/tv_personal_info_address_address"
-                    android:text="收货地址"/>
+                    android:text="收货地址:"/>
                 <EditText
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/tv_personal_info_address_address"
@@ -90,7 +91,7 @@
                 <TextView
                     style="@style/tv_personal_info_address"
                     android:id="@+id/tv_personal_info_address_num"
-                    android:text="楼号门牌"/>
+                    android:text="楼号门牌:"/>
                 <EditText
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/tv_personal_info_address_num"

@@ -11,6 +11,7 @@
     </style>
 
     <style name="PersonalInfoMoreStyle">
+        <item name="android:background">@drawable/dis_add_bt</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginRight">10dp</item>
@@ -20,18 +21,18 @@
 
     <style name="RlInfoStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_height">50dp</item>
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:background">#ffffff</item>
     </style>
 
     <style name="iv_info_xx">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_width">40dp</item>
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:layout_marginBottom">5dp</item>
         <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginTop">10dp</item>
     </style>
 
     <style name="tv_info_xx">
@@ -41,39 +42,39 @@
         <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_marginRight">15dp</item>
         <item name="android:layout_marginTop">5dp</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:layout_centerVertical">true</item>
     </style>
 
     <style name="view_big">
-        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_height">10dp</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:background">#e1e4e5</item>
+        <item name="android:background">#e6e6e6</item>
     </style>
     <style name="view_small">
-        <item name="android:layout_height">5dp</item>
+        <item name="android:layout_height">1dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:background">#e1e4e5</item>
     </style>
 
     <style name="tv_personal_info_address">
-        <item name="android:layout_width">120dp</item>
-        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">50dp</item>
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:textColor">#444444</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="et_personal_info_address">
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_height">50dp</item>
         <item name="android:background">@null</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:singleLine">true</item>
         <item name="android:textColor">#2c2c2c</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
 

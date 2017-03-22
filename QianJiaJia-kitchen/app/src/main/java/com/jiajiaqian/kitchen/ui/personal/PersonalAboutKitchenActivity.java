@@ -2,7 +2,6 @@ package com.jiajiaqian.kitchen.ui.personal;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.jiajiaqian.kitchen.R;
@@ -11,19 +10,18 @@ import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 /**
  * @author qianjiajia
  * @version 1.0
- * @Date 2017-03-08 23:08
- * @Description 用户个人资料编辑
+ * @Description Kitchen介绍
+ * @Date 2017-03-16 16:16
+ * @email qianjiajia_2013@126.com
  */
-public class PersonalMyDataEditActivity extends BaseActivity{
+public class PersonalAboutKitchenActivity extends BaseActivity {
 
     private TextView topBarBack;
-    private TextView topTitle;
-    private Button topBtn;
-
+    private TextView topBarTitle;
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_personal_info_mydata_edit;
+        return R.layout.activity_personal_info_setting_about_kitchen;
     }
 
     @Override
@@ -34,10 +32,8 @@ public class PersonalMyDataEditActivity extends BaseActivity{
     @Override
     public void initView() {
         topBarBack = (TextView) findViewById(R.id.top_bar_back);
-        topTitle = (TextView) findViewById(R.id.top_bar_title);
-        topBtn = (Button) findViewById(R.id.top_bar_right);
-        topTitle.setText("我的资料");
-        topBtn.setText("保存");
+        topBarTitle = (TextView) findViewById(R.id.top_bar_title);
+        topBarTitle.setText("关于Kitchen");
     }
 
     @Override
@@ -46,13 +42,6 @@ public class PersonalMyDataEditActivity extends BaseActivity{
             @Override
             public void onClick(View v) {
                 finish();
-            }
-        });
-
-        topBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
     }

@@ -2,14 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-    <include layout="@layout/activity_top_bar"/>
-    <View
-        android:id="@+id/view_one"
-        android:layout_marginTop="50dp"
-        style="@style/view_big"/>
+
     <LinearLayout
-        android:layout_below="@id/view_one"
-        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -47,21 +41,8 @@
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:textSize="16sp"
-                    android:text="四川省成都市一环路南四段16号西南民族大学"/>
+                    android:text="四川省成都市武侯区高升桥东路肖家河街道"/>
             </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="40dp"
-                android:layout_height="match_parent"
-                android:layout_toRightOf="@id/rl_show_address">
-                <ImageView
-                    android:layout_width="5dp"
-                    android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/ic_personal_info_address_line"/>
-            </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/rl_edit_address"
                 android:layout_width="40dp"
@@ -75,6 +56,18 @@
                     android:gravity="center_vertical"
                     android:text="编辑"
                     android:layout_marginRight="10dp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/rl_edit_address">
+                <ImageView
+                    android:layout_width="5dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/ic_personal_terval_line_light"/>
             </RelativeLayout>
         </RelativeLayout>
 

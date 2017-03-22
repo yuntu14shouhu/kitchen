@@ -1,6 +1,7 @@
 package com.jiajiaqian.kitchen.ui.personal;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -22,12 +23,15 @@ import com.jiajiaqian.kitchen.common.entity.microbean.UserBean;
 import com.jiajiaqian.kitchen.ui.base.BaseFragment;
 import com.jiajiaqian.kitchen.utils.CircleImageView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by jasonxu on 2017/2/17.
  * 个人中心fragment
  */
 
-public class PersonalFragment extends BaseFragment implements View.OnClickListener {
+public class PersonalFragment extends BaseFragment {
 
     private RelativeLayout mRl;
     private CircleImageView mHeadImgIb;
@@ -90,8 +94,20 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
                 startActivity(intent);
             }
         });
-        mInfoAddressIb.setOnClickListener(this);
-        mInfoRelationIb.setOnClickListener(this);
+        mInfoAddressIb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),PersonalAddressActivity.class);
+                startActivity(intent);
+            }
+        });
+        mInfoRelationIb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),PersonalRelationActivity.class);
+                startActivity(intent);
+            }
+        });
         mInfoSettingIb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,35 +115,23 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
                 startActivity(intent);
             }
         });
-        mInfoPowerIv.setOnClickListener(this);
+        mInfoPowerIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exitPower();
+            }
+        });
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-//            case R.id.ib_info_order:
 
-            case R.id.ib_info_mydata:
-                Intent intent1 = new Intent();
-                intent1.setClass(getActivity(),PersonalMyDataActivity.class);
-            case R.id.ib_info_address:
-                Intent intent2 = new Intent();
-                intent2.setClass(getActivity(),PersonalAddressFragment.class);
-            case R.id.ib_info_relation:
-                Intent intent3 = new Intent();
-                intent3.setClass(getActivity(),PersonalRelationActivity.class);
-//            case R.id.iv_info_setting:
-
-            case R.id.iv_info_power:
-                getActivity().finish();
-//                Intent intent5 = new Intent();
-//                intent5.setClass(getActivity(),PersonalPowerActivity.class);
-                break;
-            default:
-                break;
+    // 遍历所有的Activity并finish,退出应用程序
+    public void exitPower() {
+        List<Activity> activityList = new ArrayList<>();
+        for (Activity activity : activityList) {
+            activity.finish();
         }
+        System.exit(0);
     }
-
 
     @Override
     protected void initData() {
@@ -176,6 +180,5 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
         Bitmap resizeBmp = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
         return resizeBmp;
     }
-
 
 }

@@ -12,21 +12,22 @@ import android.widget.TextView;
 
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.appglobal.ACache;
-import com.jiajiaqian.kitchen.ui.base.BaseFragment;
+import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 
 /**
  * @author qianjiajia
  * @version 1.0
- * @Date 2017-03-09 10:31
  * @Description 用户添加新的收货地址类
+ * @Date 2017-03-15 14:01
+ * @email qianjiajia_2013@126.com
  */
-public class PersonalAddressAddFragment extends BaseFragment implements View.OnClickListener{
+public class PersonalAddressAddActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView mAddressTopBarBack;
     private TextView mAddressTopBarTitle;
     private EditText mInfoAddressNameEt;
     private EditText mInfoAddressPhoneEt;
-    private Spinner  mInfoAddressCitySp;
+    private Spinner mInfoAddressCitySp;
     private EditText mInfoAddressAddressEt;
     private EditText mInfoAddressNumberEt;
     private Button mSaveAddress;
@@ -38,30 +39,35 @@ public class PersonalAddressAddFragment extends BaseFragment implements View.OnC
     private String mAddrSpStr = "北京市";
 
     @Override
-    protected int getLayoutResId() {
-        return R.layout.fragment_personal_info_address_edit;
+    public int getLayoutId() {
+        return R.layout.activity_personal_info_address_edit;
     }
 
     @Override
-    protected void initView() {
-        mAddressTopBarBack = (TextView) mRootView.findViewById(R.id.top_bar_back);
-        mAddressTopBarTitle = (TextView) mRootView.findViewById(R.id.top_bar_title);
-        mInfoAddressNameEt = (EditText) mRootView.findViewById(R.id.et_personal_info_address_name);
-        mInfoAddressPhoneEt = (EditText) mRootView.findViewById(R.id.et_personal_info_address_phone);
-        mInfoAddressCitySp = (Spinner) mRootView.findViewById(R.id.sp_personal_info_address);
-        mInfoAddressAddressEt = (EditText) mRootView.findViewById(R.id.et_personal_info_address_address);
-        mInfoAddressNumberEt = (EditText) mRootView.findViewById(R.id.et_personal_info_address_num);
-        mSaveAddress = (Button) mRootView.findViewById(R.id.btn_save_address);
-        mDeletaAddress = (Button) mRootView.findViewById(R.id.btn_delete_address);
+    public void initData(Bundle savedInstanceState) {
 
-        mACache = ACache.get(getActivity());
+    }
+
+    @Override
+    public void initView() {
+        mAddressTopBarBack = (TextView) findViewById(R.id.top_bar_back);
+        mAddressTopBarTitle = (TextView) findViewById(R.id.top_bar_title);
+        mInfoAddressNameEt = (EditText) findViewById(R.id.et_personal_info_address_name);
+        mInfoAddressPhoneEt = (EditText) findViewById(R.id.et_personal_info_address_phone);
+        mInfoAddressCitySp = (Spinner) findViewById(R.id.sp_personal_info_address);
+        mInfoAddressAddressEt = (EditText) findViewById(R.id.et_personal_info_address_address);
+        mInfoAddressNumberEt = (EditText) findViewById(R.id.et_personal_info_address_num);
+        mSaveAddress = (Button) findViewById(R.id.btn_save_address);
+        mDeletaAddress = (Button) findViewById(R.id.btn_delete_address);
+        mAddressTopBarTitle.setText("编辑收货地址");
+        mACache = ACache.get(this);
 
         initSpinner();
         initSpinnerText();
     }
 
     private void initSpinner(){
-        ArrayAdapter<String> adapterAddr = new ArrayAdapter<String>(getActivity(), R.layout.personal_myspinner,
+        ArrayAdapter<String> adapterAddr = new ArrayAdapter<String>(this, R.layout.personal_myspinner,
                 getResources().getStringArray(R.array.province));
         adapterAddr.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mInfoAddressCitySp.setAdapter(adapterAddr);
@@ -75,19 +81,14 @@ public class PersonalAddressAddFragment extends BaseFragment implements View.OnC
     }
 
     @Override
-    protected void initData() {
-
-    }
-
-    @Override
-    protected void initListener(){
-        super.initListener();
+    public void initEvent() {
         mAddressTopBarBack.setOnClickListener(this);
+        mSaveAddress.setOnClickListener(this);
+        mDeletaAddress.setOnClickListener(this);
         setSpinnerListeners();
     }
 
     private void setSpinnerListeners() {
-
         mInfoAddressCitySp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
@@ -106,7 +107,7 @@ public class PersonalAddressAddFragment extends BaseFragment implements View.OnC
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.top_bar_back:
-                getActivity().finish();
+                finish();
             case R.id.btn_save_address:
                 saveAddress();
             case R.id.btn_delete_address:
@@ -116,7 +117,6 @@ public class PersonalAddressAddFragment extends BaseFragment implements View.OnC
                 break;
         }
     }
-
     private void deleteAddress(String addressId) {
 
     }
@@ -126,8 +126,7 @@ public class PersonalAddressAddFragment extends BaseFragment implements View.OnC
     }
 
     protected void setupViews(Bundle bundle) {
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
                 | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-        mAddressTopBarTitle.setText("收货地址");
     }
 }

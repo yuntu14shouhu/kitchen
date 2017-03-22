@@ -29,6 +29,22 @@
         <activity android:name=".ui.personal.PersonalMyDataActivity">
 
         </activity>
+        <activity android:name=".ui.personal.PersonalNoAddressActivity">
+
+        </activity>
+        <activity android:name=".ui.personal.PersonalAddressActivity">
+
+        </activity>
+        <activity android:name=".ui.personal.PersonalRelationActivity">
+
+        </activity>
+        <activity android:name=".ui.personal.PersonalAddressAddActivity">
+
+        </activity>
+        <activity android:name=".ui.personal.PersonalMyDataEditActivity">
+
+        </activity>
+        <activity android:name=".ui.personal.PersonalAboutKitchenActivity"/>
     </application>
 
 </manifest>
