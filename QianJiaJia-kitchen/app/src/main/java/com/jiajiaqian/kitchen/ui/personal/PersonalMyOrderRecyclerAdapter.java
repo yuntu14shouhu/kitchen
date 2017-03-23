@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.entity.OrderBean;
@@ -22,7 +24,7 @@ import java.util.List;
  * @Date 2017-03-22 9:56
  * @email qianjiajia_2013@126.com
  */
-public class PersonalMyOrderRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class PersonalMyOrderRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
     private List<OrderBean> results;
@@ -61,15 +63,16 @@ public class PersonalMyOrderRecyclerAdapter extends RecyclerView.Adapter<Recycle
 
         holder.item_recyc_type2.setLayoutManager(new FullyGridLayoutManager(holder.item_recyc_type2.getContext(), 1, GridLayoutManager.HORIZONTAL, false));
 //        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-
-        List<OrderProductImgBean> results = new ArrayList<OrderProductImgBean>();
+        holder.orderDate.setText(results.get(position).getOrderDate());
+        holder.orderTotal.setText(results.get(position).getTotalPrice()+"");
+                List<OrderProductImgBean> results = new ArrayList<OrderProductImgBean>();
         String img = "http://pica.nipic.com/2007-10-09/200710994020530_2.jpg";
-        results.add(new OrderProductImgBean( img));
-        results.add(new OrderProductImgBean( img));
-        results.add(new OrderProductImgBean( img));
-        results.add(new OrderProductImgBean( img));
-        results.add(new OrderProductImgBean( img));
-        results.add(new OrderProductImgBean( img));
+        results.add(new OrderProductImgBean(img));
+        results.add(new OrderProductImgBean(img));
+        results.add(new OrderProductImgBean(img));
+        results.add(new OrderProductImgBean(img));
+        results.add(new OrderProductImgBean(img));
+        results.add(new OrderProductImgBean(img));
         holder.item_recyc_type2.setAdapter(new PersonalMyOrderRecyclerAdapterItem(context, results));
         holder.item_recyc_type2.setNestedScrollingEnabled(false);
     }
@@ -81,17 +84,6 @@ public class PersonalMyOrderRecyclerAdapter extends RecyclerView.Adapter<Recycle
 
     @Override
     public int getItemViewType(int position) {
-//        if (position == 0){
-//            return TYPE_1;
-//        }else if (position == 1){
-//            return TYPE_2;
-//        }else if (position == 2){
-//            return TYPE_3;
-//        }else if (position == 3){
-//            return TYPE_4;
-//        }else {
-//            return TYPE_MAIN;
-//        }
         return TYPE_1;
     }
 
@@ -100,21 +92,12 @@ public class PersonalMyOrderRecyclerAdapter extends RecyclerView.Adapter<Recycle
         super.onAttachedToRecyclerView(recyclerView);
 
         RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
-        if(manager instanceof GridLayoutManager) {
+        if (manager instanceof GridLayoutManager) {
             final GridLayoutManager gridManager = ((GridLayoutManager) manager);
             gridManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
                 public int getSpanSize(int position) {
                     int type = getItemViewType(position);
-//                    switch (type){
-//                        case TYPE_1:
-//                        case TYPE_2:
-//                        case TYPE_3:
-//                        case TYPE_4:
-//                            return gridManager.getSpanCount();
-//                        default:
-//                            return 1;
-//                    }
                     return gridManager.getSpanCount();
                 }
             });
@@ -123,9 +106,15 @@ public class PersonalMyOrderRecyclerAdapter extends RecyclerView.Adapter<Recycle
 
     private class MyViewHolder extends RecyclerView.ViewHolder {
         public RecyclerView item_recyc_type2;
+        private TextView orderDate;
+        private ImageView orderLogo;
+        private TextView orderTotal;
+
         public MyViewHolder(final View itemView) {
             super(itemView);
             item_recyc_type2 = (RecyclerView) itemView.findViewById(R.id.rv_order_edit);
+            orderDate = (TextView) itemView.findViewById(R.id.tv_order_date);
+            orderTotal = (TextView) itemView.findViewById(R.id.tv_order_total);
         }
     }
 }

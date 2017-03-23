@@ -5,7 +5,7 @@
 
     <include
         android:id="@+id/shopping_not_null_include"
-        layout="@layout/activity_top_bar"/>
+        layout="@layout/activity_top_bar_shop"/>
 
     <LinearLayout
         android:layout_below="@id/shopping_not_null_include"

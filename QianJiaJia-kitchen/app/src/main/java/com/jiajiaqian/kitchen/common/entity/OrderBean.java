@@ -15,8 +15,15 @@ public class OrderBean implements Serializable {
 
     private String orderDate;
     private int logoImg;
-    private String totalString;
     private double totalPrice;
+
+    public OrderBean() {
+    }
+
+    public OrderBean(String orderDate, double totalPrice) {
+        this.orderDate = orderDate;
+        this.totalPrice = totalPrice;
+    }
 
     public OrderBean(String orderDate, int logoImg) {
         this.orderDate = orderDate;
@@ -27,21 +34,6 @@ public class OrderBean implements Serializable {
         this.totalPrice = totalPrice;
         this.logoImg = logoImg;
         this.orderDate = orderDate;
-    }
-
-    public OrderBean(String orderDate, int logoImg, String totalString, double totalPrice) {
-        this.orderDate = orderDate;
-        this.logoImg = logoImg;
-        this.totalString = totalString;
-        this.totalPrice = totalPrice;
-    }
-
-    public String getTotalString() {
-        return totalString;
-    }
-
-    public void setTotalString(String totalString) {
-        this.totalString = totalString;
     }
 
     public String getOrderDate() {

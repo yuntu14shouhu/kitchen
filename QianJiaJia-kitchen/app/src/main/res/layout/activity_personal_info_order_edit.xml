@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#ffffff">
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:background="#ffffff">
         <RelativeLayout
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
@@ -37,22 +32,23 @@
                 android:id="@+id/view_order1"
                 android:layout_below="@id/order_date"
                 style="@style/view_small"/>
-        <RelativeLayout
+        <LinearLayout
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_order_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
             </android.support.v7.widget.RecyclerView>
-        </RelativeLayout>
+        </LinearLayout>
         <RelativeLayout
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_centerVertical="true">
             <TextView
                 android:id="@+id/tv_order_total"
@@ -61,18 +57,19 @@
                 android:layout_alignParentRight="true"
                 android:gravity="center_vertical"
                 android:textSize="14sp"
+                android:layout_marginRight="20dp"
                 android:text="14.88"/>
             <TextView
                 android:id="@+id/ttv_order_total"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="10dp"
                 android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_height="35dp"
                 android:text="合计:"
-                android:textSize="10sp"
+                android:textColor="#0e932e"
+                android:textSize="12sp"
                 android:layout_toLeftOf="@id/tv_order_total"/>
         </RelativeLayout>
         <View
             style="@style/view_small"/>
-    </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

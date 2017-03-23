@@ -57,18 +57,6 @@ public class PersonalMyOrderActivity extends BaseActivity implements SwipeRefres
         mOrderBeanList.add(new OrderBean("2017-06-22", R.drawable.ic_logo,22.0));
         mOrderBeanList.add(new OrderBean("2017-07-22", R.drawable.ic_logo,22.0));
 
-//        mOrderBean = new ArrayList<>();
-//        OrderBean orderBean = new OrderBean();
-//        orderBean.setOrderDate(getDate());
-//        orderBean.setLogoImg(R.drawable.ic_logo);
-////        orderBean.setOrderTotalImg(R.drawable.ic_order_total);
-//        orderBean.setTotalPrice(20.8);
-//        mOrderBean.add(orderBean);
-//        mOrderBean.add(orderBean);
-//        mOrderBean.add(orderBean);
-//        mOrderBean.add(orderBean);
-//        mOrderBean.add(orderBean);
-//        mOrderBean.add(orderBean);
     }
 
     private String getDate() {
@@ -89,7 +77,7 @@ public class PersonalMyOrderActivity extends BaseActivity implements SwipeRefres
 //        orderRecyclerView.setLayoutManager(linearLayoutManager);
         orderRecyclerView.setLayoutManager(new GridLayoutManager(orderRecyclerView.getContext(), 1, GridLayoutManager.VERTICAL, false));
 
-        orderRecyclerView.setAdapter(adapter = new PersonalMyOrderRecyclerAdapter(this, R.layout.activity_personal_info_order_edit, mOrderBeanList));
+        orderRecyclerView.setAdapter(adapter = new PersonalMyOrderRecyclerAdapter(PersonalMyOrderActivity.this, R.layout.activity_personal_info_order_edit, mOrderBeanList));
     }
 
 
