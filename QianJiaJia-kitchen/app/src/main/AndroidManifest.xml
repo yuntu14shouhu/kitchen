@@ -38,13 +38,22 @@
         <activity android:name=".ui.personal.PersonalRelationActivity">
 
         </activity>
-        <activity android:name=".ui.personal.PersonalAddressAddActivity">
+        <activity android:name=".ui.personal.PersonalAddressEditActivity">
 
         </activity>
         <activity android:name=".ui.personal.PersonalMyDataEditActivity">
 
         </activity>
         <activity android:name=".ui.personal.PersonalAboutKitchenActivity"/>
+        <activity android:name=".ui.shop.ShopAccounts">
+
+        </activity>
+        <activity android:name=".ui.ProductDetailsActivity">
+
+        </activity>
+        <activity android:name=".ui.shop.ShopProductDetailsActivity"></activity>
+        <activity android:name=".ui.personal.PersonalAddressAddActivity"></activity>
+        <activity android:name=".ui.personal.PersonalMyOrderDetailsActivity"></activity>
     </application>
 
 </manifest>

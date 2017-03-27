@@ -7,12 +7,12 @@
 
     <Button
         android:id="@+id/btn_add_address"
-        android:layout_width="240dp"
+        android:layout_width="320dp"
         android:layout_height="60dp"
         android:layout_centerInParent="true"
         android:text="点我添加新的收货地址"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textColor="#ffffff"
-        android:background="#0e932e"/>
+        android:background="@drawable/button_shape_color"/>
 
 </RelativeLayout>

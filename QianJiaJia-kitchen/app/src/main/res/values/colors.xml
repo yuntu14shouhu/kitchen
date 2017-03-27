@@ -19,4 +19,6 @@
     <color name="dis_add_bt">#0e932e</color>
 
 
+    <color name="colorPrimaryPersonal">#0e932e</color>
+    <color name="colorPrimaryDarkPersonal">#0e932e</color>
 </resources>

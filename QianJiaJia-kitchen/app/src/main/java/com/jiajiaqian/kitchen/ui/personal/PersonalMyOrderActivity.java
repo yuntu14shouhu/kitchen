@@ -34,13 +34,6 @@ public class PersonalMyOrderActivity extends BaseActivity implements SwipeRefres
 
     private List<OrderBean> mOrderBeanList;
 
-
-
-    public static PersonalMyOrderActivity newInstance() {
-        PersonalMyOrderActivity f = new PersonalMyOrderActivity();
-        return f;
-    }
-
     @Override
     public int getLayoutId() {
         return R.layout.activity_personal_info_order;
@@ -50,7 +43,7 @@ public class PersonalMyOrderActivity extends BaseActivity implements SwipeRefres
     public void initData(Bundle savedInstanceState) {
 
         mOrderBeanList = new ArrayList<>();
-        mOrderBeanList.add(new OrderBean("2017-02-22", R.drawable.ic_logo,22.0));
+        mOrderBeanList.add(new OrderBean("2017-02-22", R.drawable.ic_logo,22.10));
         mOrderBeanList.add(new OrderBean("2017-03-22", R.drawable.ic_logo,22.0));
         mOrderBeanList.add(new OrderBean("2017-04-22", R.drawable.ic_logo,22.0));
         mOrderBeanList.add(new OrderBean("2017-05-22", R.drawable.ic_logo,22.0));
@@ -70,7 +63,7 @@ public class PersonalMyOrderActivity extends BaseActivity implements SwipeRefres
         topBarTitle = (TextView) findViewById(R.id.top_bar_title);
         topBarTitle.setText("我的订单");
         mRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.lay_refresh_order);
-        mRefreshLayout.setColorSchemeResources(R.color.colorPrimary, R.color.colorPrimaryDark);
+        mRefreshLayout.setColorSchemeResources(R.color.colorPrimaryPersonal, R.color.colorPrimaryDarkPersonal);
         mRefreshLayout.setOnRefreshListener(this);
         orderRecyclerView = (RecyclerView) findViewById(R.id.order_lv);
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

@@ -1,11 +1,13 @@
 package com.jiajiaqian.kitchen.ui.personal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -74,6 +76,12 @@ public class PersonalMyOrderRecyclerAdapter extends RecyclerView.Adapter<Recycle
         results.add(new OrderProductImgBean(img));
         results.add(new OrderProductImgBean(img));
         holder.item_recyc_type2.setAdapter(new PersonalMyOrderRecyclerAdapterItem(context, results));
+        holder.buttonOrderDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context,PersonalMyOrderDetailsActivity.class));
+            }
+        });
         holder.item_recyc_type2.setNestedScrollingEnabled(false);
     }
 
@@ -104,17 +112,19 @@ public class PersonalMyOrderRecyclerAdapter extends RecyclerView.Adapter<Recycle
         }
     }
 
-    private class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
         public RecyclerView item_recyc_type2;
         private TextView orderDate;
         private ImageView orderLogo;
         private TextView orderTotal;
+        private Button buttonOrderDetails;
 
         public MyViewHolder(final View itemView) {
             super(itemView);
             item_recyc_type2 = (RecyclerView) itemView.findViewById(R.id.rv_order_edit);
             orderDate = (TextView) itemView.findViewById(R.id.tv_order_date);
             orderTotal = (TextView) itemView.findViewById(R.id.tv_order_total);
+            buttonOrderDetails = (Button) itemView.findViewById(R.id.bt_personal_info_order_details);
         }
     }
 }

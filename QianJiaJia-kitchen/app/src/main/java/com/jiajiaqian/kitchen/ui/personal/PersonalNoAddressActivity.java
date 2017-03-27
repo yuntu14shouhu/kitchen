@@ -43,7 +43,7 @@ public class PersonalNoAddressActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(PersonalNoAddressActivity.this,PersonalAddressAddActivity.class);
+                intent.setClass(PersonalNoAddressActivity.this,PersonalAddressEditActivity.class);
             }
         });
         topBarBack.setOnClickListener(new View.OnClickListener() {

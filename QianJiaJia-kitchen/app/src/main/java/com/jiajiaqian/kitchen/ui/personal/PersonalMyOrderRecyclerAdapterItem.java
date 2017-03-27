@@ -1,6 +1,7 @@
 package com.jiajiaqian.kitchen.ui.personal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,6 +64,12 @@ public class PersonalMyOrderRecyclerAdapterItem extends RecyclerView.Adapter<Rec
                 results.get(position).getProductImg(),
                 new ImageOptions.Builder().build(),
                 new CustomBitmapLoadCallBack(holder.item_recyc_type2_item_img));
+        holder.item_recyc_type2_item_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(new Intent(context,PersonalMyOrderDetailsActivity.class));
+            }
+        });
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {

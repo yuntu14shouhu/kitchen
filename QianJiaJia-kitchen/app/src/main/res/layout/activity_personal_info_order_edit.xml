@@ -44,11 +44,14 @@
                 android:layout_height="wrap_content">
             </android.support.v7.widget.RecyclerView>
         </LinearLayout>
+
+    <View
+        style="@style/view_small"/>
         <RelativeLayout
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="45dp"
             android:layout_centerVertical="true">
             <TextView
                 android:id="@+id/tv_order_total"
@@ -56,20 +59,40 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:gravity="center_vertical"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:layout_marginRight="20dp"
-                android:text="14.88"/>
+                android:text="14.8800"
+                android:textColor="#111111"/>
             <TextView
                 android:id="@+id/ttv_order_total"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_width="30dp"
-                android:layout_height="35dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="12dp"
+                android:layout_width="40dp"
+                android:layout_height="45dp"
                 android:text="合计:"
                 android:textColor="#0e932e"
-                android:textSize="12sp"
+                android:textSize="14sp"
+                android:textStyle="bold"
                 android:layout_toLeftOf="@id/tv_order_total"/>
         </RelativeLayout>
         <View
             style="@style/view_small"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+        <Button
+            android:id="@+id/bt_personal_info_order_details"
+            android:layout_width="76dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="30dp"
+            android:textSize="14sp"
+            android:background="@drawable/button_order_details_shape"
+            android:text="查看详情"/>
+    </RelativeLayout>
+    <View
+        style="@style/view_big"/>
+
 </LinearLayout>

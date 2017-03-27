@@ -61,9 +61,9 @@
                 <!--android:hint="选择你所在城市"/>-->
                 <Spinner
                     android:layout_toRightOf="@id/tv_personal_info_address_city"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="end|center"
+                    android:gravity="center_vertical"
                     android:layout_marginRight="25dp"
                     android:layout_marginEnd="25dp"
                     android:background="#00000000"
@@ -99,37 +99,114 @@
                     android:hint="楼号/门牌单元号"/>
             </RelativeLayout>
             <View
+                style="@style/view_small"/>
+            <RelativeLayout
+                style="@style/RlInfoStyle">
+                <TextView
+                    style="@style/tv_personal_info_address"
+                    android:id="@+id/tv_personal_info_address_type"
+                    android:text="地址类型:"/>
+                <RadioGroup
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_personal_info_address_type">
+                <RadioButton
+                    android:button="@null"
+                    android:checked="false"
+                    android:id="@+id/bt_work_personal_info_address_type"
+                    android:layout_toRightOf="@id/tv_personal_info_address_type"
+                    android:layout_width="40dp"
+                    android:layout_height="24dp"
+                    android:textColor="#ffffff"
+                    android:text="公司"
+                    android:layout_weight="1"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="12dp"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:background="@drawable/button_address_bg_selector"/>
+                <RadioButton
+                    android:button="@null"
+                    android:checked="false"
+                    android:id="@+id/bt_family_personal_info_address_type"
+                    android:layout_toRightOf="@id/bt_work_personal_info_address_type"
+                    android:layout_width="40dp"
+                    android:layout_height="24dp"
+                    android:textColor="#ffffff"
+                    android:text="住宅"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="12dp"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/button_address_bg_selector"/>
+                <RadioButton
+                    android:button="@null"
+                    android:checked="false"
+                    android:id="@+id/bt_school_personal_info_address_type"
+                    android:layout_toRightOf="@id/bt_family_personal_info_address_type"
+                    android:layout_width="40dp"
+                    android:layout_height="24dp"
+                    android:textColor="#ffffff"
+                    android:text="学校"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="12dp"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/button_address_bg_selector"/>
+                <RadioButton
+                    android:button="@null"
+                    android:checked="false"
+                    android:id="@+id/bt_other_personal_info_address_type"
+                    android:layout_toRightOf="@id/bt_school_personal_info_address_type"
+                    android:layout_width="40dp"
+                    android:layout_height="24dp"
+                    android:textColor="#ffffff"
+                    android:text="其他"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="12dp"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/button_address_bg_selector"/>
+                </RadioGroup>
+            </RelativeLayout>
+            <View
+                style="@style/view_small"/>
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="#e1e4e5"/>
+                android:layout_height="20dp"/>
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal">
                 <Button
+                    android:layout_marginTop="20dp"
                     android:id="@+id/btn_save_address"
-                    android:layout_width="140dp"
+                    android:layout_width="320dp"
                     android:layout_height="40dp"
                     android:text="保存收货地址"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#ffffff"
-                    android:background="#0e932e"/>
+                    android:background="@drawable/button_shape_color"/>
 
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal">
                 <Button
                     android:id="@+id/btn_delete_address"
-                    android:layout_width="140dp"
+                    android:layout_width="320dp"
                     android:layout_height="40dp"
                     android:text="删除收货地址"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textColor="#ffffff"
-                    android:background="#8a8a8a"/>
+                    android:background="@drawable/button_shape_no_color"/>
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

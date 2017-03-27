@@ -3,7 +3,6 @@ package com.jiajiaqian.kitchen.ui.personal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -67,15 +66,20 @@ public class PersonalAddressActivity extends BaseActivity {
 
     private void initAdapter() {
 
-        mCommonAdaper = new CommonAdaper<AddressBean>(this,mAddressBean,R.layout.activity_personal_info_address_item) {
+        mCommonAdaper = new CommonAdaper<AddressBean>(this, mAddressBean, R.layout.activity_personal_info_address_item) {
             @Override
             public void convert(ViewHolder holder, AddressBean item) {
-                holder.setText(R.id.tv_personal_info_add_address_name,item.getConsigneeName());
-                holder.setText(R.id.tv_personal_info_add_address_phone,item.getConsigneePhone());
-                holder.setText(R.id.tv_personal_info_add_address_address,item.getConsigneeAddress());
+                holder.setText(R.id.tv_personal_info_add_address_name, item.getConsigneeName());
+                holder.setText(R.id.tv_personal_info_add_address_phone, item.getConsigneePhone());
+                holder.setText(R.id.tv_personal_info_add_address_address, item.getConsigneeAddress());
 
             }
         };
+    }
+
+    public void editClick(View view){
+        Intent intent = new Intent(PersonalAddressActivity.this,PersonalAddressEditActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -88,12 +92,13 @@ public class PersonalAddressActivity extends BaseActivity {
             }
         });
 
-        mAddressListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
+//        mAddressListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Intent intent = new Intent(PersonalAddressActivity.this,PersonalAddressEditActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         topBarBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,12 +107,5 @@ public class PersonalAddressActivity extends BaseActivity {
             }
         });
 
-//        editAddress.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(PersonalAddressActivity.this,PersonalAddressAddActivity.class);
-//                startActivity(intent);
-//            }
-//        });
     }
 }

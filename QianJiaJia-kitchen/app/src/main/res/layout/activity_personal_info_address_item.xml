@@ -17,13 +17,14 @@
                 android:id="@+id/rl_show_address"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp">
+                android:layout_marginLeft="12dp">
                 <TextView
+                    android:layout_marginTop="8dp"
                     android:id="@+id/tv_personal_info_add_address_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="qianjiajia"
-                    android:textSize="16sp"/>
+                    android:textSize="14sp"/>
                 <TextView
                     android:layout_marginTop="8dp"
                     android:layout_below="@id/tv_personal_info_add_address_name"
@@ -31,34 +32,46 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1848217219"
-                    android:textSize="16sp"/>
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0e932e"
+                    android:textSize="14sp"
+                    android:text="[公司]"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@id/tv_personal_info_add_address_phone"/>
+
                 <TextView
                     android:layout_marginTop="8dp"
                     android:layout_below="@id/tv_personal_info_add_address_phone"
                     android:id="@+id/tv_personal_info_add_address_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="45dp"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:text="四川省成都市武侯区高升桥东路肖家河街道"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rl_edit_address"
-                android:layout_width="40dp"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true">
 
                 <TextView
                     android:id="@+id/tv_edit_address"
-                    android:layout_width="40dp"
+                    android:layout_width="50dp"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:text="编辑"
-                    android:layout_marginRight="10dp"/>
+                    android:onClick="editClick"
+                    android:layout_marginRight="12dp"/>
             </RelativeLayout>
             <RelativeLayout
-                android:layout_width="40dp"
+                android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_toLeftOf="@id/rl_edit_address">
                 <ImageView
