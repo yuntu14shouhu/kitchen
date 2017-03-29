@@ -22,6 +22,8 @@ import com.jiajiaqian.kitchen.common.appglobal.ACache;
 import com.jiajiaqian.kitchen.common.entity.microbean.UserBean;
 import com.jiajiaqian.kitchen.ui.base.BaseFragment;
 import com.jiajiaqian.kitchen.utils.CircleImageView;
+import com.jiajiaqian.kitchen.utils.CustomScrollBar;
+import com.jiajiaqian.kitchen.utils.CustomScrollView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +51,9 @@ public class PersonalFragment extends BaseFragment {
     private UserBean mUserBean;
     private ACache mACache;
 
+    private CustomScrollBar mMyCustomScrollBar;
+    private CustomScrollView mMyCustomScrollView;
+
     public static PersonalFragment newInstance() {
         return new PersonalFragment();
     }
@@ -73,6 +78,10 @@ public class PersonalFragment extends BaseFragment {
         mInfoRelationIb = (ImageButton) mRootView.findViewById(R.id.ib_info_relation);
         mInfoSettingIb = (ImageButton) mRootView.findViewById(R.id.ib_info_setting);
         mInfoPowerIv = (ImageView) mRootView.findViewById(R.id.iv_info_power);
+
+//        mMyCustomScrollBar = (CustomScrollBar) mRootView.findViewById(R.id.scrollBar_my1);
+//        mMyCustomScrollView = (CustomScrollView) mRootView.findViewById(R.id.scrollView_my1);
+//        mMyCustomScrollView.setScrollBar(mMyCustomScrollBar);
 
         mACache = ACache.get(this.getActivity());
     }
@@ -121,6 +130,43 @@ public class PersonalFragment extends BaseFragment {
                 exitPower();
             }
         });
+//        mMyCustomScrollView.setCustomScrollListener(new CustomScrollView.CustomScrollListener() {
+//            @Override
+//            public void onCustomScrollListener(int l, int t, int oldl, int oldt) {
+//                if (t-oldt !=0){
+//                    mMyCustomScrollBar.setVisibility(View.GONE);
+//                }else {
+//                    mMyCustomScrollBar.setVisibility(View.VISIBLE);
+//                }
+//            }
+//        });
+
+//        mMyCustomScrollView.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                switch (event.getAction()){
+//                    case MotionEvent.ACTION_DOWN:
+//                        // 按下屏幕的操作
+//                        mMyCustomScrollView.setScrollBar(mMyCustomScrollBar);
+//                        break;
+//                    case MotionEvent.ACTION_MOVE:
+//                        // 在屏幕上移动的操作
+//                        mMyCustomScrollView.setScrollBar(mMyCustomScrollBar);
+//                        break;
+//                    case MotionEvent.ACTION_UP:
+//                        // 离开屏幕的操作
+//                        break;
+//                    case (MotionEvent.ACTION_CANCEL):
+//                        // 手势撤消的操作
+//                        // 一般认为不能由用户主动触发。
+//                        // 系统在运行到一定程度下无法继续响应你的后续动作时会产生此事件
+//                        break;
+//                    default:
+//                        break;
+//                }
+//                return false;
+//            }
+//        });
     }
 
 

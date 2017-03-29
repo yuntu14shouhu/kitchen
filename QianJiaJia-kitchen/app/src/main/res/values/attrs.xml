@@ -88,4 +88,10 @@
         <attr name="ptrDrawableTop" format="reference" />
         <attr name="ptrDrawableBottom" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="CustomScrollBar">
+        <attr name="length_csb" format="reference|integer"/>
+        <attr name="round_radius_csb" format="integer|reference"/>
+        <attr name="color_csb" format="color"/>
+    </declare-styleable>
 </resources>

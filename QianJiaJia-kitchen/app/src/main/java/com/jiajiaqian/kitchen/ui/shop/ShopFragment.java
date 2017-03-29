@@ -44,14 +44,7 @@ public class ShopFragment extends BaseFragment implements SwipeRefreshLayout.OnR
 
     @Override
     protected void initData() {
-        mShopBeanList = new ArrayList<>();
-        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product,"麒麟瓜",15,20.0));
-        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product,"麒麟瓜",15,20.0));
-        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product,"麒麟瓜",15,20.0));
-        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product,"麒麟瓜",15,20.0));
-        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product,"麒麟瓜",15,20.0));
-        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product,"麒麟瓜",15,20.0));
-        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product,"麒麟瓜",15,20.0));
+
     }
 
     @Override

@@ -2,19 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+    <include
+        android:id="@+id/include_order_details"
+        layout="@layout/activity_top_bar" />
     <ScrollView
+        android:layout_below="@id/include_order_details"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <include
-                android:id="@+id/include_order_details"
-                layout="@layout/activity_top_bar" />
+
             <View
                 android:id="@+id/view7_order_details"
-                android:layout_below="@id/include_order_details"
-                style="@style/view_small"/>
+                style="@style/view_big"/>
             <RelativeLayout
                 android:layout_below="@id/view7_order_details"
                 android:id="@+id/rl_cancel_order_details"
@@ -22,9 +24,9 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/iv_cancel_order_details"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
                     android:src="@drawable/ic_personal_info_order_cancel"
                     android:layout_centerHorizontal="true"/>
                 <TextView
@@ -34,8 +36,8 @@
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:text="已取消"
-                    android:layout_marginBottom="5dp"
-                    android:textColor="#0e932e"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="15dp"
                     android:layout_centerHorizontal="true"/>
             </RelativeLayout>
             <View
@@ -85,7 +87,7 @@
                 <View
                     android:layout_below="@id/name_order_details"
                     android:id="@+id/view3_order_details"
-                    style="@style/view_small"/>
+                    style="@style/view_big"/>
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rcv_order_details_personal_info"
@@ -172,7 +174,7 @@
                     android:layout_below="@id/view5_order_details"
                     android:layout_width="18dp"
                     android:layout_height="13dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:src="@drawable/ic_personal_info_order_details"
                     android:layout_toLeftOf="@id/tv_pay_order_details"/>
                 <TextView
@@ -206,23 +208,39 @@
                     android:id="@+id/tv_total_order_details"
                     android:layout_below="@id/view6_order_details"
                     android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_height="40dp"
                     android:text="88.88"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="1dp"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:gravity="center"
+                    android:gravity="center_vertical"
                     android:layout_alignParentRight="true"
                     android:textColor="#0e932e"/>
                 <ImageView
                     android:id="@+id/iv_total_order_details"
                     android:layout_below="@id/view6_order_details"
                     android:layout_width="18dp"
-                    android:layout_height="13dp"
-                    android:layout_marginTop="9dp"
+                    android:layout_height="12dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginLeft="1dp"
                     android:src="@drawable/ic_personal_money"
                     android:layout_toLeftOf="@id/tv_total_order_details"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="合计:"
+                    android:textColor="#0e932e"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    android:layout_below="@id/view6_order_details"
+                    android:layout_toLeftOf="@id/iv_total_order_details"/>
+                <View
+                    android:layout_below="@id/tv_total_order_details"
+                    android:layout_height="180dp"
+                    android:layout_width="match_parent"
+                    android:background="#e6e6e6"/>
             </RelativeLayout>
         </RelativeLayout>
     </ScrollView>

@@ -62,7 +62,7 @@ public class PersonalMyOrderDetailsAdapter extends RecyclerView.Adapter<Personal
         holder.productNameDetails.setText(results.get(position).getProductNameDetails());
         holder.productPriceDetails.setText(results.get(position).getProductPriceDetails()+"");
         holder.productNumberDetails.setText(results.get(position).getProductNumberDetails()+"");
-        holder.productDefaultsDetails.setText(results.get(position).getProductDefaultDetails());
+//        holder.productDefaultsDetails.setText(results.get(position).getProductDefaultDetails());
     }
 
     @Override
@@ -77,14 +77,14 @@ public class PersonalMyOrderDetailsAdapter extends RecyclerView.Adapter<Personal
         private TextView productNameDetails;
         private TextView productPriceDetails;
         private TextView productNumberDetails;
-        private TextView productDefaultsDetails;
+//        private TextView productDefaultsDetails;
         public MyViewHolder(View itemView) {
             super(itemView);
             productImgDetails = (ImageView) itemView.findViewById(R.id.iv_order_details_info);
             productNameDetails = (TextView) itemView.findViewById(R.id.tv_order_details_product_name);
             productPriceDetails = (TextView) itemView.findViewById(R.id.tv_order_details_product_price);
             productNumberDetails = (TextView) itemView.findViewById(R.id.tv_order_details_product_number);
-            productDefaultsDetails = (TextView) itemView.findViewById(R.id.tv_order_defaults_details_product);
+//            productDefaultsDetails = (TextView) itemView.findViewById(R.id.tv_order_defaults_details_product);
         }
     }
 }
