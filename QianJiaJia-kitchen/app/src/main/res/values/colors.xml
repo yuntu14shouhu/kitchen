@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/con_blue</color>
-    <color name="colorPrimaryDark">@color/con_blue</color>
-    <color name="colorAccent">@color/con_blue</color>
+    <color name="colorPrimary">@color/con_green</color>
+    <color name="colorPrimaryDark">@color/con_green</color>
+    <color name="colorAccent">@color/con_green</color>
 
     <color name="main_bottom_textView_normal">#999999</color>
-    <color name="main_bottom_textView_pressed">#5AB5EE</color>
+    <color name="main_bottom_textView_pressed">#36ab60</color>
 
 
     <!--Primary color-->
@@ -15,6 +15,7 @@
     <color name="con_font_gray">#B1BDC4</color>
     <color name="con_font_gray2">#E5E5E5</color>
     <color name="con_yellow">#FFB22F</color>
+    <color name="con_green">#0e932e</color>
 
     <color name="dis_add_bt">#0e932e</color>
 

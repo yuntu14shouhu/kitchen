@@ -33,7 +33,7 @@ import java.util.List;
  * 个人中心fragment
  */
 
-public class PersonalFragment extends BaseFragment {
+public class PersonalFragment extends BaseFragment implements View.OnClickListener {
 
     private RelativeLayout mRl;
     private CircleImageView mHeadImgIb;
@@ -50,6 +50,19 @@ public class PersonalFragment extends BaseFragment {
     private ImageView mInfoPowerIv;
     private UserBean mUserBean;
     private ACache mACache;
+
+    private ImageView mIvOrder;
+    private ImageView mIvMyData;
+    private ImageView mIvAddress;
+    private ImageView mIvRelation;
+    private ImageView mIvSetting;
+
+    private TextView mTvOrder;
+    private TextView mTvMyData;
+    private TextView mTvAddress;
+    private TextView mTvRelation;
+    private TextView mTvSetting;
+    private TextView mTvPower;
 
     private CustomScrollBar mMyCustomScrollBar;
     private CustomScrollView mMyCustomScrollView;
@@ -79,6 +92,19 @@ public class PersonalFragment extends BaseFragment {
         mInfoSettingIb = (ImageButton) mRootView.findViewById(R.id.ib_info_setting);
         mInfoPowerIv = (ImageView) mRootView.findViewById(R.id.iv_info_power);
 
+        mIvOrder = (ImageView) mRootView.findViewById(R.id.iv_info_order);
+        mIvMyData = (ImageView) mRootView.findViewById(R.id.iv_info_mydata);
+        mIvAddress = (ImageView) mRootView.findViewById(R.id.iv_info_address);
+        mIvRelation = (ImageView) mRootView.findViewById(R.id.iv_info_relation);
+        mIvSetting = (ImageView) mRootView.findViewById(R.id.iv_info_setting);
+
+        mTvOrder = (TextView) mRootView.findViewById(R.id.tv_info_order);
+        mTvMyData = (TextView) mRootView.findViewById(R.id.tv_info_mydata);
+        mTvAddress = (TextView) mRootView.findViewById(R.id.tv_info_address);
+        mTvRelation = (TextView) mRootView.findViewById(R.id.tv_info_relation);
+        mTvSetting = (TextView) mRootView.findViewById(R.id.tv_info_setting);
+        mTvPower = (TextView) mRootView.findViewById(R.id.tv_info_power);
+
 //        mMyCustomScrollBar = (CustomScrollBar) mRootView.findViewById(R.id.scrollBar_my1);
 //        mMyCustomScrollView = (CustomScrollView) mRootView.findViewById(R.id.scrollView_my1);
 //        mMyCustomScrollView.setScrollBar(mMyCustomScrollBar);
@@ -89,47 +115,26 @@ public class PersonalFragment extends BaseFragment {
     @Override
     protected void initListener() {
         super.initListener();
-        mInfoOrderIb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),PersonalMyOrderActivity.class);
-                startActivity(intent);
-            }
-        });
-        mInfoMyDataIb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),PersonalMyDataActivity.class);
-                startActivity(intent);
-            }
-        });
-        mInfoAddressIb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),PersonalAddressActivity.class);
-                startActivity(intent);
-            }
-        });
-        mInfoRelationIb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),PersonalRelationActivity.class);
-                startActivity(intent);
-            }
-        });
-        mInfoSettingIb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),PersonalSettingActivity.class);
-                startActivity(intent);
-            }
-        });
-        mInfoPowerIv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                exitPower();
-            }
-        });
+        mInfoOrderIb.setOnClickListener(this);
+        mInfoMyDataIb.setOnClickListener(this);
+        mInfoAddressIb.setOnClickListener(this);
+        mInfoRelationIb.setOnClickListener(this);
+        mInfoSettingIb.setOnClickListener(this);
+
+        mInfoPowerIv.setOnClickListener(this);
+        mIvOrder.setOnClickListener(this);
+        mIvMyData.setOnClickListener(this);
+        mIvAddress.setOnClickListener(this);
+        mIvRelation.setOnClickListener(this);
+        mIvSetting.setOnClickListener(this);
+
+        mTvOrder.setOnClickListener(this);
+        mTvMyData.setOnClickListener(this);
+        mTvAddress.setOnClickListener(this);
+        mTvRelation.setOnClickListener(this);
+        mTvSetting.setOnClickListener(this);
+        mTvPower.setOnClickListener(this);
+
 //        mMyCustomScrollView.setCustomScrollListener(new CustomScrollView.CustomScrollListener() {
 //            @Override
 //            public void onCustomScrollListener(int l, int t, int oldl, int oldt) {
@@ -169,6 +174,47 @@ public class PersonalFragment extends BaseFragment {
 //        });
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.ib_info_order:
+            case R.id.iv_info_order:
+            case R.id.tv_info_order:
+                Intent intent = new Intent(getActivity(),PersonalMyOrderActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.ib_info_mydata:
+            case R.id.iv_info_mydata:
+            case R.id.tv_info_mydata:
+                Intent intent1 = new Intent(getActivity(),PersonalMyDataActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.ib_info_address:
+            case R.id.iv_info_address:
+            case R.id.tv_info_address:
+                Intent intent2 = new Intent(getActivity(),PersonalAddressActivity.class);
+                startActivity(intent2);
+                break;
+            case R.id.ib_info_relation:
+            case R.id.iv_info_relation:
+            case R.id.tv_info_relation:
+                Intent intent3 = new Intent(getActivity(),PersonalRelationActivity.class);
+                startActivity(intent3);
+                break;
+            case R.id.ib_info_setting:
+            case R.id.iv_info_setting:
+            case R.id.tv_info_setting:
+                Intent intent4 = new Intent(getActivity(),PersonalSettingActivity.class);
+                startActivity(intent4);
+                break;
+            case R.id.iv_info_power:
+            case R.id.tv_info_power:
+                exitPower();
+                break;
+            default:
+                break;
+        }
+    }
 
     // 遍历所有的Activity并finish,退出应用程序
     public void exitPower() {
@@ -226,5 +272,6 @@ public class PersonalFragment extends BaseFragment {
         Bitmap resizeBmp = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
         return resizeBmp;
     }
+
 
 }

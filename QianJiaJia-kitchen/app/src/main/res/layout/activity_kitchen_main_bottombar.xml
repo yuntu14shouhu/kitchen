@@ -5,7 +5,7 @@
 
     <RadioGroup
         android:id="@+id/rdoGrp_tab_list"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
@@ -68,7 +68,7 @@
             android:button="@null"
             android:checked="false"
             android:drawablePadding="@dimen/spacing_padding_micro"
-            android:drawableTop="@drawable/main_tab_bottom_shop_selector"
+            android:drawableTop="@drawable/main_tab_bottom_personal_selector"
             android:gravity="center"
             android:text="@string/main_tab_me"
             android:textColor="@drawable/main_tab_bottom_textview_selector" />

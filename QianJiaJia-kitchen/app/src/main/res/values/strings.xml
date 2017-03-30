@@ -46,4 +46,25 @@
         <item>新疆维吾尔族自治区</item>
     </string-array>
 
+    <string name="relation_a">1、收到的商品有问题怎么办?</string>
+    <string name="relation_b">2、商品不想要了可以退款吗?</string>
+    <string name="relation_c">3、退款时间?</string>
+    <string name="relation_d">4、为什么迟迟不发货?</string>
+    <string name="relation_e">5、到货时间?</string>
+    <string name="relation_f">6、企业订购?</string>
+    <string name="relation_g">7、可不可以开发票?</string>
+    <string name="relation_h">8、可以使用银行卡或者信用卡支付吗?</string>
+    <string name="relation_i">9、送货上门时,联系不到您,怎么办?</string>
+    <string name="relation_j">10、温馨提示</string>
+    <string name="relation_aa">·若您收到的商品有问题,请您在签收后48小时内及时拍照留证,并且联系Kitchen客服反馈处理。</string>
+    <string name="relation_bb">·生鲜商品具有新鲜度、易腐性等特点限制,目前不支持无理由退换货;\n·订单状态为“已支付”时,可以申请取消订单,退款金额将在1～3个工作日内原路径返回到原支付账户中;\n·订单状态为“配送中”时,目前无法取消订单；\n·订单状态为“已签收”时,若您收到的商品有问题,请参开第一条问题处理。</string>
+    <string name="relation_cc">·退款申请审核通过后,退款将会在3～5个工作日内按照原路径返回到原支付账户中,请您留意查收。</string>
+    <string name="relation_dd">·由于天气、物流供应商配送延迟或其他不可抗拒等原因时,可能会导致商品到货的延误，但请您放心，Kitchen均使用冷链运输,为您保证商品质量。</string>
+    <string name="relation_ee">·商品会根据您的收货地址,尽快发出,以保证您良好的使用体验。</string>
+    <string name="relation_ff">·如果您需要企业订购商品,请您将想要订购的商品信息和具体的联系方式发送邮件至jiajia_qian@yahoo.com，后期会有专人与您联系。</string>
+    <string name="relation_gg">·只有签收后三个月内的订单才支持开发票,申请发票需要提供以下信息给Kitchen客服:\n\t\t·发票抬头可填写个人姓名或单位名称;\n\t\t·发票内容为:水果食品;\n\t\t·发票金额为订单实际支付金额,\n\t\t·电子发票需要提供完整电子邮箱,自登记发票日期开始的3个工作日内发出;\n\t\t·纸质发票金额满200元包邮,不满200元需到付快递费,需填写完整收货人姓名、电话、地址等信息,自登记发票日期开始7个工作日内发出;\n\t\t·如果收到发票后,发票抬头,金额与提交订单时所填写的不一致时,请先与客服联系。\n\t\t注意：因税务局相关规定,商业企业一般纳税人零售的烟酒、食品等消费品不可开具增值税专用发票,请您谅解。</string>
+    <string name="relation_hh">·目前Kitchen并未开通支付功能,但Kitchen会在后期完善,敬请期待。</string>
+    <string name="relation_ii">·若配送期间无法联系到您,订单将为您保留到当日21:00，21:00前仍无法配送,订单自动判定为拒收,系统将会为您执行退款操作。</string>
+    <string name="relation_jj">·由于生鲜类商品具有新鲜度、易腐性等特点限制,送达后请您当场验货签收,如遇到问题可当场拒收,并联系Kitchen客服处理;如已签收后您发现商品存在问题,请您于签收后48小时内联系Kitchen客服处理。</string>
+
 </resources>

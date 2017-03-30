@@ -7,7 +7,8 @@
         android:layout_above="@+id/rl_product_details_shop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:background="#ffffff">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -50,6 +51,7 @@
                     android:layout_height="28dp"
                     android:layout_marginTop="10dp"
                     android:text="麒麟瓜麒麟瓜"
+                    android:textColor="#111111"
                     android:textSize="18sp"/>
 
                 <TextView
@@ -58,6 +60,7 @@
                     android:layout_height="24dp"
                     android:layout_below="@id/tv_product_name_details"
                     android:text="时令水果"
+                    android:textColor="#444444"
                     android:textSize="14sp"/>
                 <ImageView
                     android:id="@+id/iv_product_one_price_details"
@@ -95,10 +98,11 @@
                     android:layout_toLeftOf="@id/iv_plus_product_details"
                     android:gravity="center"
                     android:text="1"
+                    android:textColor="#444444"
                     android:textSize="16sp"/>
                 <ImageView
                     android:id="@+id/iv_minus_product_details"
-                    android:layout_width="24dp"
+                    android:layout_width="23dp"
                     android:layout_height="32dp"
                     android:layout_toLeftOf="@id/tv_number_product_details"
                     android:layout_alignParentBottom="true"
@@ -123,24 +127,26 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="品名:"
-                    android:textSize="18sp"/>
+                    android:textColor="#555555"
+                    android:textSize="16sp"/>
                 <TextView
                     android:id="@+id/tv_pinming_context_product_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/tv_pinming_product_details"
                     android:text="麒麟瓜麒麟瓜麒麟瓜"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="1dp"
                     android:layout_marginLeft="5dp"
-                    android:textSize="16sp"/>
+                    android:textSize="15sp"/>
                 <TextView
                     android:layout_below="@id/tv_pinming_product_details"
                     android:id="@+id/tv_chandi_product_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="产地:"
-                    android:layout_marginTop="2dp"
-                    android:textSize="18sp"/>
+                    android:textColor="#555555"
+                    android:layout_marginTop="4dp"
+                    android:textSize="16sp"/>
                 <TextView
                     android:layout_below="@id/tv_pinming_product_details"
                     android:id="@+id/tv_chandi_context_product_details"
@@ -148,9 +154,9 @@
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="中国"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
-                    android:textSize="16sp"/>
+                    android:textSize="15sp"/>
                 <TextView
                     android:layout_below="@id/tv_pinming_product_details"
                     android:id="@+id/tv_shangjiariqi_product_details"
@@ -158,9 +164,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="上架日期:"
-                    android:layout_marginTop="2dp"
+                    android:textColor="#555555"
+                    android:layout_marginTop="4dp"
                     android:layout_marginLeft="34dp"
-                    android:textSize="18sp"/>
+                    android:textSize="16sp"/>
                 <TextView
                     android:layout_below="@id/tv_pinming_product_details"
                     android:id="@+id/tv_shangjiariqi_context_product_details"
@@ -168,17 +175,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2017-03-28"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
-                    android:textSize="16sp"/>
+                    android:textSize="15sp"/>
                 <TextView
                     android:layout_below="@id/tv_chandi_product_details"
                     android:id="@+id/tv_guige_product_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="规格:"
-                    android:layout_marginTop="2dp"
-                    android:textSize="18sp"/>
+                    android:textColor="#555555"
+                    android:layout_marginTop="4dp"
+                    android:textSize="16sp"/>
                 <TextView
                     android:layout_below="@id/tv_chandi_product_details"
                     android:id="@+id/tv_guige_context_product_details"
@@ -186,9 +194,9 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/tv_guige_product_details"
                     android:text="1.5kg"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
-                    android:textSize="16sp"/>
+                    android:textSize="15sp"/>
                 <TextView
                     android:layout_below="@id/tv_chandi_product_details"
                     android:id="@+id/tv_shengchanriqi_product_details"
@@ -196,9 +204,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="生产日期:"
-                    android:layout_marginTop="2dp"
+                    android:textColor="#555555"
+                    android:layout_marginTop="4dp"
                     android:layout_marginLeft="34dp"
-                    android:textSize="18sp"/>
+                    android:textSize="16sp"/>
                 <TextView
                     android:layout_below="@id/tv_chandi_product_details"
                     android:id="@+id/tv_shengchanriqi_context_product_details"
@@ -206,9 +215,9 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/tv_shengchanriqi_product_details"
                     android:text="2017-03-21"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
-                    android:textSize="16sp"/>
+                    android:textSize="15sp"/>
             </RelativeLayout>
             <View
                 android:id="@+id/view3_product_details"
@@ -227,7 +236,8 @@
                     android:id="@+id/tv_miaoshu_product_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
+                    android:textColor="#444444"
                     android:text="商品描述:"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -252,6 +262,7 @@
         <View
             style="@style/view_small"/>
         <Button
+            android:id="@+id/bt_product_details_add"
             android:layout_width="280dp"
             android:layout_height="40dp"
             android:layout_marginRight="10dp"
@@ -262,13 +273,31 @@
             android:gravity="center_horizontal"
             android:background="@drawable/button_add_shop"
             android:layout_alignParentRight="true"/>
-        <ImageView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_marginLeft="18dp"
-            android:layout_marginTop="5dp"
-            android:layout_alignParentLeft="true"
-            android:src="@drawable/ic_product_add_shop"/>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_shop_product_details"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/ic_product_add_shop"/>
+            <TextView
+                android:id="@+id/tv_count_product_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="6"
+                android:textSize="10sp"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:padding="2dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/circle_product_number_shape"/>
+        </RelativeLayout>
     </RelativeLayout>
 
 </RelativeLayout>

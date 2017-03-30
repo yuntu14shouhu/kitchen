@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.entity.ShopBean;
 import com.jiajiaqian.kitchen.ui.base.BaseFragment;
+import com.jiajiaqian.kitchen.ui.personal.PersonalAboutKitchenActivity;
 import com.jiajiaqian.kitchen.ui.shop.adapter.ShopFragmentRecycleAdapter;
 
 import java.util.ArrayList;
@@ -25,12 +26,14 @@ import java.util.List;
 public class ShopFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{
 
     private TextView topBarTitle;
+    private TextView aboutKitchen;
     private Button shoppingNotNullPay;
     private List<ShopBean> mShopBeanList;
 
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private ShopFragmentRecycleAdapter adapter;
+
 
     public static ShopFragment newInstance(){
         return new ShopFragment();
@@ -51,6 +54,7 @@ public class ShopFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     protected void initView() {
         topBarTitle = (TextView) mRootView.findViewById(R.id.top_bar_title);
         topBarTitle.setText("购物车");
+        aboutKitchen = (TextView) mRootView.findViewById(R.id.tv_shopping_nou_null);
         shoppingNotNullPay = (Button) mRootView.findViewById(R.id.bt_shopping_not_null_pay);
         mSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.lay_refresh_shopping_not_null);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimaryPersonal, R.color.colorPrimaryDarkPersonal);
@@ -79,6 +83,14 @@ public class ShopFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),ShopAccounts.class);
+                startActivity(intent);
+            }
+        });
+
+        aboutKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), PersonalAboutKitchenActivity.class);
                 startActivity(intent);
             }
         });

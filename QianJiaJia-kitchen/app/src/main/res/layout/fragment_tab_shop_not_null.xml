@@ -30,7 +30,7 @@
                 android:layout_height="30dp"
                 android:layout_alignParentLeft="true"
                 android:layout_margin="3dp"
-                android:background="#0e932e"
+                android:background="@drawable/button_address_shape_color"
                 android:gravity="center"
                 android:text="Kitchen"
                 android:textColor="#ffffff"
@@ -43,7 +43,7 @@
                 android:layout_toRightOf="@id/tv_shopping_nou_null"
                 android:gravity="center"
                 android:text="Kitchen发货"
-                android:textSize="18sp"/>
+                android:textSize="17sp"/>
         </RelativeLayout>
 
         <View
@@ -109,19 +109,13 @@
             android:textColor="#0e932e"
             android:layout_marginRight="5dp"/>
 
-        <View
-            android:id="@+id/shopping_not_null_view"
-            style="@style/view_small"
-            android:layout_below="@id/tv_shopping_not_null_total_text"
-            android:layout_marginLeft="13dp"
-            android:layout_marginRight="13dp"/>
 
         <Button
             android:id="@+id/bt_shopping_not_null_pay"
             android:layout_width="340dp"
             android:layout_centerHorizontal="true"
             android:layout_height="40dp"
-            android:layout_below="@id/shopping_not_null_view"
+            android:layout_below="@id/tv_shopping_not_null_total_text"
             android:background="@drawable/button_shape_color"
             android:text="结算"
             android:textColor="#ffffff"

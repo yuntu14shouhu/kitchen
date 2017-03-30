@@ -1,10 +1,9 @@
 package com.jiajiaqian.kitchen.ui;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -116,5 +115,14 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 break;
         }
         return fragment;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int id = getIntent().getIntExtra("shop", 0);
+        if (id == 2) {
+            mBottomGroup.check(R.id.rdoBtn_tab_shop);
+        }
     }
 }

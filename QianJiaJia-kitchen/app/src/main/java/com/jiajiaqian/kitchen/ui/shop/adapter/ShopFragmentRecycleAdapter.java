@@ -3,7 +3,6 @@ package com.jiajiaqian.kitchen.ui.shop.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +40,7 @@ public class ShopFragmentRecycleAdapter extends RecyclerView.Adapter<ShopFragmen
         this.results = results;
         this.srcId = srcId;
         mInflater = LayoutInflater.from(context);
-        Log.e("results", "ShopFragmentRecycleAdapter: "+results.toString());
+//        Log.e("results", "ShopFragmentRecycleAdapter: "+results.toString());
     }
 
     @Override
