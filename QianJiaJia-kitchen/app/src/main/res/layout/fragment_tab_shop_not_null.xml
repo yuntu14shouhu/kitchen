@@ -17,7 +17,6 @@
         android:id="@+id/ll_shop_not_null"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:orientation="vertical">
 
         <RelativeLayout

@@ -10,14 +10,12 @@ import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 import com.jiajiaqian.kitchen.utils.MyCommonDialog;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author qianjiajia
@@ -60,9 +58,11 @@ public class PersonalRelationActivity extends BaseActivity {
     private ImageView ivDown_h;
     private ImageView ivDown_i;
     private ImageView ivDown_j;
-    private boolean isSelected = false;
 
-    private List<Boolean> saveState = new ArrayList<>();
+    private ScrollView sv_relation;
+    private boolean[] isSelected;
+    private TextView[] mvTvStatus;
+    private int hasSelected=0;
 
     private Button btnCallRelation;
 //    控件隐藏： 如textview（mTv）--- mTv.setVisibility(View.GONE );
@@ -116,6 +116,14 @@ public class PersonalRelationActivity extends BaseActivity {
         ivDown_i = (ImageView) findViewById(R.id.iv_relation_i);
         ivDown_j = (ImageView) findViewById(R.id.iv_relation_j);
 
+        mvTvStatus =new TextView[]{relation_aa,relation_bb,relation_cc,relation_dd,relation_ee,
+                        relation_ff,relation_gg,relation_hh,relation_ii,relation_jj};
+        isSelected = new boolean[]{
+                false,false,false,false,false,
+                false,false,false,false,false
+        };
+        sv_relation = (ScrollView) findViewById(R.id.scroll_relation);
+
         btnCallRelation = (Button) findViewById(R.id.bt_relation_phone);
     }
 
@@ -131,14 +139,23 @@ public class PersonalRelationActivity extends BaseActivity {
         relation_a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isSelected) {
+                if (!isSelected[0]) {
                     relation_aa.setVisibility(View.VISIBLE);
                     ivDown_a.setImageResource(R.drawable.ic_relation_up);
-                    isSelected = true;
+                    isSelected[0] = true;
+                    //隐藏掉已点开的,0是当前这个view的位置
+                    if (hasSelected!=0 && hasSelected!=-1){
+                        mvTvStatus[hasSelected].setVisibility(View.GONE);
+                    }
+                    hasSelected = 0;
                 } else {
+                    if (hasSelected!=0 && hasSelected!=-1){
+                        mvTvStatus[hasSelected].setVisibility(View.GONE);
+                    }
                     relation_aa.setVisibility(View.GONE);
                     ivDown_a.setImageResource(R.drawable.ic_relation_down);
-                    isSelected = false;
+                    isSelected[0] = false;
+                    hasSelected=-1;
                 }
             }
         });
@@ -146,14 +163,22 @@ public class PersonalRelationActivity extends BaseActivity {
         relation_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isSelected) {
+                if (!isSelected[1]) {
                     relation_bb.setVisibility(View.VISIBLE);
                     ivDown_b.setImageResource(R.drawable.ic_relation_up);
-                    isSelected = true;
+                    isSelected[1] = true;
+                    if (hasSelected!=1 && hasSelected!=-1){
+                        mvTvStatus[hasSelected].setVisibility(View.GONE);
+                    }
+                    hasSelected = 1;
                 } else {
+                    if (hasSelected!=1 && hasSelected!=-1){
+                        mvTvStatus[hasSelected].setVisibility(View.GONE);
+                    }
                     relation_bb.setVisibility(View.GONE);
                     ivDown_b.setImageResource(R.drawable.ic_relation_down);
-                    isSelected = false;
+                    isSelected[1] = false;
+                    hasSelected =-1;
                 }
             }
         });
@@ -161,28 +186,28 @@ public class PersonalRelationActivity extends BaseActivity {
         relation_c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isSelected) {
+                if (!isSelected[2]) {
                     relation_cc.setVisibility(View.VISIBLE);
                     ivDown_c.setImageResource(R.drawable.ic_relation_up);
-                    isSelected = true;
+                    isSelected[2] = true;
                 } else {
                     relation_cc.setVisibility(View.GONE);
                     ivDown_c.setImageResource(R.drawable.ic_relation_down);
-                    isSelected = false;
+                    isSelected[2] = false;
                 }
             }
         });
         relation_d.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isSelected) {
+                if (!isSelected[3]) {
                     relation_dd.setVisibility(View.VISIBLE);
                     ivDown_d.setImageResource(R.drawable.ic_relation_up);
-                    isSelected = true;
+                    isSelected[3] = true;
                 } else {
                     relation_dd.setVisibility(View.GONE);
                     ivDown_d.setImageResource(R.drawable.ic_relation_down);
-                    isSelected = false;
+                    isSelected[3] = false;
                 }
             }
         });
@@ -190,14 +215,14 @@ public class PersonalRelationActivity extends BaseActivity {
         relation_e.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isSelected) {
+                if (!isSelected[4]) {
                     relation_ee.setVisibility(View.VISIBLE);
                     ivDown_e.setImageResource(R.drawable.ic_relation_up);
-                    isSelected = true;
+                    isSelected[4] = true;
                 } else {
                     relation_ee.setVisibility(View.GONE);
                     ivDown_e.setImageResource(R.drawable.ic_relation_down);
-                    isSelected = false;
+                    isSelected[4] = false;
                 }
             }
         });
@@ -205,14 +230,20 @@ public class PersonalRelationActivity extends BaseActivity {
         relation_f.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isSelected) {
+                if (!isSelected[5]) {
                     relation_ff.setVisibility(View.VISIBLE);
+                    sv_relation.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            sv_relation.smoothScrollBy(0, relation_ff.getHeight());
+                        }
+                    });
                     ivDown_f.setImageResource(R.drawable.ic_relation_up);
-                    isSelected = true;
+                    isSelected[5] = true;
                 } else {
                     relation_ff.setVisibility(View.GONE);
                     ivDown_f.setImageResource(R.drawable.ic_relation_down);
-                    isSelected = false;
+                    isSelected[5] = false;
                 }
             }
         });
@@ -220,14 +251,20 @@ public class PersonalRelationActivity extends BaseActivity {
         relation_g.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isSelected) {
+                if (!isSelected[6]) {
                     relation_gg.setVisibility(View.VISIBLE);
+                    sv_relation.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            sv_relation.smoothScrollBy(0, relation_gg.getHeight());
+                        }
+                    });
                     ivDown_g.setImageResource(R.drawable.ic_relation_up);
-                    isSelected = true;
+                    isSelected[6] = true;
                 } else {
                     relation_gg.setVisibility(View.GONE);
                     ivDown_g.setImageResource(R.drawable.ic_relation_down);
-                    isSelected = false;
+                    isSelected[6] = false;
                 }
             }
         });
@@ -235,14 +272,20 @@ public class PersonalRelationActivity extends BaseActivity {
         relation_h.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isSelected) {
+                if (!isSelected[7]) {
                     relation_hh.setVisibility(View.VISIBLE);
+                    sv_relation.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            sv_relation.smoothScrollBy(0, relation_hh.getHeight());
+                        }
+                    });
                     ivDown_h.setImageResource(R.drawable.ic_relation_up);
-                    isSelected = true;
+                    isSelected[7] = true;
                 } else {
                     relation_hh.setVisibility(View.GONE);
                     ivDown_h.setImageResource(R.drawable.ic_relation_down);
-                    isSelected = false;
+                    isSelected[7] = false;
                 }
             }
         });
@@ -250,14 +293,20 @@ public class PersonalRelationActivity extends BaseActivity {
         relation_i.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isSelected) {
+                if (!isSelected[8]) {
                     relation_ii.setVisibility(View.VISIBLE);
+                    sv_relation.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            sv_relation.smoothScrollBy(0, relation_ii.getHeight());
+                        }
+                    });
                     ivDown_i.setImageResource(R.drawable.ic_relation_up);
-                    isSelected = true;
+                    isSelected[8] = true;
                 } else {
                     relation_ii.setVisibility(View.GONE);
                     ivDown_i.setImageResource(R.drawable.ic_relation_down);
-                    isSelected = false;
+                    isSelected[8] = false;
                 }
             }
         });
@@ -265,14 +314,20 @@ public class PersonalRelationActivity extends BaseActivity {
         relation_j.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isSelected) {
+                if (!isSelected[9]) {
                     relation_jj.setVisibility(View.VISIBLE);
+                    sv_relation.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            sv_relation.smoothScrollBy(0, relation_jj.getHeight());
+                        }
+                    });
                     ivDown_j.setImageResource(R.drawable.ic_relation_up);
-                    isSelected = true;
+                    isSelected[9] = true;
                 } else {
                     relation_jj.setVisibility(View.GONE);
                     ivDown_j.setImageResource(R.drawable.ic_relation_down);
-                    isSelected = false;
+                    isSelected[9] = false;
                 }
             }
         });
@@ -295,7 +350,7 @@ public class PersonalRelationActivity extends BaseActivity {
                     public void dialogListener(String btnType, View customView, DialogInterface dialogInterface, int which) {
                         switch (btnType){
                             case "positive":
-                                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:400-123-4567"));
+                                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:184 8217 3219"));
                                 if (ActivityCompat.checkSelfPermission(PersonalRelationActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                                     return;
                                 }

@@ -3,6 +3,7 @@ package com.jiajiaqian.kitchen.ui.shop;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.entity.microbean.ProductDetailsBean;
 import com.jiajiaqian.kitchen.ui.MainActivity;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
+import com.jiajiaqian.kitchen.utils.CustomToast;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -43,6 +45,7 @@ public class ShopProductDetailsActivity extends BaseActivity {
     private TextView describedProductdetails;
     private ImageView shopShowProductDetails;
 
+    private CustomToast toast;
 
 
     @Override
@@ -136,7 +139,7 @@ public class ShopProductDetailsActivity extends BaseActivity {
                  * 把商品（mProductDetailsBean）的id和数量传到购物车页面去，通过id看是否是添加新物品，
                  * 如果已存在，就将传过去的数量与原有的数量相加
                  */
-                Toast.makeText(ShopProductDetailsActivity.this,"添加购物车成功~",Toast.LENGTH_SHORT).show();
+                toastMessage("添加购物车成功");
             }
         });
 
@@ -149,6 +152,15 @@ public class ShopProductDetailsActivity extends BaseActivity {
             }
         });
 
+    }
+
+    private void toastMessage(String content) {
+        if (toast != null) {
+            toast.hide();
+        }
+        toast = new CustomToast(ShopProductDetailsActivity.this,
+                (ViewGroup) this.findViewById(R.id.toast_custom_parent));
+        toast.show(content, 2000);
     }
 
 

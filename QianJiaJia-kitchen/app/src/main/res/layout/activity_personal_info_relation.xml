@@ -102,6 +102,7 @@
         android:layout_below="@id/ll_relation"
         style="@style/view_middle"/>
     <ScrollView
+        android:id="@+id/scroll_relation"
         android:layout_below="@id/ll_relation"
         android:layout_above="@+id/rl_bottom_relation"
         android:layout_width="match_parent"

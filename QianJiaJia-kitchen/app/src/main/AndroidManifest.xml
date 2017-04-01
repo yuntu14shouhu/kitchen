@@ -46,7 +46,7 @@
 
         </activity>
         <activity android:name=".ui.personal.PersonalAboutKitchenActivity"/>
-        <activity android:name=".ui.shop.ShopAccounts">
+        <activity android:name=".ui.shop.ShopAccountsActivity">
 
         </activity>
         <activity android:name=".ui.ProductDetailsActivity">
@@ -55,6 +55,7 @@
         <activity android:name=".ui.shop.ShopProductDetailsActivity"></activity>
         <activity android:name=".ui.personal.PersonalAddressAddActivity"></activity>
         <activity android:name=".ui.personal.PersonalMyOrderDetailsActivity"></activity>
+        <activity android:name=".ui.shop.ShoppingCartPayAddressChoose"></activity>
     </application>
 
 </manifest>

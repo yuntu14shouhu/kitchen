@@ -2,16 +2,15 @@ package com.jiajiaqian.kitchen.ui.personal;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.entity.AddressBean;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
-import com.jiajiaqian.kitchen.ui.personal.adapter.CommonAdaper;
-import com.jiajiaqian.kitchen.ui.personal.adapter.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +24,7 @@ import java.util.List;
  */
 public class PersonalAddressActivity extends BaseActivity {
 
-    private ListView mAddressListView;
+    private RecyclerView mRecyclerView;
     private Button mAddAddressListBtn;
 
     private TextView topBarBack;
@@ -33,7 +32,7 @@ public class PersonalAddressActivity extends BaseActivity {
     private TextView topBarTitle;
 
     private List<AddressBean> mAddressBean;
-    private CommonAdaper<AddressBean> mCommonAdaper;
+    private PersonalAddressAdapter mAdapter;
 
     @Override
     public int getLayoutId() {
@@ -43,38 +42,27 @@ public class PersonalAddressActivity extends BaseActivity {
     @Override
     public void initData(Bundle savedInstanceState) {
         mAddressBean = new ArrayList<>();
-        AddressBean addressBean = new AddressBean();
-        addressBean.setConsigneeName("qianjiajia");
-        addressBean.setConsigneePhone("18482173219");
-        addressBean.setConsigneeAddress("四川省成都市一环路南四段16号");
-        mAddressBean.add(addressBean);
-        mAddressBean.add(addressBean);
+        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
+        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
+        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
+        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
+        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
+        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
+        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
+        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
+        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
     }
 
     @Override
     public void initView() {
-        mAddressListView = (ListView) findViewById(R.id.address_listView);
+        mRecyclerView = (RecyclerView) findViewById(R.id.address_recycler);
         mAddAddressListBtn = (Button) findViewById(R.id.bt_add_address_list);
         topBarBack = (TextView) findViewById(R.id.top_bar_back);
         editAddress = (TextView) findViewById(R.id.tv_edit_address);
         topBarTitle = (TextView) findViewById(R.id.top_bar_title);
         topBarTitle.setText("我的收货地址");
-        initAdapter();
-        mAddressListView.setAdapter(mCommonAdaper);
-
-    }
-
-    private void initAdapter() {
-
-        mCommonAdaper = new CommonAdaper<AddressBean>(this, mAddressBean, R.layout.activity_personal_info_address_item) {
-            @Override
-            public void convert(ViewHolder holder, AddressBean item) {
-                holder.setText(R.id.tv_personal_info_add_address_name, item.getConsigneeName());
-                holder.setText(R.id.tv_personal_info_add_address_phone, item.getConsigneePhone());
-                holder.setText(R.id.tv_personal_info_add_address_address, item.getConsigneeAddress());
-
-            }
-        };
+        mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(), 1, GridLayoutManager.VERTICAL, false));
+        mRecyclerView.setAdapter(mAdapter = new PersonalAddressAdapter(PersonalAddressActivity.this, R.layout.activity_personal_info_address_item, mAddressBean));
     }
 
     public void editClick(View view){

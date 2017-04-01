@@ -18,6 +18,28 @@ public class AddressBean implements Serializable {
     private int isDefault; //1代表默认，0代表非默认
     private int addressType;
 
+
+    public AddressBean() {
+    }
+
+    public AddressBean(String consigneeName, String consigneePhone, String consigneeAddress,int addressType) {
+        this.consigneeName = consigneeName;
+        this.consigneePhone = consigneePhone;
+        this.consigneeAddress = consigneeAddress;
+        this.addressType = addressType;
+    }
+
+    public AddressBean(String id, String userId, String consigneeName, String consigneePhone, String consigneeAddress, String defaultAddress, int isDefault, int addressType) {
+        this.id = id;
+        this.userId = userId;
+        this.consigneeName = consigneeName;
+        this.consigneePhone = consigneePhone;
+        this.consigneeAddress = consigneeAddress;
+        this.defaultAddress = defaultAddress;
+        this.isDefault = isDefault;
+        this.addressType = addressType;
+    }
+
     public String getId() {
         return id;
     }

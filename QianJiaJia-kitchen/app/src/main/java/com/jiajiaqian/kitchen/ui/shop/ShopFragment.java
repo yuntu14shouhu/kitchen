@@ -82,7 +82,7 @@ public class ShopFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         shoppingNotNullPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),ShopAccounts.class);
+                Intent intent = new Intent(getActivity(),ShopAccountsActivity.class);
                 startActivity(intent);
             }
         });

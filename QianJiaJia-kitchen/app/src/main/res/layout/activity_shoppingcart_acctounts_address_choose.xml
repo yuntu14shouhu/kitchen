@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <include
+        android:id="@+id/include_pay"
+        layout="@layout/activity_top_bar"/>
+
+    <ScrollView
+        android:layout_below="@id/include_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rl_choose_add_address">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_choose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
+</ScrollView>
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/rl_choose_add_address"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#ffffff">
+        <View
+            style="@style/view_small"/>
+        <Button
+            android:id="@+id/bt_choose_add_address_list"
+            android:layout_width="320dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:textSize="16sp"
+            android:background="@drawable/button_shape_color"
+            android:text="新增收货地址"
+            android:textColor="#ffffff"
+            android:layout_marginBottom="20dp"/>
+    </RelativeLayout>
+</RelativeLayout>

@@ -3,7 +3,6 @@ package com.jiajiaqian.kitchen.utils;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.View;
-import android.widget.Toast;
 
 /**
  * @author qianjiajia
@@ -53,7 +52,7 @@ public class MyCommonDialog {
         dialog.setTitle(dialogTitle);//设置标题
         //注意:dialogMessage和dialogView是互斥关系也就是dialogMessage存在dialogView就不存在,dialogView不存在dialogMessage就存在
         if (dialogMessage!=null){
-            Toast.makeText(context, "Kitchen即将启用电话", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(context, "Kitchen即将启用电话", Toast.LENGTH_SHORT).show();
             dialog.setMessage(dialogMessage);//设置对话框内容
         }else{
 

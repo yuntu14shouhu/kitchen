@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.entity.OrderDetailsBean;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
+import com.jiajiaqian.kitchen.ui.shop.adapter.ShopAccountActivityAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class PersonalMyOrderDetailsActivity extends BaseActivity {
     private TextView topbarTitle;
     private List<OrderDetailsBean> mOrderDetailsBeanList;
     private RecyclerView mRecyclerView;
-    private PersonalMyOrderDetailsAdapter mAdapter;
+    private ShopAccountActivityAdapter mAdapter;
 
     @Override
     public int getLayoutId() {
@@ -51,7 +52,7 @@ public class PersonalMyOrderDetailsActivity extends BaseActivity {
         topbarTitle.setText("订单详情");
         mRecyclerView = (RecyclerView)findViewById(R.id.rcv_order_details_personal_info);
         mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(), 1, GridLayoutManager.VERTICAL, false));
-        mRecyclerView.setAdapter(mAdapter = new PersonalMyOrderDetailsAdapter(PersonalMyOrderDetailsActivity.this, R.layout.activity_personal_info_order_details_item, mOrderDetailsBeanList));
+        mRecyclerView.setAdapter(mAdapter = new ShopAccountActivityAdapter(PersonalMyOrderDetailsActivity.this, R.layout.activity_personal_info_order_details_item, mOrderDetailsBeanList));
     }
 
     @Override

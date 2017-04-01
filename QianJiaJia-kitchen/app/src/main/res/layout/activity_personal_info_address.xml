@@ -5,12 +5,42 @@
     <include
         android:id="@+id/address_include"
         layout="@layout/activity_top_bar" />
+
+    <View
+        android:layout_below="@id/address_include"
+        android:id="@+id/view_address1"
+        style="@style/view_middle"/>
+
+    <ScrollView
+        android:layout_below="@id/view_address1"
+        android:layout_above="@+id/rl_add_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/address_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:dividerHeight="2dp"
+                android:cacheColorHint="#00000000"/>
+        </LinearLayout>
+    </ScrollView>
+
+
     <RelativeLayout
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
         android:id="@+id/rl_add_address"
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="80dp"
+        android:background="#ffffff">
+        <View
+            style="@style/view_small"/>
         <Button
             android:id="@+id/bt_add_address_list"
             android:layout_width="320dp"
@@ -22,13 +52,7 @@
             android:textColor="#ffffff"
             android:layout_marginBottom="20dp"/>
     </RelativeLayout>
-    <ListView
-        android:id="@+id/address_listView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/address_include"
-        android:layout_above="@id/rl_add_address"
-        android:dividerHeight="2dp"
-        android:cacheColorHint="#00000000"/>
+
+
 
 </RelativeLayout>
