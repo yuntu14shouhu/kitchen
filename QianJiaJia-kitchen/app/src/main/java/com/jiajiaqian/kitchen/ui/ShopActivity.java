@@ -9,7 +9,7 @@ import com.jiajiaqian.kitchen.ui.base.BaseActivity;
  * Created by jasonxu on 2017/2/26.
  */
 
-public class ProductSearchActivity extends BaseActivity{
+public class ShopActivity extends BaseActivity{
 
     @Override
     public int getLayoutId() {

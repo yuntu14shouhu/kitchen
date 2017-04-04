@@ -1,6 +1,8 @@
 package com.jiajiaqian.kitchen.ui.sort;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -66,8 +68,19 @@ public class SortGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    private void initEvents(DataListVH dataListVH, int position) {
-
+    private void initEvents(DataListVH dataListVH, final int position) {
+        dataListVH.mSortLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(mContext,SubSortListActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("sort_list_data",mDataList.get(position).getSortList());
+                intent.putExtra("sort_list",bundle);
+                intent.putExtra("sort_name",mDataList.get(position).getSortName());
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     private static class DataListVH extends RecyclerView.ViewHolder {
@@ -78,7 +91,7 @@ public class SortGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         DataListVH(View itemView) {
             super(itemView);
-            mSortLayout = (RelativeLayout) itemView.findViewById(R.id.rcy_sort);
+            mSortLayout = (RelativeLayout) itemView.findViewById(R.id.rl_sort);
             mSortImage = (ImageView) itemView.findViewById(R.id.sort_image);
             mSortName = (TextView) itemView.findViewById(R.id.sort_name);
 

@@ -1,19 +1,18 @@
-package com.jiajiaqian.kitchen.ui;
+package com.jiajiaqian.kitchen.ui.home;
 
 import android.os.Bundle;
 
-import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 
 /**
- * Created by jasonxu on 2017/2/26.
+ * Created by jasonxu on 2017/3/21.
  */
 
-public class ProductSearchActivity extends BaseActivity{
+public class SelectAddressActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_home_select_address;
+        return 0;
     }
 
     @Override

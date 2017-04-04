@@ -12,6 +12,8 @@ import org.xutils.x;
 
 public class KitchenApplication extends Application {
 
+    public static int mShopNum; //记录整个应用的商品添加的数量，全局变量
+
     @Override
     public void onCreate() {
         super.onCreate();

@@ -10,6 +10,15 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
+        <ImageView
+            android:id="@+id/pro_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/ic_up"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
         <TextView
             android:id="@+id/is_you_hui"
             android:layout_width="wrap_content"
@@ -19,15 +28,6 @@
             android:text="限时\n特惠"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
-
-        <ImageView
-            android:id="@+id/pro_image"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/ic_up"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 
@@ -75,7 +75,6 @@
             android:layout_alignParentStart="true" />
     </RelativeLayout>
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:gravity="center"
@@ -101,7 +100,7 @@
             android:layout_alignParentRight="true"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/ic_add_checked"/>
+            android:background="@drawable/ic_shopping_plus"/>
 
     </RelativeLayout>
 

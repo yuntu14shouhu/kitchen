@@ -52,6 +52,16 @@
         <activity android:name=".ui.ProductDetailsActivity">
 
         </activity>
+        <activity android:name=".ui.ProductSearchActivity">
+
+        </activity>
+        <activity android:name=".ui.ShopActivity">
+
+        </activity>
+        <activity android:name=".ui.sort.SubSortListActivity">
+        </activity>
+        <activity android:name=".ui.home.SelectAddressActivity">
+        </activity>
         <activity android:name=".ui.shop.ShopProductDetailsActivity"></activity>
         <activity android:name=".ui.personal.PersonalAddressAddActivity"></activity>
         <activity android:name=".ui.personal.PersonalMyOrderDetailsActivity"></activity>

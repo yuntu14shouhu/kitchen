@@ -14,6 +14,7 @@
     <color name="gray_light">#E0E0E0</color>
     <color name="con_font_gray">#B1BDC4</color>
     <color name="con_font_gray2">#E5E5E5</color>
+    <color name="con_font_gray3">#d6d3d3</color>
     <color name="con_yellow">#FFB22F</color>
     <color name="con_green">#0e932e</color>
 
@@ -25,5 +26,6 @@
     <color name="colorPrimaryDarkPersonal">#0e932e</color>
     <color name="con_dark">#292d2a</color>
     <color name="con_white">#ffffff</color>
+    <color name="con_red">#FD4A2E</color>
 
 </resources>
