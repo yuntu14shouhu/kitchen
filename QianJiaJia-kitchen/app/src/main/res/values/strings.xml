@@ -67,4 +67,49 @@
     <string name="relation_ii">·若配送期间无法联系到您,订单将为您保留到当日21:00，21:00前仍无法配送,订单自动判定为拒收,系统将会为您执行退款操作。</string>
     <string name="relation_jj">·由于生鲜类商品具有新鲜度、易腐性等特点限制,送达后请您当场验货签收,如遇到问题可当场拒收,并联系Kitchen客服处理;如已签收后您发现商品存在问题,请您于签收后48小时内联系Kitchen客服处理。</string>
 
+    <!-- Vegetable -->
+    <string name="ye_cai_lei">叶菜类</string>
+    <string name="qie_guo_lei">茄果类</string>
+    <string name="jing_shi_shu">净时蔬</string>
+    <string name="dou_zhi_pin">豆制品</string>
+    <string name="shi_ling_shu_cai">时令蔬菜</string>
+    <string name="gen_jing_lei">根茎类</string>
+    <string name="jun_gu_lei">菌菇类</string>
+    <string name="jing_pin_shu_cai">精品蔬菜</string>
+    <!-- Fruit -->
+    <string name="pu_tao_ti_zi">葡萄提子</string>
+    <string name="qi_yi_guo">奇异果</string>
+    <string name="gan_ju_cheng_you">柑橘橙柚</string>
+    <string name="niu_you_guo">牛油果</string>
+    <string name="shi_ling_shui_guo">时令水果</string>
+    <string name="re_dai_shui_guo">热带水果</string>
+    <string name="ye_zi">椰子</string>
+    <string name="xiang_jiao">香蕉</string>
+    <string name="ping_guo_li">苹果/梨</string>
+    <string name="ye_qing">椰青</string>
+    <!-- Meat -->
+    <string name="rou_zhi_pin">肉制品</string>
+    <string name="yang_rou">羊肉</string>
+    <string name="niu_pai">牛排</string>
+    <string name="niu_rou">牛肉</string>
+    <string name="xin_xian_rou">新鲜肉</string>
+    <string name="zhu_rou">猪肉</string>
+    <!-- Egg -->
+    <string name="ji_ya_bu_jian">鸡鸭部件</string>
+    <string name="ji_ya_zheng_qin">鸡鸭整禽</string>
+    <string name="xian_dan">鲜蛋</string>
+    <string name="jia_gong_dan">加工蛋</string>
+    <!-- Fish -->
+    <string name="dan_shui_yu">淡水鱼</string>
+    <string name="xia_xie_lei">虾蟹类</string>
+    <string name="hai_shui_yu">海水鱼</string>
+    <string name="bei_ke_lei">贝壳类</string>
+    <!-- Food -->
+    <string name="shi_yong_you">食用油</string>
+    <string name="tiao_wei_fen_lei">调味粉类</string>
+    <string name="tiao_wei_jiang_lei">调味酱类</string>
+    <string name="mi_mian_za_liang">米面杂粮</string>
+    <string name="nan_bei_gan_huo">南北干货</string>
+
+
 </resources>

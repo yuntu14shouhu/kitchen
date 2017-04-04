@@ -49,9 +49,11 @@ public class KitchenHttpManager implements KitchenHttpApi<OkJsonRequest.OKRespon
 
     }
 
+    //http://192.168.0.110:8080/product/classifydatas
     @Override
     public void getSortData(@NonNull String uid, @NonNull OkJsonRequest.OKResponseCallback callback) {
-
+        String requestUrl = ApiConstants.BASE_URL+ "/product/classifydatas";
+        get(requestUrl,callback);
     }
 
     private void get(String requestUrl, @NonNull OkJsonRequest.OKResponseCallback callback) {

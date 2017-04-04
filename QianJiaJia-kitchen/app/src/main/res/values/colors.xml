@@ -23,4 +23,7 @@
 
     <color name="colorPrimaryPersonal">#0e932e</color>
     <color name="colorPrimaryDarkPersonal">#0e932e</color>
+    <color name="con_dark">#292d2a</color>
+    <color name="con_white">#ffffff</color>
+
 </resources>
