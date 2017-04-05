@@ -125,7 +125,7 @@
                             android:padding="3dp"
                             android:text="优惠商品"
                             android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/con_dark"/>
 
                     </LinearLayout>
 
@@ -150,7 +150,7 @@
                             android:padding="3dp"
                             android:text="劲爆团购"
                             android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/con_dark"/>
 
                     </LinearLayout>
 
@@ -175,7 +175,7 @@
                             android:padding="3dp"
                             android:text="人气推荐"
                             android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/con_dark"/>
 
                     </LinearLayout>
 
@@ -217,7 +217,7 @@
                             android:gravity="center"
                             android:text="优惠商品"
                             android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/con_dark"/>
 
                         <TextView
                             android:id="@+id/tv_you_jiantou"
@@ -232,7 +232,7 @@
                             android:gravity="center"
                             android:text=">"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/con_dark"/>
 
                         <TextView
                             android:id="@+id/tv_youhui_more"
@@ -247,7 +247,7 @@
                             android:gravity="center"
                             android:text="更多"
                             android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/con_dark"/>
 
 
                     </RelativeLayout>
@@ -298,7 +298,7 @@
                             android:gravity="center"
                             android:text="劲爆团购"
                             android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/con_dark"/>
 
                         <TextView
                             android:id="@+id/tv_tuan_jiantou"
@@ -313,7 +313,7 @@
                             android:gravity="center"
                             android:text=">"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/con_dark" />
 
                         <TextView
                             android:id="@+id/tv_tuangou_more"
@@ -328,7 +328,7 @@
                             android:gravity="center"
                             android:text="团购入口"
                             android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/con_dark"/>
 
 
                     </RelativeLayout>
@@ -378,7 +378,7 @@
                             android:gravity="center"
                             android:text="人气推荐"
                             android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/con_dark"/>
 
                         <TextView
                             android:id="@+id/tv_tui_jiantou"
@@ -393,7 +393,7 @@
                             android:gravity="center"
                             android:text=">"
                             android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/con_dark"/>
 
                         <TextView
                             android:id="@+id/tv_tuijian_more"
@@ -408,7 +408,7 @@
                             android:gravity="center"
                             android:text="更多"
                             android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/con_dark"/>
 
 
                     </RelativeLayout>

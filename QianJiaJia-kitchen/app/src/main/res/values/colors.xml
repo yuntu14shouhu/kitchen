@@ -27,6 +27,7 @@
     <color name="con_dark">#292d2a</color>
     <color name="con_white">#ffffff</color>
     <color name="con_grey_white">#F7F7F7</color>
+    <color name="con_grey_white2">#F1F1F1</color>
     <color name="con_red">#FD4A2E</color>
 
 </resources>

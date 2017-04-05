@@ -239,7 +239,9 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 startActivity(intent);
                 break;
             case R.id.ll_jin_bao:
-
+                intent = new Intent();
+                intent.setClass(getActivity(),GroupBuyListActivity.class);
+                startActivity(intent);
                 break;
             case R.id.ll_ren_qi:
                 intent = new Intent();
@@ -254,7 +256,9 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 startActivity(intent);
                 break;
             case R.id.tv_tuangou_more:
-
+                intent = new Intent();
+                intent.setClass(getActivity(),GroupBuyListActivity.class);
+                startActivity(intent);
                 break;
             case R.id.tv_tuijian_more:
                 intent = new Intent();

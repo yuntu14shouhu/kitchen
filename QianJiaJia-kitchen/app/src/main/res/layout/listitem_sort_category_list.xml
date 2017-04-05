@@ -15,7 +15,6 @@
             android:id="@+id/sort_image"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/ic_up"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />

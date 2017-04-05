@@ -50,7 +50,8 @@ public class KitchenHttpManager implements KitchenHttpApi<OkJsonRequest.OKRespon
 
     @Override
     public void getJinBaoLists(@NonNull OkJsonRequest.OKResponseCallback callback) {
-
+        String requestUrl = ApiConstants.BASE_URL + "/product/productIsGroup?isGroupBuy=1";
+        get(requestUrl,callback);
     }
 
     //http://192.168.0.110:8080/product/classifydatas

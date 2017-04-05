@@ -5,7 +5,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@color/con_blue"
+        android:background="@color/colorPrimary"
         android:gravity="center_vertical"
         android:layout_height="55dp">
 

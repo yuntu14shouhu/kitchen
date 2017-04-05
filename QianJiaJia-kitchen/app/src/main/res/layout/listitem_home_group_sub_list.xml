@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_group_buy"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@color/con_white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/pro_image"
+            android:layout_width="match_parent"
+            android:layout_height="180dp" />
+
+        <TextView
+            android:id="@+id/is_baoYou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/product_youhui_shape"
+            android:padding="12dp"
+            android:text="包邮"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_pro_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="崇明散养老母鸡超值劲爆团"
+        android:textColor="@color/con_dark"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_product_describe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:lines="1"
+        android:ellipsize="end"
+        android:text="[包邮]崇明散养老母鸡超值劲爆团"
+        android:textSize="14sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp">
+
+        <Button
+            android:id="@+id/imgBtn_go_group"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_goup_buy"
+            android:text="去开团"
+            android:textColor="@color/con_white"
+            android:textSize="15sp" />
+
+        <RelativeLayout
+            android:id="@+id/rl_price"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/tv_xie_line"
+            android:layout_toRightOf="@+id/tv_xie_line"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:text="----------"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tv_line"
+                android:layout_alignBottom="@+id/tv_line"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:lines="1"
+                android:text="¥56.67"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_discount_price"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
+            android:text="¥16.80"
+            android:textColor="@color/con_yellow"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_xie_line"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/tv_discount_price"
+            android:layout_toRightOf="@+id/tv_discount_price"
+            android:gravity="center_vertical"
+            android:text="/"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_group_num"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@id/rl_price"
+            android:layout_toRightOf="@id/rl_price"
+            android:gravity="center_vertical"
+            android:text=" 10人团"
+            android:textColor="@color/con_yellow"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+</LinearLayout>
