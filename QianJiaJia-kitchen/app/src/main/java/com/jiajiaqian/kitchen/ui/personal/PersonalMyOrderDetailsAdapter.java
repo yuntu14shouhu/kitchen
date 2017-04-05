@@ -40,12 +40,12 @@ public class PersonalMyOrderDetailsAdapter extends RecyclerView.Adapter<Personal
         this.results = results;
         this.srcId = srcId;
         mInflater = LayoutInflater.from(context);
-        Log.e("results", "PersonalMyOrderDetailsAdapter: "+results.toString());
+        Log.e("results", "PersonalMyOrderDetailsAdapter: " + results.toString());
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(srcId,parent,false);
+        View view = mInflater.inflate(srcId, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(view);
         return myViewHolder;
     }
@@ -60,31 +60,30 @@ public class PersonalMyOrderDetailsAdapter extends RecyclerView.Adapter<Personal
             }
         });
         holder.productNameDetails.setText(results.get(position).getProductNameDetails());
-        holder.productPriceDetails.setText(results.get(position).getProductPriceDetails()+"");
-        holder.productNumberDetails.setText(results.get(position).getProductNumberDetails()+"");
+        holder.productPriceDetails.setText(results.get(position).getProductPriceDetails() + "");
+        holder.productNumberDetails.setText(results.get(position).getProductNumberDetails() + "");
 //        holder.productDefaultsDetails.setText(results.get(position).getProductDefaultDetails());
     }
 
     @Override
     public int getItemCount() {
-        return results == null ? 0:results.size();
+        return results == null ? 0 : results.size();
     }
 
 
-    class MyViewHolder extends RecyclerView.ViewHolder{
+    class MyViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView productImgDetails;
         private TextView productNameDetails;
         private TextView productPriceDetails;
         private TextView productNumberDetails;
-//        private TextView productDefaultsDetails;
+
         public MyViewHolder(View itemView) {
             super(itemView);
             productImgDetails = (ImageView) itemView.findViewById(R.id.iv_order_details_info);
             productNameDetails = (TextView) itemView.findViewById(R.id.tv_order_details_product_name);
             productPriceDetails = (TextView) itemView.findViewById(R.id.tv_order_details_product_price);
             productNumberDetails = (TextView) itemView.findViewById(R.id.tv_order_details_product_number);
-//            productDefaultsDetails = (TextView) itemView.findViewById(R.id.tv_order_defaults_details_product);
         }
     }
 }

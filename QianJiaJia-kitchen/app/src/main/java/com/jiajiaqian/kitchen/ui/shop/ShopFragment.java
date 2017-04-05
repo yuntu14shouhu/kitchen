@@ -23,7 +23,7 @@ import java.util.List;
  * 购物车 fragment
  */
 
-public class ShopFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener{
+public class ShopFragment extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private TextView topBarTitle;
     private TextView aboutKitchen;
@@ -35,7 +35,7 @@ public class ShopFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     private ShopFragmentRecycleAdapter adapter;
 
 
-    public static ShopFragment newInstance(){
+    public static ShopFragment newInstance() {
         return new ShopFragment();
     }
 
@@ -45,10 +45,6 @@ public class ShopFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         return R.layout.fragment_tab_shop_not_null;//购物车不为空时，加载
     }
 
-    @Override
-    protected void initData() {
-
-    }
 
     @Override
     protected void initView() {
@@ -59,19 +55,21 @@ public class ShopFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         mSwipeRefreshLayout = (SwipeRefreshLayout) mRootView.findViewById(R.id.lay_refresh_shopping_not_null);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimaryPersonal, R.color.colorPrimaryDarkPersonal);
         mSwipeRefreshLayout.setOnRefreshListener(this);
-        mRecyclerView = (RecyclerView)mRootView.findViewById(R.id.rcv_shopping_not_null);
+        mRecyclerView = (RecyclerView) mRootView.findViewById(R.id.rcv_shopping_not_null);
 
         mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(), 1, GridLayoutManager.VERTICAL, false));
+    }
 
-
+    @Override
+    protected void initData() {
         mShopBeanList = new ArrayList<>();
-        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product,"麒麟瓜",15,20.0));
-        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product,"麒麟瓜",15,20.0));
-        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product,"麒麟瓜",15,20.0));
-        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product,"麒麟瓜",15,20.0));
-        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product,"麒麟瓜",15,20.0));
-        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product,"麒麟瓜",15,20.0));
-        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product,"麒麟瓜",15,20.0));
+        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product, "麒麟瓜", 15, 20.0));
+        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product, "麒麟瓜", 15, 20.0));
+        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product, "麒麟瓜", 15, 20.0));
+        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product, "麒麟瓜", 15, 20.0));
+        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product, "麒麟瓜", 15, 20.0));
+        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product, "麒麟瓜", 15, 20.0));
+        mShopBeanList.add(new ShopBean(R.drawable.ic_shoppingcart_product, "麒麟瓜", 15, 20.0));
         mRecyclerView.setAdapter(adapter = new ShopFragmentRecycleAdapter(getActivity(), R.layout.fragment_tab_shop_not_null_item, mShopBeanList));
 
     }
@@ -82,7 +80,7 @@ public class ShopFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         shoppingNotNullPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),ShopAccountsActivity.class);
+                Intent intent = new Intent(getActivity(), ShopAccountsActivity.class);
                 startActivity(intent);
             }
         });
@@ -104,8 +102,8 @@ public class ShopFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             public void run() {
                 mSwipeRefreshLayout.setRefreshing(false);
                 List<ShopBean> results = adapter.getResults();
-                results.add(0, new ShopBean(R.drawable.ic_shoppingcart_product,"aa麒麟瓜",15,20.0));
-                results.add(0, new ShopBean(R.drawable.ic_shoppingcart_product,"aaaa麒麟瓜",15,20.0));
+                results.add(0, new ShopBean(R.drawable.ic_shoppingcart_product, "aa麒麟瓜", 15, 20.0));
+                results.add(0, new ShopBean(R.drawable.ic_shoppingcart_product, "aaaa麒麟瓜", 15, 20.0));
                 adapter.notifyDataSetChanged();
             }
         }, 1000);

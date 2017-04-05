@@ -25,7 +25,7 @@ import java.util.List;
  * @Date 2017-04-01 11:08
  * @email qianjiajia_2013@126.com
  */
-public class ShoppingCartPayAddressChoose extends BaseActivity{
+public class ShoppingCartPayAddressChoose extends BaseActivity {
 
     private TextView topBarBack;
     private TextView topBarTitle;
@@ -45,15 +45,16 @@ public class ShoppingCartPayAddressChoose extends BaseActivity{
     @Override
     public void initData(Bundle savedInstanceState) {
         mAddressBean = new ArrayList<>();
-        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
-        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
-        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
-        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
-        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
-        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
-        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
-        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
-        mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
+        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+        mRecyclerView.setAdapter(mAdapter = new ShoppingCartPayAddressChooseAdapter(ShoppingCartPayAddressChoose.this, R.layout.activity_shoppingcart_acctounts_address_choose_item, mAddressBean));
     }
 
     @Override
@@ -64,12 +65,12 @@ public class ShoppingCartPayAddressChoose extends BaseActivity{
         tvEditAddress = (TextView) findViewById(R.id.tv_choose_edit_address);
         btAddAddress = (Button) findViewById(R.id.bt_choose_add_address_list);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_choose);
+
         mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(), 1, GridLayoutManager.VERTICAL, false));
-        mRecyclerView.setAdapter(mAdapter = new ShoppingCartPayAddressChooseAdapter(ShoppingCartPayAddressChoose.this, R.layout.activity_shoppingcart_acctounts_address_choose_item, mAddressBean));
     }
 
-    public void chooseEditClick(View view){
-        Intent intent = new Intent(ShoppingCartPayAddressChoose.this,PersonalAddressEditActivity.class);
+    public void chooseEditClick(View view) {
+        Intent intent = new Intent(ShoppingCartPayAddressChoose.this, PersonalAddressEditActivity.class);
         startActivity(intent);
     }
 

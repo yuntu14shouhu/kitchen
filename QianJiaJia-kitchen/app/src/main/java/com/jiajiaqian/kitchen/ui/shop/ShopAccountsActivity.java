@@ -60,6 +60,14 @@ public class ShopAccountsActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        mOrderDetailsBeanList = new ArrayList<>();
+        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶三叶草三叶草三叶草三叶草三叶草三叶草三叶草",12.03,3,"300g"));
+        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
+        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
+        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
+        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
+        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
+
         topBarBack = (TextView) findViewById(R.id.top_bar_back);
         topBarTitle = (TextView) findViewById(R.id.top_bar_title);
         topBarTitle.setText("填写订单");

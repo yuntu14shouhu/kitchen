@@ -37,12 +37,13 @@ public class PersonalMyOrderDetailsActivity extends BaseActivity {
     @Override
     public void initData(Bundle savedInstanceState) {
         mOrderDetailsBeanList = new ArrayList<>();
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶三叶草三叶草三叶草三叶草三叶草三叶草三叶草",12.03,3,"300g"));
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
+        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo, "三叶草三叶三叶草三叶草三叶草三叶草三叶草三叶草三叶草", 12.03, 3, "300g"));
+        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo, "三叶草三叶草", 12.03, 3, "300g"));
+        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo, "三叶草三叶草", 12.03, 3, "300g"));
+        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo, "三叶草三叶草", 12.03, 3, "300g"));
+        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo, "三叶草三叶草", 12.03, 3, "300g"));
+        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo, "三叶草三叶草", 12.03, 3, "300g"));
+        mRecyclerView.setAdapter(mAdapter = new ShopAccountActivityAdapter(PersonalMyOrderDetailsActivity.this, R.layout.activity_personal_info_order_details_item, mOrderDetailsBeanList));
     }
 
     @Override
@@ -50,9 +51,9 @@ public class PersonalMyOrderDetailsActivity extends BaseActivity {
         topBarBack = (TextView) findViewById(R.id.top_bar_back);
         topbarTitle = (TextView) findViewById(R.id.top_bar_title);
         topbarTitle.setText("订单详情");
-        mRecyclerView = (RecyclerView)findViewById(R.id.rcv_order_details_personal_info);
+        mRecyclerView = (RecyclerView) findViewById(R.id.rcv_order_details_personal_info);
+
         mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(), 1, GridLayoutManager.VERTICAL, false));
-        mRecyclerView.setAdapter(mAdapter = new ShopAccountActivityAdapter(PersonalMyOrderDetailsActivity.this, R.layout.activity_personal_info_order_details_item, mOrderDetailsBeanList));
     }
 
     @Override

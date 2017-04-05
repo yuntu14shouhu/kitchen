@@ -40,6 +40,17 @@ public class PersonalSettingActivity extends BaseActivity{
 
     @Override
     public void initView() {
+        topBarBack = (TextView) findViewById(R.id.top_bar_back);
+        topBarTitle = (TextView) findViewById(R.id.top_bar_title);
+        topBarTitle.setText("设置");
+        rlUpdate = (RelativeLayout) findViewById(R.id.rl_setting_update);
+        rlClean = (RelativeLayout) findViewById(R.id.rl_setting_clean);
+        rlReader = (RelativeLayout) findViewById(R.id.rl_setting_reader);
+
+    }
+
+    @Override
+    public void initEvent() {
         topBarBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,10 +78,5 @@ public class PersonalSettingActivity extends BaseActivity{
                 startActivity(intent);
             }
         });
-    }
-
-    @Override
-    public void initEvent() {
-
     }
 }

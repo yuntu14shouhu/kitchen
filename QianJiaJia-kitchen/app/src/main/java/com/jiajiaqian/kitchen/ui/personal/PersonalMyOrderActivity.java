@@ -49,6 +49,7 @@ public class PersonalMyOrderActivity extends BaseActivity implements SwipeRefres
         mOrderBeanList.add(new OrderBean("2017-05-22", R.drawable.ic_logo,22.0));
         mOrderBeanList.add(new OrderBean("2017-06-22", R.drawable.ic_logo,22.0));
         mOrderBeanList.add(new OrderBean("2017-07-22", R.drawable.ic_logo,22.0));
+        orderRecyclerView.setAdapter(adapter = new PersonalMyOrderRecyclerAdapter(PersonalMyOrderActivity.this, R.layout.activity_personal_info_order_edit, mOrderBeanList));
 
     }
 
@@ -66,11 +67,8 @@ public class PersonalMyOrderActivity extends BaseActivity implements SwipeRefres
         mRefreshLayout.setColorSchemeResources(R.color.colorPrimaryPersonal, R.color.colorPrimaryDarkPersonal);
         mRefreshLayout.setOnRefreshListener(this);
         orderRecyclerView = (RecyclerView) findViewById(R.id.order_lv);
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-//        orderRecyclerView.setLayoutManager(linearLayoutManager);
-        orderRecyclerView.setLayoutManager(new GridLayoutManager(orderRecyclerView.getContext(), 1, GridLayoutManager.VERTICAL, false));
 
-        orderRecyclerView.setAdapter(adapter = new PersonalMyOrderRecyclerAdapter(PersonalMyOrderActivity.this, R.layout.activity_personal_info_order_edit, mOrderBeanList));
+        orderRecyclerView.setLayoutManager(new GridLayoutManager(orderRecyclerView.getContext(), 1, GridLayoutManager.VERTICAL, false));
     }
 
 

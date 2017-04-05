@@ -55,9 +55,18 @@ public class ShopProductDetailsActivity extends BaseActivity {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        mProductDetailsBean = new ProductDetailsBean(
-                R.drawable.ic_shoppingcart_product,"麒麟瓜","时令水果--",14.0,3,
-                "麒麟瓜--","中国--","2017/3/29","1000g","这是一个傻丫头找的瓜！！！");
+
+        nameProductDetails.setText(mProductDetailsBean.getNameProductDetails());
+        mCountTv.setText(mProductDetailsBean.getNumberProductDetails()+"");
+        smallClassProductDetails.setText("时令水果--");
+        priceProductDetails.setText(14.0+"");
+
+        namePinProductDetails.setText("麒麟瓜--");
+        addreddProductDetails.setText("中国--");
+        putawayProductDetails.setText(getDate());
+        typeProductDetails.setText("1000g");
+        manufactureDateProductDetails.setText(getDate());
+        describedProductdetails.setText("haaaaaaaaaaaaahaaaaaaaaa");
     }
 
     @Override
@@ -78,25 +87,14 @@ public class ShopProductDetailsActivity extends BaseActivity {
         describedProductdetails = (TextView) findViewById(R.id.tv_miaoshu_context_product_details);
         shopShowProductDetails = (ImageView) findViewById(R.id.iv_shop_product_details);
 
-        nameProductDetails.setText(mProductDetailsBean.getNameProductDetails());
-        mCountTv.setText(mProductDetailsBean.getNumberProductDetails()+"");
+
 //        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/SIMYOU.TTF");
 //        nameProductDetails.setTypeface(typeface);
-        smallClassProductDetails.setText("时令水果--");
-        priceProductDetails.setText(14.0+"");
 
-        namePinProductDetails.setText("麒麟瓜--");
-        addreddProductDetails.setText("中国--");
-        putawayProductDetails.setText(getDate());
-        typeProductDetails.setText("1000g");
-        manufactureDateProductDetails.setText(getDate());
-        describedProductdetails.setText("haaaaaaaaaaaaahaaaaaaaaa");
     }
 
     @Override
     public void initEvent() {
-
-//        mProductDetailsBean = new ProductDetailsBean();
 
         topBarBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,10 +130,8 @@ public class ShopProductDetailsActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 /**
-                 * todo
                  *把商品（mProductDetailsBean）的id和数量传到后台保存下来
                  * 购物车的数量或物品的改变只要下拉刷新一下就好了
-                 * 睡觉吧
                  * 把商品（mProductDetailsBean）的id和数量传到购物车页面去，通过id看是否是添加新物品，
                  * 如果已存在，就将传过去的数量与原有的数量相加
                  */
