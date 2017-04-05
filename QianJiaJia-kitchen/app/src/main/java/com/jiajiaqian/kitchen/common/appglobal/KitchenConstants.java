@@ -7,6 +7,20 @@ package com.jiajiaqian.kitchen.common.appglobal;
 
 public class KitchenConstants {
 
+    public static final String PRODUCT_INTENT_KEY = "product_where";
+    public static final String PRODUCT_LIST_INTENT_KEY = "product_list_where";
+
+    public static class ProductIntentValue {
+        public static final String SLIDE = "slide";
+        public static final String JING_BAO = "jing_bao";
+        public static final String YOU_HUI = "you_hui";
+    }
+
+    public static class ProductListIntentValue {
+        public static final String DISCOUNT_LIST = "discount_list";
+        public static final String GROUP_LIST = "group_buy_list";
+        public static final String RECOMMEND_LIST = "recommend_list";
+    }
 
     public static class VegetableCategory {
 

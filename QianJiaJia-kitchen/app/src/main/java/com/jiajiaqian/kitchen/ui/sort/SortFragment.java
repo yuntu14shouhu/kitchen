@@ -1,5 +1,6 @@
 package com.jiajiaqian.kitchen.ui.sort;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -25,6 +26,7 @@ import com.jiajiaqian.kitchen.common.entity.microbean.VegetableBean;
 import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
 import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
 import com.jiajiaqian.kitchen.common.utils.GsonUtils;
+import com.jiajiaqian.kitchen.ui.ProductSearchActivity;
 import com.jiajiaqian.kitchen.ui.base.BaseFragment;
 
 import org.json.JSONObject;
@@ -101,6 +103,7 @@ public class SortFragment extends BaseFragment implements View.OnClickListener {
     @Override
     protected void initListener() {
         super.initListener();
+        mSearchLayout.setOnClickListener(this);
         mVegetableLayout.setOnClickListener(this);
         mFruitLayout.setOnClickListener(this);
         mMeatLayout.setOnClickListener(this);
@@ -123,7 +126,7 @@ public class SortFragment extends BaseFragment implements View.OnClickListener {
                 SortBean sortBean = GsonUtils.jsonToBean(jsonObject.toString(), SortBean.class);
                 //处理分类列表的数据
                 if (sortBean != null) {
-                    detailSortData(sortBean);
+                    handleSortData(sortBean);
                 }
             }
 
@@ -138,9 +141,16 @@ public class SortFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         //变换点击不同按钮的view状态
-        changeViewState(view);
+        if (view.getId() != R.id.top_search) {
+            changeViewState(view);
+        }
         //对各个点击按钮的不同监听操作
         switch (view.getId()) {
+            case R.id.top_search:
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), ProductSearchActivity.class);
+                startActivity(intent);
+                break;
             case R.id.ll_shuCai:
                 if (mVegetableSortList != null && mVegetableSortList.size() > 0) {
                     SortGridAdapter sortGridAdapter = new SortGridAdapter(mVegetableSortList, R.layout.listitem_sort_category_list, getActivity());
@@ -253,11 +263,11 @@ public class SortFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
-    private void detailSortData(SortBean sortBean) {
+    private void handleSortData(SortBean sortBean) {
         //处理蔬菜类的数据
         if (sortBean.getVegetable() != null) {
             mVegetableSortList = new ArrayList<>();
-            detailVegetableData(sortBean.getVegetable());
+            handleVegetableData(sortBean.getVegetable());
             //当第一次进入分类页面时，默认会自动点击蔬菜分类按钮，但如果此时网络数据没有获取完成或者没有处理完成，mVegetableSortList将为null，就不会
             //显示蔬菜分类的数据，所以此处是避免该情况发生
             if (mVegetableSortList != null && mVegetableSortList.size() > 0) {
@@ -268,35 +278,35 @@ public class SortFragment extends BaseFragment implements View.OnClickListener {
         //处理水果类的数据
         if (sortBean.getFruit() != null) {
             mFruitSortList = new ArrayList<>();
-            detailFruitData(sortBean.getFruit());
+            handleFruitData(sortBean.getFruit());
         }
 
         //处理肉类的数据
         if (sortBean.getMeat() != null) {
             mMeatSortList = new ArrayList<>();
-            detailMeatData(sortBean.getMeat());
+            handleMeatData(sortBean.getMeat());
         }
 
         //处理禽蛋类的数据
         if (sortBean.getEgg() != null) {
             mEggSortList = new ArrayList<>();
-            detailEggData(sortBean.getEgg());
+            handleEggData(sortBean.getEgg());
         }
 
         //处理水产类的数据
         if (sortBean.getFish() != null) {
             mFishSortList = new ArrayList<>();
-            detailFishData(sortBean.getFish());
+            handleFishData(sortBean.getFish());
         }
 
         //处理粮油副食类的数据
         if (sortBean.getFood() != null) {
             mFoodSortList = new ArrayList<>();
-            detailFoodData(sortBean.getFood());
+            handleFoodData(sortBean.getFood());
         }
     }
 
-    private void detailVegetableData(VegetableBean vegetableBean) {
+    private void handleVegetableData(VegetableBean vegetableBean) {
         SortListBean sortListBean;
         //判断是否有这个字段或者该字段有数据才显示该分类
         if (vegetableBean.getDouZhiPin() != null && vegetableBean.getDouZhiPin().size() > 0) {
@@ -358,7 +368,7 @@ public class SortFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
-    private void detailFruitData(FruitBean fruitBean) {
+    private void handleFruitData(FruitBean fruitBean) {
         SortListBean sortListBean;
         if (fruitBean.getGanJuChengYou() != null && fruitBean.getGanJuChengYou().size() > 0) {
             sortListBean = new SortListBean();
@@ -432,7 +442,7 @@ public class SortFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
-    private void detailMeatData(MeatBean meatBean) {
+    private void handleMeatData(MeatBean meatBean) {
         SortListBean sortListBean;
         if (meatBean.getNiuPai() != null && meatBean.getNiuPai().size() > 0) {
             sortListBean = new SortListBean();
@@ -478,7 +488,7 @@ public class SortFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
-    private void detailEggData(EggBean eggBean) {
+    private void handleEggData(EggBean eggBean) {
         SortListBean sortListBean;
         if (eggBean.getJiaGongDan() != null && eggBean.getJiaGongDan().size() > 0) {
             sortListBean = new SortListBean();
@@ -510,7 +520,7 @@ public class SortFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
-    private void detailFishData(FishBean fishBean) {
+    private void handleFishData(FishBean fishBean) {
         SortListBean sortListBean;
         if (fishBean.getBeiKeLei() != null && fishBean.getBeiKeLei().size() > 0) {
             sortListBean = new SortListBean();
@@ -542,7 +552,7 @@ public class SortFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
-    private void detailFoodData(FoodBean foodBean) {
+    private void handleFoodData(FoodBean foodBean) {
         SortListBean sortListBean;
         if (foodBean.getMiMianZaLiang() != null && foodBean.getMiMianZaLiang().size() > 0) {
             sortListBean = new SortListBean();

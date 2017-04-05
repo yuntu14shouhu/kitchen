@@ -20,6 +20,15 @@
             android:layout_height="match_parent"
             android:padding="8dp">
 
+            <ImageView
+                android:id="@+id/pro_image"
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_up"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
             <TextView
                 android:id="@+id/is_you_hui"
                 android:layout_width="wrap_content"
@@ -29,15 +38,6 @@
                 android:text="限时\n特惠"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
-
-            <ImageView
-                android:id="@+id/pro_image"
-                android:layout_width="110dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_up"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
 
         </RelativeLayout>
 

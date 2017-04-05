@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.jiajiaqian.kitchen.KitchenApplication;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
+import com.jiajiaqian.kitchen.ui.ProductDetailsActivity;
 import com.jiajiaqian.kitchen.ui.ProductSearchActivity;
 import com.jiajiaqian.kitchen.ui.ShopActivity;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
@@ -110,6 +111,9 @@ public class SubSortListActivity extends BaseActivity implements View.OnClickLis
 
     @Override
     public void sortListItemClick(ProductBean productBean) {
-
+        Intent intent = new Intent();
+        intent.putExtra("product",productBean);
+        intent.setClass(this, ProductDetailsActivity.class);
+        startActivity(intent);
     }
 }

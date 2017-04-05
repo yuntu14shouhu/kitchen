@@ -17,31 +17,35 @@ import java.util.Map;
 
 public class KitchenHttpManager implements KitchenHttpApi<OkJsonRequest.OKResponseCallback> {
 
-    private KitchenHttpManager(){}
+    private KitchenHttpManager() {
+    }
 
-    private static class KitchenHttpManagerHolder{
+    private static class KitchenHttpManagerHolder {
         private static final KitchenHttpManager INSTANCE = new KitchenHttpManager();
     }
 
-    public static KitchenHttpManager getInstance(){
+    public static KitchenHttpManager getInstance() {
         return KitchenHttpManagerHolder.INSTANCE;
     }
 
     //http://192.168.0.110:8080/product/aaaapage
     @Override
     public void getHomeData(@NonNull String uid, @NonNull OkJsonRequest.OKResponseCallback callback) {
-        String requestUrl = ApiConstants.BASE_URL+ "/product/aaaapage";
+        String requestUrl = ApiConstants.BASE_URL + "/product/aaaapage";
+        get(requestUrl, callback);
+    }
+
+    //http://192.168.0.110:8080/product/productIsDiscount?isDiscount=1
+    @Override
+    public void getYouHuiLists(@NonNull OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/product/productIsDiscount?isDiscount=1";
         get(requestUrl,callback);
     }
 
     @Override
-    public void getYouHuiLists(@NonNull OkJsonRequest.OKResponseCallback callback) {
-
-    }
-
-    @Override
     public void getRenQiLists(@NonNull OkJsonRequest.OKResponseCallback callback) {
-
+        String requestUrl = ApiConstants.BASE_URL + "/product/productByPutawayDate";
+        get(requestUrl,callback);
     }
 
     @Override
@@ -52,8 +56,8 @@ public class KitchenHttpManager implements KitchenHttpApi<OkJsonRequest.OKRespon
     //http://192.168.0.110:8080/product/classifydatas
     @Override
     public void getSortData(@NonNull String uid, @NonNull OkJsonRequest.OKResponseCallback callback) {
-        String requestUrl = ApiConstants.BASE_URL+ "/product/classifydatas";
-        get(requestUrl,callback);
+        String requestUrl = ApiConstants.BASE_URL + "/product/classifydatas";
+        get(requestUrl, callback);
     }
 
     private void get(String requestUrl, @NonNull OkJsonRequest.OKResponseCallback callback) {

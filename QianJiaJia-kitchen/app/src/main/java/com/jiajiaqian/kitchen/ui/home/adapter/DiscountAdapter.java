@@ -1,4 +1,4 @@
-package com.jiajiaqian.kitchen.ui.home;
+package com.jiajiaqian.kitchen.ui.home.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -20,13 +20,13 @@ import java.util.List;
  * Created by jasonxu on 2017/2/26.
  */
 
-public class HomeGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class DiscountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<ProductBean> mDataList;
     private int mResId;
     private Context mContext;
 
-    public HomeGridAdapter(List<ProductBean> mList, int resId, Context context) {
+    public DiscountAdapter(List<ProductBean> mList, int resId, Context context) {
         this.mDataList = mList;
         this.mResId = resId;
         this.mContext = context;
@@ -53,24 +53,28 @@ public class HomeGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private void initView(DataListVH dataListVH, int position) {
 
         if (mDataList != null && mDataList.size() > 0) {
-            if (mDataList.get(position).getIsDiscount() == 1 ){ //是打折优惠商品
+            if (mDataList.get(position).getIsDiscount() == 1) { //是打折优惠商品
                 dataListVH.mDashLine.setVisibility(View.VISIBLE);
                 dataListVH.mIsYouHui.setVisibility(View.VISIBLE);
-
-            }else {
+                dataListVH.mPrice.setVisibility(View.VISIBLE);
+                dataListVH.mPrice.setText("¥" + mDataList.get(position).getPrice() + "");
+                dataListVH.mDiscountPrice.setText("¥" + mDataList.get(position).getDiscountPrice() + "");
+            } else {
+                dataListVH.mPrice.setVisibility(View.GONE);
                 dataListVH.mDashLine.setVisibility(View.GONE);
                 dataListVH.mIsYouHui.setVisibility(View.GONE);
+                dataListVH.mDiscountPrice.setText("¥" + mDataList.get(position).getPrice() + "");
             }
-            if (!TextUtils.isEmpty(mDataList.get(position).getProductImageUrl())){
+            if (!TextUtils.isEmpty(mDataList.get(position).getProductImageUrl())) {
                 Glide.with(mContext)
                         .load(mDataList.get(position).getProductImageUrl())
                         .centerCrop()
                         .into(dataListVH.mProductImage);
             }
-            if (!TextUtils.isEmpty(mDataList.get(position).getProductName())){
+            if (!TextUtils.isEmpty(mDataList.get(position).getProductName())) {
                 dataListVH.mProductName.setText(mDataList.get(position).getProductName());
             }
-            dataListVH.mPrice.setText("¥"+ mDataList.get(position).getPrice()+"");
+
         }
     }
 

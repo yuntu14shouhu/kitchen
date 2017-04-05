@@ -4,9 +4,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
+import com.jiajiaqian.kitchen.KitchenApplication;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 import com.jiajiaqian.kitchen.ui.home.HomeFragment;
@@ -27,6 +30,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private RadioButton mShop;
     private RadioButton mPersonal;
     private RadioGroup mBottomGroup;
+    private TextView mShopNumMsgTv;
 
     //该类其他成员变量
     private String mCurrentFragmentTag; //记录当前tab所对应的fragment
@@ -38,7 +42,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     public void initData(Bundle savedInstanceState) {
-
+        if (KitchenApplication.mShopNum != 0){
+            mShopNumMsgTv.setVisibility(View.VISIBLE);
+            mShopNumMsgTv.setText(KitchenApplication.mShopNum + "");
+        }
     }
 
     @Override
@@ -49,6 +56,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         mShop = (RadioButton)this.findViewById(R.id.rdoBtn_tab_shop);
         mPersonal = (RadioButton)this.findViewById(R.id.rdoBtn_tab_me);
         mBottomGroup = (RadioGroup)this.findViewById(R.id.rdoGrp_tab_list);
+        mShopNumMsgTv = (TextView)this.findViewById(R.id.tv_msg_number);
 
     }
 
