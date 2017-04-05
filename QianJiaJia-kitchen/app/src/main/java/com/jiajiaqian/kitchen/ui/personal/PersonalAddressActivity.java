@@ -51,6 +51,7 @@ public class PersonalAddressActivity extends BaseActivity {
         mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
         mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
         mAddressBean.add( new AddressBean("qianjiajia","18482173219","四川省成都市一环路南四段16号",1));
+        mRecyclerView.setAdapter(mAdapter = new PersonalAddressAdapter(PersonalAddressActivity.this, R.layout.activity_personal_info_address_item, mAddressBean));
     }
 
     @Override
@@ -61,8 +62,8 @@ public class PersonalAddressActivity extends BaseActivity {
         editAddress = (TextView) findViewById(R.id.tv_edit_address);
         topBarTitle = (TextView) findViewById(R.id.top_bar_title);
         topBarTitle.setText("我的收货地址");
+
         mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(), 1, GridLayoutManager.VERTICAL, false));
-        mRecyclerView.setAdapter(mAdapter = new PersonalAddressAdapter(PersonalAddressActivity.this, R.layout.activity_personal_info_address_item, mAddressBean));
     }
 
     public void editClick(View view){
