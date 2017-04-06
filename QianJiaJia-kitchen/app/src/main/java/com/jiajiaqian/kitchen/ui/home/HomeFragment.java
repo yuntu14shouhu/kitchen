@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ import com.jiajiaqian.kitchen.common.uielements.SwipeRefreshLayout;
 import com.jiajiaqian.kitchen.common.utils.GlideImageLoader;
 import com.jiajiaqian.kitchen.common.utils.GsonUtils;
 import com.jiajiaqian.kitchen.ui.ProductDetailsActivity;
+import com.jiajiaqian.kitchen.ui.ProductSearchActivity;
 import com.jiajiaqian.kitchen.ui.base.BaseFragment;
 import com.jiajiaqian.kitchen.ui.home.adapter.DiscountAdapter;
 import com.jiajiaqian.kitchen.ui.home.adapter.GroupBuyAdapter;
@@ -50,6 +52,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private LinearLayout mYouHuiLayout, mTuanGouLayout, mTuiJianLayout;
     private TextView mDefaultAddressView, mYouHuiMoreTv, mTuanGouMoreTv, mTuiJianMoreTv;
+    private ImageButton mSearchBtn;
     private List<SlideBean> mSlideDataList; //slide list
 
     public static HomeFragment newInstance() {
@@ -75,6 +78,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         mYouHuiMoreTv = (TextView) mRootView.findViewById(R.id.tv_youhui_more);
         mTuanGouMoreTv = (TextView) mRootView.findViewById(R.id.tv_tuangou_more);
         mTuiJianMoreTv = (TextView) mRootView.findViewById(R.id.tv_tuijian_more);
+        mSearchBtn = (ImageButton) mRootView.findViewById(R.id.imgBtn_search);
 
         //set views attrs
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3) {
@@ -136,6 +140,8 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         mYouHuiMoreTv.setOnClickListener(this);
         mTuanGouMoreTv.setOnClickListener(this);
         mTuiJianMoreTv.setOnClickListener(this);
+        mDefaultAddressView.setOnClickListener(this);
+        mSearchBtn.setOnClickListener(this);
 
         mBanner.setOnBannerItemClickListener(new BannerLayout.OnBannerItemClickListener() {
             @Override
@@ -234,40 +240,58 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         switch (v.getId()) {
             case R.id.ll_you_hui:
                 intent = new Intent();
-                intent.setClass(getActivity(),DiscountListActivity.class);
-                intent.putExtra(KitchenConstants.PRODUCT_LIST_INTENT_KEY,KitchenConstants.ProductListIntentValue.DISCOUNT_LIST);
+                intent.setClass(getActivity(), DiscountListActivity.class);
+                intent.putExtra(KitchenConstants.PRODUCT_LIST_INTENT_KEY, KitchenConstants.ProductListIntentValue.DISCOUNT_LIST);
                 startActivity(intent);
                 break;
             case R.id.ll_jin_bao:
                 intent = new Intent();
-                intent.setClass(getActivity(),GroupBuyListActivity.class);
+                intent.setClass(getActivity(), GroupBuyListActivity.class);
                 startActivity(intent);
                 break;
             case R.id.ll_ren_qi:
                 intent = new Intent();
-                intent.setClass(getActivity(),RecommendListActivity.class);
-                intent.putExtra(KitchenConstants.PRODUCT_LIST_INTENT_KEY,KitchenConstants.ProductListIntentValue.RECOMMEND_LIST);
+                intent.setClass(getActivity(), RecommendListActivity.class);
+                intent.putExtra(KitchenConstants.PRODUCT_LIST_INTENT_KEY, KitchenConstants.ProductListIntentValue.RECOMMEND_LIST);
                 startActivity(intent);
                 break;
             case R.id.tv_youhui_more:
                 intent = new Intent();
-                intent.setClass(getActivity(),DiscountListActivity.class);
-                intent.putExtra(KitchenConstants.PRODUCT_LIST_INTENT_KEY,KitchenConstants.ProductListIntentValue.DISCOUNT_LIST);
+                intent.setClass(getActivity(), DiscountListActivity.class);
+                intent.putExtra(KitchenConstants.PRODUCT_LIST_INTENT_KEY, KitchenConstants.ProductListIntentValue.DISCOUNT_LIST);
                 startActivity(intent);
                 break;
             case R.id.tv_tuangou_more:
                 intent = new Intent();
-                intent.setClass(getActivity(),GroupBuyListActivity.class);
+                intent.setClass(getActivity(), GroupBuyListActivity.class);
                 startActivity(intent);
                 break;
             case R.id.tv_tuijian_more:
                 intent = new Intent();
-                intent.setClass(getActivity(),RecommendListActivity.class);
-                intent.putExtra(KitchenConstants.PRODUCT_LIST_INTENT_KEY,KitchenConstants.ProductListIntentValue.RECOMMEND_LIST);
+                intent.setClass(getActivity(), RecommendListActivity.class);
+                intent.putExtra(KitchenConstants.PRODUCT_LIST_INTENT_KEY, KitchenConstants.ProductListIntentValue.RECOMMEND_LIST);
                 startActivity(intent);
+                break;
+            case R.id.imgBtn_search:
+                intent = new Intent();
+                intent.setClass(getActivity(), ProductSearchActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.tv_address:
+                intent = new Intent();
+                intent.setClass(getActivity(), SelectAddressActivity.class);
+                startActivityForResult(intent, 1);
                 break;
             default:
                 break;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && data != null && data.getStringExtra("new_address") != null) {
+            mDefaultAddressView.setText(data.getStringExtra("new_address"));
         }
     }
 

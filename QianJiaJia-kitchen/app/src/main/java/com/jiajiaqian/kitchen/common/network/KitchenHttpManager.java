@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.jiajiaqian.kitchen.common.appglobal.ApiConstants;
+import com.jiajiaqian.kitchen.common.entity.AddressBean;
 
 import org.json.JSONObject;
 
@@ -39,19 +40,19 @@ public class KitchenHttpManager implements KitchenHttpApi<OkJsonRequest.OKRespon
     @Override
     public void getYouHuiLists(@NonNull OkJsonRequest.OKResponseCallback callback) {
         String requestUrl = ApiConstants.BASE_URL + "/product/productIsDiscount?isDiscount=1";
-        get(requestUrl,callback);
+        get(requestUrl, callback);
     }
 
     @Override
     public void getRenQiLists(@NonNull OkJsonRequest.OKResponseCallback callback) {
         String requestUrl = ApiConstants.BASE_URL + "/product/productByPutawayDate";
-        get(requestUrl,callback);
+        get(requestUrl, callback);
     }
 
     @Override
     public void getJinBaoLists(@NonNull OkJsonRequest.OKResponseCallback callback) {
         String requestUrl = ApiConstants.BASE_URL + "/product/productIsGroup?isGroupBuy=1";
-        get(requestUrl,callback);
+        get(requestUrl, callback);
     }
 
     //http://192.168.0.110:8080/product/classifydatas
@@ -59,6 +60,28 @@ public class KitchenHttpManager implements KitchenHttpApi<OkJsonRequest.OKRespon
     public void getSortData(@NonNull String uid, @NonNull OkJsonRequest.OKResponseCallback callback) {
         String requestUrl = ApiConstants.BASE_URL + "/product/classifydatas";
         get(requestUrl, callback);
+    }
+
+    @Override
+    public void getAddressLists(@NonNull String uid, @NonNull OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/address/quertAll";
+        get(requestUrl, callback);
+    }
+
+    @Override
+    public void deleteAddress(@NonNull String uid, @NonNull String addressId, @NonNull OkJsonRequest.OKResponseCallback callback) {
+
+    }
+
+    @Override
+    public void updateAddress(@NonNull String uid, @NonNull String addressId, @NonNull OkJsonRequest.OKResponseCallback callback) {
+
+    }
+
+    @Override
+    public void addAddress(@NonNull String uid, @NonNull JSONObject jsonRequest, @NonNull OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/address/save";
+        post(requestUrl,jsonRequest,callback);
     }
 
     private void get(String requestUrl, @NonNull OkJsonRequest.OKResponseCallback callback) {

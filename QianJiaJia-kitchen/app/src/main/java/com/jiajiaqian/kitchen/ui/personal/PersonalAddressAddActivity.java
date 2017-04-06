@@ -1,16 +1,29 @@
 package com.jiajiaqian.kitchen.ui.personal;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.appglobal.ACache;
+import com.jiajiaqian.kitchen.common.entity.AddressBean;
+import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
+import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
+
+import org.json.JSONObject;
 
 /**
  * @author qianjiajia
@@ -25,8 +38,11 @@ public class PersonalAddressAddActivity extends BaseActivity implements View.OnC
     private TextView topBarTitle;
     private Spinner addressCitySp;
     private Button addressSave;
+    private EditText mUserName, mUserPhone, mAddress, mRom;
+    private RadioGroup mAddressTypeLayout;
 
     private String addrSpStr = "成都市";
+    private String mType;
     private ACache mACache;
 
     @Override
@@ -46,6 +62,11 @@ public class PersonalAddressAddActivity extends BaseActivity implements View.OnC
         topBarTitle.setText("新增收货地址");
         addressCitySp = (Spinner) findViewById(R.id.sp_personal_info_address_add);
         addressSave = (Button) findViewById(R.id.btn_save_address_add);
+        mUserName = (EditText) findViewById(R.id.et_personal_info_address_name);
+        mUserPhone = (EditText) findViewById(R.id.et_personal_info_address_phone_add);
+        mAddress = (EditText) findViewById(R.id.et_personal_info_address_address_add);
+        mRom = (EditText) findViewById(R.id.et_personal_info_address_num_add);
+        mAddressTypeLayout = (RadioGroup) findViewById(R.id.rgp_type);
         mACache = ACache.get(this);
 
         initSpinner();
@@ -60,8 +81,7 @@ public class PersonalAddressAddActivity extends BaseActivity implements View.OnC
     }
 
     private void initSpinnerText() {
-        if(mACache.getAsString("addr") != null)
-        {
+        if (mACache.getAsString("addr") != null) {
             addrSpStr = mACache.getAsString("addr");
         }
     }
@@ -71,6 +91,13 @@ public class PersonalAddressAddActivity extends BaseActivity implements View.OnC
         topBarBack.setOnClickListener(this);
         addressSave.setOnClickListener(this);
         setSpinnerListeners();
+        mAddressTypeLayout.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton radioButton = (RadioButton) findViewById(group.getCheckedRadioButtonId());
+                mType = radioButton.getText().toString();
+            }
+        });
     }
 
     private void setSpinnerListeners() {
@@ -90,18 +117,95 @@ public class PersonalAddressAddActivity extends BaseActivity implements View.OnC
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.top_bar_back:
                 finish();
                 break;
             case R.id.btn_save_address_add:
-                addressSave();
+                if (saveAddress() != null){
+                    postAddress(saveAddress());
+                    //从home页面来的
+                    if (getIntent().getStringExtra("address_add_where") != null &&
+                            getIntent().getStringExtra("address_add_where").equals("home_address")) {
+                        Intent intent = new Intent();
+                        intent.putExtra("newAddress", "addHas");
+                        setResult(2, intent);
+                        finish();
+                    }
+                }
                 break;
-                default:
-                    break;
+            default:
+                break;
         }
     }
 
-    private void addressSave() {
+    private JSONObject saveAddress() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            if (!TextUtils.isEmpty(mUserName.getText() + "")) {
+                jsonObject.put("consigneeName", mUserName.getText());
+            } else {
+                Toast.makeText(this, "请输入收货名", Toast.LENGTH_SHORT).show();
+                return null;
+            }
+            if (!TextUtils.isEmpty(mUserPhone.getText() + "")) {
+                jsonObject.put("consigneePhone", mUserPhone.getText());
+            } else {
+                Toast.makeText(this, "请输入收货电话", Toast.LENGTH_SHORT).show();
+                return null;
+            }
+            if (!TextUtils.isEmpty(mAddress.getText() + "")) {
+                jsonObject.put("consigneeAddress", addrSpStr + mAddress.getText() + mRom.getText());
+            } else {
+                Toast.makeText(this, "请输入收货地址", Toast.LENGTH_SHORT).show();
+                return null;
+            }
+            if (!TextUtils.isEmpty(mUserName.getText() + "")) {
+                jsonObject.put("userId", "");
+            }
+
+            if (mType != null) {
+                int typePosition = 0;
+                switch (mType) {
+                    case "公司":
+                        typePosition = 1;
+                        break;
+                    case "住宅":
+                        typePosition = 2;
+                        break;
+                    case "学校":
+                        typePosition = 3;
+                        break;
+                    case "其他":
+                        typePosition = 4;
+                        break;
+                }
+                jsonObject.put("addressType", typePosition);
+            } else {
+                Toast.makeText(this, "请选择正确的地址类型", Toast.LENGTH_SHORT).show();
+                return null;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+
     }
+
+    private void postAddress(JSONObject jsonObject) {
+        KitchenHttpManager.getInstance().addAddress("", jsonObject, new OkJsonRequest.OKResponseCallback() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e("error", volleyError.getMessage() + "");
+            }
+
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                Log.e("success", jsonObject + "");
+            }
+        });
+    }
+
+
 }
