@@ -123,10 +123,12 @@ public class SortFragment extends BaseFragment implements View.OnClickListener {
             @Override
             public void onResponse(JSONObject jsonObject) {
                 Log.e("success-sort--", jsonObject + "");
-                SortBean sortBean = GsonUtils.jsonToBean(jsonObject.toString(), SortBean.class);
-                //处理分类列表的数据
-                if (sortBean != null) {
-                    handleSortData(sortBean);
+                if (jsonObject != null) {
+                    SortBean sortBean = GsonUtils.jsonToBean(jsonObject.toString(), SortBean.class);
+                    //处理分类列表的数据
+                    if (sortBean != null) {
+                        handleSortData(sortBean);
+                    }
                 }
             }
 

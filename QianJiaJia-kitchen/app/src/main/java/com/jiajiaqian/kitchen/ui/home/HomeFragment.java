@@ -24,6 +24,8 @@ import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
 import com.jiajiaqian.kitchen.common.uielements.SwipeRefreshLayout;
 import com.jiajiaqian.kitchen.common.utils.GlideImageLoader;
 import com.jiajiaqian.kitchen.common.utils.GsonUtils;
+import com.jiajiaqian.kitchen.common.utils.UserInfoUtils;
+import com.jiajiaqian.kitchen.ui.LoginActivity;
 import com.jiajiaqian.kitchen.ui.ProductDetailsActivity;
 import com.jiajiaqian.kitchen.ui.ProductSearchActivity;
 import com.jiajiaqian.kitchen.ui.base.BaseFragment;
@@ -201,6 +203,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
     @Override
     protected void initData() {
 
+
         KitchenHttpManager.getInstance().getHomeData("", new OkJsonRequest.OKResponseCallback() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
@@ -210,23 +213,25 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             @Override
             public void onResponse(JSONObject jsonObject) {
                 Log.e("success-home--", jsonObject + "");
-                HomeBean homeBean = GsonUtils.jsonToBean(jsonObject.toString(), HomeBean.class);
-                if (homeBean.getSlide() != null) {
-                    getSlideData(homeBean.getSlide());
-                }
-                if (homeBean.getAddress() != null) {
-                    getAddressData(homeBean.getAddress());
-                }
-                if (homeBean.getDiscount() != null) {
-                    getDiscountData(homeBean.getDiscount());
-                }
+                if (jsonObject != null) {
+                    HomeBean homeBean = GsonUtils.jsonToBean(jsonObject.toString(), HomeBean.class);
+                    if (homeBean.getSlide() != null) {
+                        getSlideData(homeBean.getSlide());
+                    }
+                    if (homeBean.getAddress() != null) {
+                        getAddressData(homeBean.getAddress());
+                    }
+                    if (homeBean.getDiscount() != null) {
+                        getDiscountData(homeBean.getDiscount());
+                    }
 
-                if (homeBean.getGroup() != null) {
-                    getGroupData(homeBean.getGroup());
-                }
+                    if (homeBean.getGroup() != null) {
+                        getGroupData(homeBean.getGroup());
+                    }
 
-                if (homeBean.getRecommend() != null) {
-                    getRecommendData(homeBean.getRecommend());
+                    if (homeBean.getRecommend() != null) {
+                        getRecommendData(homeBean.getRecommend());
+                    }
                 }
 
             }
@@ -279,8 +284,14 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                 break;
             case R.id.tv_address:
                 intent = new Intent();
-                intent.setClass(getActivity(), SelectAddressActivity.class);
-                startActivityForResult(intent, 1);
+                if (UserInfoUtils.getUserId(getActivity()) != null) {
+                    intent.setClass(getActivity(), SelectAddressActivity.class);
+                    startActivityForResult(intent, 1);
+                } else { //未登陆去登陆
+                    intent.setClass(getActivity(), LoginActivity.class);
+                    intent.putExtra("home_address", "home_login");
+                    startActivityForResult(intent, 2);
+                }
                 break;
             default:
                 break;
@@ -292,14 +303,22 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && data != null && data.getStringExtra("new_address") != null) {
             mDefaultAddressView.setText(data.getStringExtra("new_address"));
+        } else if (requestCode == 2) {
+            //登陆成功回调,重新刷新下页面
+            onRefresh();
         }
     }
 
     private void getAddressData(ArrayList<AddressBean> addressList) {
-        for (AddressBean address : addressList) {
-            if (address.getIsDefault() == 1) { //默认地址
-                mDefaultAddressView.setText(address.getConsigneeAddress());
+        if (UserInfoUtils.getUserId(getActivity()) != null) {
+            for (AddressBean address : addressList) {
+                if (address.getIsDefault() == 1) { //默认地址
+                    mDefaultAddressView.setText(address.getConsigneeAddress());
+                    break;
+                }
             }
+        } else {
+            mDefaultAddressView.setText("请选择地址");
         }
     }
 

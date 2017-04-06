@@ -81,7 +81,14 @@ public class KitchenHttpManager implements KitchenHttpApi<OkJsonRequest.OKRespon
     @Override
     public void addAddress(@NonNull String uid, @NonNull JSONObject jsonRequest, @NonNull OkJsonRequest.OKResponseCallback callback) {
         String requestUrl = ApiConstants.BASE_URL + "/address/save";
-        post(requestUrl,jsonRequest,callback);
+        post(requestUrl, jsonRequest, callback);
+    }
+
+    //http://192.168.0.110:8080/user/query?username=zhangsan
+    @Override
+    public void userLogin(@NonNull String userName, @NonNull String userPassword, @NonNull OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/user/query?username=" + userName;
+        get(requestUrl,callback);
     }
 
     private void get(String requestUrl, @NonNull OkJsonRequest.OKResponseCallback callback) {

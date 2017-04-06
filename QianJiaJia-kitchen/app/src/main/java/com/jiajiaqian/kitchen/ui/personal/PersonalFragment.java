@@ -20,6 +20,8 @@ import android.widget.TextView;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.appglobal.ACache;
 import com.jiajiaqian.kitchen.common.entity.microbean.UserBean;
+import com.jiajiaqian.kitchen.common.utils.UserInfoUtils;
+import com.jiajiaqian.kitchen.ui.LoginActivity;
 import com.jiajiaqian.kitchen.ui.base.BaseFragment;
 import com.jiajiaqian.kitchen.utils.CircleImageView;
 import com.jiajiaqian.kitchen.utils.CustomScrollBar;
@@ -209,7 +211,13 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
                 break;
             case R.id.iv_info_power:
             case R.id.tv_info_power:
-                exitPower();
+                //清除登陆用户信息
+                UserInfoUtils.clearLoginCache(getActivity());
+                //重新去切入登陆页面，方便切换账号
+                Intent intent5 = new Intent();
+                intent5.setClass(getActivity(), LoginActivity.class);
+                intent5.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent5);
                 break;
             default:
                 break;

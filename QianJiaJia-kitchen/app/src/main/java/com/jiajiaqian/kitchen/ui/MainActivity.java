@@ -1,5 +1,6 @@
 package com.jiajiaqian.kitchen.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.jiajiaqian.kitchen.KitchenApplication;
 import com.jiajiaqian.kitchen.R;
+import com.jiajiaqian.kitchen.common.utils.UserInfoUtils;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 import com.jiajiaqian.kitchen.ui.home.HomeFragment;
 import com.jiajiaqian.kitchen.ui.personal.PersonalFragment;
@@ -80,7 +82,13 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 controlShowFragment(FRAGMENT_SHOP);
                 break;
             case R.id.rdoBtn_tab_me:
-                controlShowFragment(FRAGMENT_PERSONAL);
+                if (UserInfoUtils.getUserId(this) != null) {
+                    controlShowFragment(FRAGMENT_PERSONAL);
+                }else {
+                    Intent intent = new Intent();
+                    intent.setClass(this,LoginActivity.class);
+                    startActivity(intent);
+                }
                 break;
         }
     }

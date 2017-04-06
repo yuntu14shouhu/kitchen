@@ -13,7 +13,7 @@ public class ProductDetailsActivity extends BaseActivity{
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_home_select_address;
+        return R.layout.activity_shoppingcart_product_details;
     }
 
     @Override

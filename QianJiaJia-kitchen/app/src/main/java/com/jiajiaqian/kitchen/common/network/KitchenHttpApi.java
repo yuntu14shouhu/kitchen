@@ -30,4 +30,6 @@ public interface KitchenHttpApi<T> {
 
     void addAddress(@NonNull String uid, @NonNull JSONObject jsonRequest, @NonNull T callback);
 
+    void userLogin(@NonNull String userName,@NonNull String userPassword,@NonNull T callback);
+
 }

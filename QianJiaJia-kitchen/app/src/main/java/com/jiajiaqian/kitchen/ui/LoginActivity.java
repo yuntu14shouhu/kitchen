@@ -3,15 +3,27 @@ package com.jiajiaqian.kitchen.ui;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.appglobal.ACache;
+import com.jiajiaqian.kitchen.common.entity.UserBean;
+import com.jiajiaqian.kitchen.common.entity.UserLoginBean;
+import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
+import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
+import com.jiajiaqian.kitchen.common.utils.GsonUtils;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 import com.jiajiaqian.kitchen.utils.ActivityUtil;
+
+import org.json.JSONObject;
 
 /**
  * Created by jiajiaQian on 2017/2/18.
@@ -25,9 +37,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     private EditText mUsernameET;
     private EditText mPasswordET;
-
-    private String mUsernameStr;
-    private String mPasswordStr;
 
     private String userNameGet;
     private String userPasswordGet;
@@ -66,11 +75,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_main_login_register:
                 alertDialog();
             case R.id.btn_main_login_forgetpw:
-                startActivity(new Intent(LoginActivity.this,LoginFindpwWayActivity.class));
+                startActivity(new Intent(LoginActivity.this, LoginFindpwWayActivity.class));
             case R.id.btn_main_login:
                 // 登陆,获取EditText的内容,在数据库中查找是否该用户已经注册,以及密码是否正确
                 login();
@@ -81,14 +90,37 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void login() {
-        mUsernameStr = mUsernameET.getText().toString();
-        mPasswordStr = mPasswordET.getText().toString();
-        if(mUsernameStr.equals(" ") || mPasswordStr.equals("")){
-            ActivityUtil.showToastBytTime(this, "用户名/密码不能为空", 2000);
-        }else {
-            /**
-             * 从数据库中查询到相对应的用户名和密码
-             */
+
+        if (!TextUtils.isEmpty(mUsernameET.getText() + "") && !TextUtils.isEmpty(mPasswordET.getText() + "")) {
+            KitchenHttpManager.getInstance().userLogin(mUsernameET.getText() + "", mPasswordET.getText() + "", new OkJsonRequest.OKResponseCallback() {
+                @Override
+                public void onErrorResponse(VolleyError volleyError) {
+                    Log.e("login-error", volleyError.getMessage() + "");
+                }
+
+                @Override
+                public void onResponse(JSONObject jsonObject) {
+                    Log.e("login-success", jsonObject.toString());
+                    UserLoginBean userLoginBean = GsonUtils.jsonToBean(jsonObject.toString(), UserLoginBean.class);
+                    UserBean userBean = userLoginBean.getData();
+                    if (userBean != null && userBean.getId() != null) {
+                        Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+                        SharedPreferences sp = getSharedPreferences("user_info", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putString("user_name", userBean.getNickName());
+                        editor.putString("user_id", userBean.getId());
+                        editor.apply();
+                        if (getIntent().getStringExtra("home_address") != null){
+                            setResult(2);
+                        }
+                        finish();
+                    } else {
+                        Toast.makeText(LoginActivity.this, "登陆失败", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        } else {
+            ActivityUtil.showToastBytTime(this, "用户名或密码不能为空", 1000);
         }
     }
 
@@ -98,7 +130,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private void alertDialog() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle("请选择注册方式")
-                .setSingleChoiceItems(R.array.leftmenu_register_way,0,new DialogInterface.OnClickListener(){
+                .setSingleChoiceItems(R.array.leftmenu_register_way, 0, new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
