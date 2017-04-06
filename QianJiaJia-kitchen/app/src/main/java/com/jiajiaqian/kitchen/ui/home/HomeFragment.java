@@ -174,27 +174,29 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             @Override
             public void onResponse(JSONObject jsonObject) {
                 Log.e("success-home--", jsonObject + "");
-                HomeBean homeBean = GsonUtils.jsonToBean(jsonObject.toString(), HomeBean.class);
-                if (homeBean.getSlide() != null) {
-                    getSlideData(homeBean.getSlide());
-                }
-                if (homeBean.getAddress() != null) {
-                    getAddressData(homeBean.getAddress());
-                }
-                if (homeBean.getDiscount() != null) {
-                    getDiscountData(homeBean.getDiscount());
-                }
+                if (jsonObject != null) {
+                    HomeBean homeBean = GsonUtils.jsonToBean(jsonObject.toString(), HomeBean.class);
+                    if (homeBean.getSlide() != null) {
+                        getSlideData(homeBean.getSlide());
+                    }
+                    if (homeBean.getAddress() != null) {
+                        getAddressData(homeBean.getAddress());
+                    }
+                    if (homeBean.getDiscount() != null) {
+                        getDiscountData(homeBean.getDiscount());
+                    }
 
-                if (homeBean.getGroup() != null) {
-                    getGroupData(homeBean.getGroup());
-                }
+                    if (homeBean.getGroup() != null) {
+                        getGroupData(homeBean.getGroup());
+                    }
 
-                if (homeBean.getRecommend() != null) {
-                    getRecommendData(homeBean.getRecommend());
-                }
+                    if (homeBean.getRecommend() != null) {
+                        getRecommendData(homeBean.getRecommend());
+                    }
 
-                if (mSwipeRefreshLayout.isRefreshing()) {
-                    mSwipeRefreshLayout.setRefreshing(false);
+                    if (mSwipeRefreshLayout.isRefreshing()) {
+                        mSwipeRefreshLayout.setRefreshing(false);
+                    }
                 }
             }
         });
