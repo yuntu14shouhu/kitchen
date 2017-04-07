@@ -2,6 +2,7 @@ package com.jiajiaqian.kitchen.ui.personal;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,16 +23,16 @@ public class PersonalAddressAdapter extends RecyclerView.Adapter<PersonalAddress
 
     private Context context;
     private LayoutInflater mInflater;
-    private List<AddressBean> results;
+    private List<AddressBean> addressBeanList;
     private int srcId;
 
     public List<AddressBean> getResults() {
-        return results;
+        return addressBeanList;
     }
 
-    public PersonalAddressAdapter(Context context, int srcId, List<AddressBean> results) {
+    public PersonalAddressAdapter(Context context, int srcId, List<AddressBean> addressBeanList) {
         this.context = context;
-        this.results = results;
+        this.addressBeanList = addressBeanList;
         this.srcId = srcId;
         mInflater = LayoutInflater.from(context);
     }
@@ -45,17 +46,28 @@ public class PersonalAddressAdapter extends RecyclerView.Adapter<PersonalAddress
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
+        if(addressBeanList != null && addressBeanList.size() > 0){
+            if(!TextUtils.isEmpty(addressBeanList.get(position).getConsigneeName())){
+                holder.tvName.setText(addressBeanList.get(position).getConsigneeName());
+            }
 
-        holder.tvName.setText(results.get(position).getConsigneeName());
-        holder.tvPhone.setText(results.get(position).getConsigneePhone());
-        holder.tvAddress.setText(results.get(position).getConsigneeAddress());
-        holder.tvAddressType.setText(results.get(position).getAddressType()+"");
+            if(!TextUtils.isEmpty(addressBeanList.get(position).getConsigneePhone())){
+                holder.tvPhone.setText(addressBeanList.get(position).getConsigneePhone());
+            }
 
+            if(!TextUtils.isEmpty(addressBeanList.get(position).getConsigneeAddress())){
+                holder.tvAddress.setText(addressBeanList.get(position).getConsigneeAddress());
+            }
+
+            if(!TextUtils.isEmpty(addressBeanList.get(position).getAddressType())){
+                holder.tvAddressType.setText(addressBeanList.get(position).getAddressType());
+            }
+        }
     }
 
     @Override
     public int getItemCount() {
-        return results == null ? 0:results.size();
+        return addressBeanList == null ? 0:addressBeanList.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{

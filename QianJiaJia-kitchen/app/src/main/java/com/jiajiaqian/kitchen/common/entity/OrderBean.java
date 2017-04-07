@@ -3,6 +3,7 @@ package com.jiajiaqian.kitchen.common.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.util.Arrays;
 
 /**
  * @author qianjiajia
@@ -14,7 +15,7 @@ import java.text.DecimalFormat;
 public class OrderBean implements Serializable {
 
     private String orderDate;
-    private int logoImg;
+    private String[] logoImg;
     private double totalPrice;
 
     public OrderBean() {
@@ -25,15 +26,15 @@ public class OrderBean implements Serializable {
         this.totalPrice = totalPrice;
     }
 
-    public OrderBean(String orderDate, int logoImg) {
+    public OrderBean(String orderDate, String[] logoImg) {
         this.orderDate = orderDate;
         this.logoImg = logoImg;
     }
 
-    public OrderBean(String orderDate, int logoImg, double totalPrice) {
-        this.totalPrice = totalPrice;
-        this.logoImg = logoImg;
+    public OrderBean(String orderDate, String[] logoImg, double totalPrice) {
         this.orderDate = orderDate;
+        this.logoImg = logoImg;
+        this.totalPrice = totalPrice;
     }
 
     public String getOrderDate() {
@@ -44,11 +45,11 @@ public class OrderBean implements Serializable {
         this.orderDate = orderDate;
     }
 
-    public int getLogoImg() {
+    public String[] getLogoImg() {
         return logoImg;
     }
 
-    public void setLogoImg(int logoImg) {
+    public void setLogoImg(String[] logoImg) {
         this.logoImg = logoImg;
     }
 
@@ -64,8 +65,8 @@ public class OrderBean implements Serializable {
     @Override
     public String toString() {
         return "OrderBean{" +
-                "orderDate=" + orderDate +
-                ", logoImg=" + logoImg +
+                "orderDate='" + orderDate + '\'' +
+                ", logoImg=" + Arrays.toString(logoImg) +
                 ", totalPrice=" + totalPrice +
                 '}';
     }

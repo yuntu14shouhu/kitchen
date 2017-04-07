@@ -1,16 +1,12 @@
 package com.jiajiaqian.kitchen.common.network;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.jiajiaqian.kitchen.common.appglobal.ApiConstants;
-import com.jiajiaqian.kitchen.common.entity.AddressBean;
 
 import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by jasonxu on 2017/3/11.
@@ -64,7 +60,7 @@ public class KitchenHttpManager implements KitchenHttpApi<OkJsonRequest.OKRespon
 
     @Override
     public void getAddressLists(@NonNull String uid, @NonNull OkJsonRequest.OKResponseCallback callback) {
-        String requestUrl = ApiConstants.BASE_URL + "/address/quertAll";
+        String requestUrl = ApiConstants.BASE_URL + "/address/queryAll";
         get(requestUrl, callback);
     }
 
@@ -99,5 +95,41 @@ public class KitchenHttpManager implements KitchenHttpApi<OkJsonRequest.OKRespon
     private void post(String requestUrl, JSONObject jsonRequest, @NonNull OkJsonRequest.OKResponseCallback callback) {
         OkJsonRequest okRequest = new OkJsonRequest(Request.Method.POST, requestUrl, jsonRequest, callback);
         NetRequestManager.getInstance().addRequest(okRequest);
+    }
+
+
+    //http://localhost:8080/orderDetailsModify/queryOrders?userId=a240611ed1174b4dbf3d6536517d3b6c
+    @Override
+    public void orderList(@NonNull String uid, @Nullable OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/orderDetailsModify/queryOrders";
+        get(requestUrl,callback);
+    }
+
+    //    http://localhost:8080/orderDetailsModify/query?orderId=e654298fce4e42b5965723bdea701313
+    @Override
+    public void orderDetail(@NonNull String orderId, @NonNull OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/orderDetailsModify/query?orderId=" + orderId;
+        get(requestUrl,callback);
+    }
+
+    //    http://localhost:8080/user/queryByUserId?userId=a240611ed1174b4dbf3d6536517d3b6c
+    @Override
+    public void userData(@NonNull String uid, @Nullable OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/user/queryByUserId";
+        get(requestUrl,callback);
+    }
+
+    //    http://localhost:8080/user/update
+    @Override
+    public void userDataUpdate(@NonNull String uid, @NonNull JSONObject jsonRequest, @NonNull OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/user/update";
+        post(requestUrl,jsonRequest,callback);
+    }
+
+    //    http://localhost:8080/user/save
+    @Override
+    public void userSave(@NonNull String uid, @NonNull JSONObject jsonRequest, @NonNull OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/user/save";
+        post(requestUrl,jsonRequest,callback);
     }
 }

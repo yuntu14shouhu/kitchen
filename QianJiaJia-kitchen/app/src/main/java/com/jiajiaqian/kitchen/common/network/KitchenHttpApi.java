@@ -1,8 +1,7 @@
 package com.jiajiaqian.kitchen.common.network;
 
 import android.support.annotation.NonNull;
-
-import com.jiajiaqian.kitchen.common.entity.AddressBean;
+import android.support.annotation.Nullable;
 
 import org.json.JSONObject;
 
@@ -31,5 +30,15 @@ public interface KitchenHttpApi<T> {
     void addAddress(@NonNull String uid, @NonNull JSONObject jsonRequest, @NonNull T callback);
 
     void userLogin(@NonNull String userName,@NonNull String userPassword,@NonNull T callback);
+
+    void orderList(@NonNull String uid, @Nullable T callback);
+
+    void orderDetail(@NonNull String orderId,@NonNull T callback);
+
+    void userData(@NonNull String uid, @Nullable T callback);
+
+    void userDataUpdate(@NonNull String uid,@NonNull JSONObject jsonRequest,@NonNull T callback);
+
+    void userSave(@NonNull String uid,@NonNull JSONObject jsonRequest,@NonNull T callback);
 
 }

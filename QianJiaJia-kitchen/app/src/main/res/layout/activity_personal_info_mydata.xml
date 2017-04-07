@@ -35,7 +35,6 @@
                     android:id="@+id/tv_info_mydata_name"
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/info_mydata_name"
-                    android:hint="请输入用户名称"
                     android:text="云图"/>
             </RelativeLayout>
 
@@ -54,7 +53,6 @@
                     android:id="@+id/tv_info_mydata_nickname"
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/info_mydata_nickname"
-                    android:hint="请输入用户名称"
                     android:text="守护"/>
             </RelativeLayout>
 
@@ -73,7 +71,6 @@
                     android:id="@+id/tv_info_mydata_sex"
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/info_mydata_sex"
-                    android:hint="请输入用户名称"
                     android:text="女"/>
 
 
@@ -95,7 +92,6 @@
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/info_mydata_birthdate"
                     android:hint="请输入用户名称"
-                    android:text="22"
                     android:inputType="number"/>
             </RelativeLayout>
 
@@ -143,7 +139,6 @@
                     android:id="@+id/tv_info_mydata_email"
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/info_mydata_email"
-                    android:hint="请输入用户名称"
                     android:text="qianqiandeCD@163.com"
                     android:inputType="textEmailAddress"/>
             </RelativeLayout>
@@ -163,7 +158,6 @@
                     android:id="@+id/tv_info_mydata_phone"
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/info_mydata_phone"
-                    android:hint="请输入用户名称"
                     android:text="18482173219"
                     android:inputType="phone"/>
             </RelativeLayout>
@@ -183,7 +177,6 @@
                     android:id="@+id/tv_info_mydata_qq"
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/info_mydata_qq"
-                    android:hint="请输入用户名称"
                     android:text="1265444865"
                     android:inputType="number"/>
             </RelativeLayout>

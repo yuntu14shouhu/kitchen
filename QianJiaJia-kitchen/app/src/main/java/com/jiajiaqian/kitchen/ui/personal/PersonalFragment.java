@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.appglobal.ACache;
-import com.jiajiaqian.kitchen.common.entity.microbean.UserBean;
+import com.jiajiaqian.kitchen.common.entity.UserBean;
 import com.jiajiaqian.kitchen.common.utils.UserInfoUtils;
 import com.jiajiaqian.kitchen.ui.LoginActivity;
 import com.jiajiaqian.kitchen.ui.base.BaseFragment;

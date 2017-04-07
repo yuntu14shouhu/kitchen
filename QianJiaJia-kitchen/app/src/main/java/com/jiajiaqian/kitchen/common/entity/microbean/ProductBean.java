@@ -37,6 +37,9 @@ public class ProductBean implements Serializable{
     private String bigKeyClass;
     private String keyword;
 
+
+
+
     public String getId() {
         return id;
     }

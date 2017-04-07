@@ -1,16 +1,23 @@
 package com.jiajiaqian.kitchen.ui.personal;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
 import com.jiajiaqian.kitchen.R;
+import com.jiajiaqian.kitchen.common.entity.MyOrderBean;
 import com.jiajiaqian.kitchen.common.entity.OrderBean;
+import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
+import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
+import com.jiajiaqian.kitchen.common.utils.GsonUtils;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
+
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,15 +49,30 @@ public class PersonalMyOrderActivity extends BaseActivity implements SwipeRefres
     @Override
     public void initData(Bundle savedInstanceState) {
 
-        mOrderBeanList = new ArrayList<>();
-        mOrderBeanList.add(new OrderBean("2017-02-22", R.drawable.ic_logo,22.10));
-        mOrderBeanList.add(new OrderBean("2017-03-22", R.drawable.ic_logo,22.0));
-        mOrderBeanList.add(new OrderBean("2017-04-22", R.drawable.ic_logo,22.0));
-        mOrderBeanList.add(new OrderBean("2017-05-22", R.drawable.ic_logo,22.0));
-        mOrderBeanList.add(new OrderBean("2017-06-22", R.drawable.ic_logo,22.0));
-        mOrderBeanList.add(new OrderBean("2017-07-22", R.drawable.ic_logo,22.0));
-        orderRecyclerView.setAdapter(adapter = new PersonalMyOrderRecyclerAdapter(PersonalMyOrderActivity.this, R.layout.activity_personal_info_order_edit, mOrderBeanList));
+        KitchenHttpManager.getInstance().orderList("",new OkJsonRequest.OKResponseCallback(){
 
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                Log.e("success-orderList--", jsonObject + "");
+                if (jsonObject != null) {
+                    MyOrderBean myOrderBean = GsonUtils.jsonToBean(jsonObject.toString(), MyOrderBean.class);
+                    //处理订单列表的数据
+                    if (myOrderBean.getOrderBeanList() != null) {
+                        getOrderListData(myOrderBean.getOrderBeanList());
+                    }
+                }
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e("error-orderList--", volleyError.getMessage() + "");
+            }
+        });
+    }
+
+    private void getOrderListData(ArrayList<OrderBean> orderBeanList) {
+        PersonalMyOrderRecyclerAdapter adapter = new PersonalMyOrderRecyclerAdapter(PersonalMyOrderActivity.this, R.layout.activity_personal_info_order_edit, orderBeanList);
+        orderRecyclerView.setAdapter(adapter);
     }
 
     private String getDate() {
@@ -92,15 +114,27 @@ public class PersonalMyOrderActivity extends BaseActivity implements SwipeRefres
 
     @Override
     public void onRefresh() {
-        new Handler().postDelayed(new Runnable() {
+        KitchenHttpManager.getInstance().orderList("",new OkJsonRequest.OKResponseCallback(){
+
             @Override
-            public void run() {
-                mRefreshLayout.setRefreshing(false);
-                List<OrderBean> results = adapter.getResults();
-                results.add(0, new OrderBean("", R.drawable.ic_logo));
-                results.add(0, new OrderBean("", R.drawable.ic_logo));
-                adapter.notifyDataSetChanged();
+            public void onResponse(JSONObject jsonObject) {
+                Log.e("success-orderList--", jsonObject + "");
+                if (jsonObject != null) {
+                    MyOrderBean myOrderBean = GsonUtils.jsonToBean(jsonObject.toString(), MyOrderBean.class);
+                    //处理订单列表的数据
+                    if (myOrderBean.getOrderBeanList() != null) {
+                        getOrderListData(myOrderBean.getOrderBeanList());
+                    }
+                }
             }
-        }, 1000);
+
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e("error-orderList--", volleyError.getMessage() + "");
+                if (mRefreshLayout.isRefreshing()) {
+                    mRefreshLayout.setRefreshing(false);
+                }
+            }
+        });
     }
 }

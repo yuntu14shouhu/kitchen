@@ -4,19 +4,29 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.entity.OrderBean;
 import com.jiajiaqian.kitchen.common.entity.OrderProductImgBean;
+import com.jiajiaqian.kitchen.common.entity.OrderProductImgBeanList;
+import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
+import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
+import com.jiajiaqian.kitchen.common.utils.GsonUtils;
 import com.jiajiaqian.kitchen.ui.personal.adapter.FullyGridLayoutManager;
 
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,24 +39,17 @@ import java.util.List;
 public class PersonalMyOrderRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
-    private List<OrderBean> results;
+    private List<OrderBean> orderbeanList;
 
-
-    //get & set
     public List<OrderBean> getResults() {
-        return results;
+        return orderbeanList;
     }
 
-    //type
     public static final int TYPE_1 = 0xff01;
-//    public static final int TYPE_2 = 0xff02;
-//    public static final int TYPE_3 = 0xff03;
-//    public static final int TYPE_4 = 0xff04;
-//    public static final int TYPE_MAIN = 0xffff;
 
-    public PersonalMyOrderRecyclerAdapter(Context context, int srcId, List<OrderBean> results) {
+    public PersonalMyOrderRecyclerAdapter(Context context, int srcId, List<OrderBean> orderbeanList) {
         this.context = context;
-        this.results = results;
+        this.orderbeanList = orderbeanList;
     }
 
     @Override
@@ -61,22 +64,45 @@ public class PersonalMyOrderRecyclerAdapter extends RecyclerView.Adapter<Recycle
         }
     }
 
-    private void bindType(MyViewHolder holder, int position) {
+    private void bindType(final MyViewHolder holder, int position) {
 
-        holder.item_recyc_type2.setLayoutManager(new FullyGridLayoutManager(holder.item_recyc_type2.getContext(), 1, GridLayoutManager.HORIZONTAL, false));
-//        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
-        holder.orderDate.setText(results.get(position).getOrderDate());
-        holder.orderTotal.setText(results.get(position).getTotalPrice()+"");
-                List<OrderProductImgBean> results = new ArrayList<OrderProductImgBean>();
-        String img = "http://pica.nipic.com/2007-10-09/200710994020530_2.jpg";
-        results.add(new OrderProductImgBean(img));
-        results.add(new OrderProductImgBean(img));
-        results.add(new OrderProductImgBean(img));
-        results.add(new OrderProductImgBean(img));
-        results.add(new OrderProductImgBean(img));
-        results.add(new OrderProductImgBean(img));
-        holder.item_recyc_type2.setAdapter(new PersonalMyOrderRecyclerAdapterItem(context, results));
-        holder.buttonOrderDetails.setOnClickListener(new View.OnClickListener() {
+        if(orderbeanList != null && orderbeanList.size() > 0){
+
+            Log.e("--------------",getStrTime(orderbeanList.get(position).getOrderDate()));
+            if (!TextUtils.isEmpty(orderbeanList.get(position).getOrderDate())) {
+
+                holder.orderDate.setText(getStrTime(orderbeanList.get(position).getOrderDate()));
+            }
+
+            if(orderbeanList.get(position).getTotalPrice() != 0 ){
+                holder.orderTotal.setText(orderbeanList.get(position).getTotalPrice()+"");
+            }
+        }
+
+        KitchenHttpManager.getInstance().orderList("",new OkJsonRequest.OKResponseCallback(){
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                Log.e("success-imgList--", jsonObject + "");
+                if (jsonObject != null) {
+                    OrderProductImgBeanList imgListBean = GsonUtils.jsonToBean(jsonObject.toString(), OrderProductImgBeanList.class);
+                    //处理订单列表的图片数据
+                    if (imgListBean.getOrderProductImgBean() != null) {
+                        getImgListData(imgListBean.getOrderProductImgBean());
+                    }
+                }
+            }
+
+            private void getImgListData(ArrayList<OrderProductImgBean> orderProductImgBean) {
+                holder.item_recyc_type2.setLayoutManager(new FullyGridLayoutManager(holder.item_recyc_type2.getContext(), 1, GridLayoutManager.HORIZONTAL, false));
+                holder.item_recyc_type2.setAdapter(new PersonalMyOrderRecyclerAdapterItem(context, orderProductImgBean));
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e("error-imgList--", volleyError.getMessage() + "");
+            }
+        });
+      holder.buttonOrderDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 context.startActivity(new Intent(context,PersonalMyOrderDetailsActivity.class));
@@ -85,9 +111,11 @@ public class PersonalMyOrderRecyclerAdapter extends RecyclerView.Adapter<Recycle
         holder.item_recyc_type2.setNestedScrollingEnabled(false);
     }
 
+
+
     @Override
     public int getItemCount() {
-        return results.size();
+        return orderbeanList.size();
     }
 
     @Override
@@ -115,7 +143,6 @@ public class PersonalMyOrderRecyclerAdapter extends RecyclerView.Adapter<Recycle
     class MyViewHolder extends RecyclerView.ViewHolder {
         public RecyclerView item_recyc_type2;
         private TextView orderDate;
-        private ImageView orderLogo;
         private TextView orderTotal;
         private Button buttonOrderDetails;
 
@@ -126,5 +153,16 @@ public class PersonalMyOrderRecyclerAdapter extends RecyclerView.Adapter<Recycle
             orderTotal = (TextView) itemView.findViewById(R.id.tv_order_total);
             buttonOrderDetails = (Button) itemView.findViewById(R.id.bt_personal_info_order_details);
         }
+    }
+
+    /**
+     * 将时间戳转换成时间格式yyyy-MM-dd hh:mm:ss
+     */
+    public static String getStrTime(String timeStamp){
+        String timeString = null;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        long  l = Long.valueOf(timeStamp);
+        timeString = sdf.format(new Date(l));//单位秒
+        return timeString;
     }
 }

@@ -3,17 +3,15 @@ package com.jiajiaqian.kitchen.ui.personal;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.entity.OrderProductImgBean;
-import com.jiajiaqian.kitchen.ui.personal.adapter.CustomBitmapLoadCallBack;
-
-import org.xutils.image.ImageOptions;
-import org.xutils.x;
 
 import java.util.List;
 
@@ -27,17 +25,11 @@ import java.util.List;
 public class PersonalMyOrderRecyclerAdapterItem extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
-    private List<OrderProductImgBean> results;
+    private List<OrderProductImgBean> imgList;
 
-
-    //get & set
-    public List<OrderProductImgBean> getResults() {
-        return results;
-    }
-
-    public PersonalMyOrderRecyclerAdapterItem(Context context, List<OrderProductImgBean> results) {
+    public PersonalMyOrderRecyclerAdapterItem(Context context, List<OrderProductImgBean> imgList) {
         this.context = context;
-        this.results = results;
+        this.imgList = imgList;
     }
 
     @Override
@@ -47,24 +39,28 @@ public class PersonalMyOrderRecyclerAdapterItem extends RecyclerView.Adapter<Rec
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof ItemViewHolder){
-            bind((ItemViewHolder) holder,position);
+//        if (holder instanceof ItemViewHolder){
+//            bind((ItemViewHolder) holder,position);
+//        }
+
+        ItemViewHolder viewHolder = (ItemViewHolder) holder;
+        initView(viewHolder, position);
+        initEvents(viewHolder, position);
+    }
+
+    private void initView(ItemViewHolder viewHolder, int position) {
+        if (imgList != null && imgList.size() > 0) {
+            if (!TextUtils.isEmpty(imgList.get(position).getProductImg())) {
+                Glide.with(context)
+                        .load(imgList.get(position).getProductImg())
+                        .centerCrop()
+                        .into(viewHolder.img);
+            }
         }
     }
 
-    @Override
-    public int getItemCount() {
-        return results.size();
-    }
-
-    /////////////////////////////
-
-    private void bind(ItemViewHolder holder, int position){
-        x.image().bind(holder.item_recyc_type2_item_img,
-                results.get(position).getProductImg(),
-                new ImageOptions.Builder().build(),
-                new CustomBitmapLoadCallBack(holder.item_recyc_type2_item_img));
-        holder.item_recyc_type2_item_img.setOnClickListener(new View.OnClickListener() {
+    private void initEvents(ItemViewHolder viewHolder, int position) {
+        viewHolder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 context.startActivity(new Intent(context,PersonalMyOrderDetailsActivity.class));
@@ -72,12 +68,18 @@ public class PersonalMyOrderRecyclerAdapterItem extends RecyclerView.Adapter<Rec
         });
     }
 
+    @Override
+    public int getItemCount() {
+        return imgList.size();
+    }
+
+
     public class ItemViewHolder extends RecyclerView.ViewHolder {
-        public ImageView item_recyc_type2_item_img;
+        public ImageView img;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
-            item_recyc_type2_item_img = (ImageView) itemView.findViewById(R.id.iv_order_edit_item);
+            img = (ImageView) itemView.findViewById(R.id.iv_order_edit_item);
         }
     }
 }

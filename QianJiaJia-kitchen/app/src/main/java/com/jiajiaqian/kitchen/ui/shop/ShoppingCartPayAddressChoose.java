@@ -45,15 +45,15 @@ public class ShoppingCartPayAddressChoose extends BaseActivity {
     @Override
     public void initData(Bundle savedInstanceState) {
         mAddressBean = new ArrayList<>();
-        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
-        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
-        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
-        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
-        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
-        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
-        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
-        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
-        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+//        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+//        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+//        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+//        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+//        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+//        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+//        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+//        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
+//        mAddressBean.add(new AddressBean("qianjiajia", "18482173219", "四川省成都市一环路南四段16号", 1));
         mRecyclerView.setAdapter(mAdapter = new ShoppingCartPayAddressChooseAdapter(ShoppingCartPayAddressChoose.this, R.layout.activity_shoppingcart_acctounts_address_choose_item, mAddressBean));
     }
 
