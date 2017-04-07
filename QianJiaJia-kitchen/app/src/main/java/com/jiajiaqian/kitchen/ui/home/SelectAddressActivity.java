@@ -19,6 +19,7 @@ import com.jiajiaqian.kitchen.common.entity.AddressListBean;
 import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
 import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
 import com.jiajiaqian.kitchen.common.utils.GsonUtils;
+import com.jiajiaqian.kitchen.common.utils.UserInfoUtils;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 import com.jiajiaqian.kitchen.ui.home.adapter.AddressListAdapter;
 import com.jiajiaqian.kitchen.ui.personal.PersonalAddressAddActivity;
@@ -45,23 +46,25 @@ public class SelectAddressActivity extends BaseActivity implements View.OnClickL
     @Override
     public void initData(Bundle savedInstanceState) {
 
-        KitchenHttpManager.getInstance().getAddressLists("", new OkJsonRequest.OKResponseCallback() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
-                Log.e("selectAddress-error", volleyError.getMessage() + "");
-            }
-
-            @Override
-            public void onResponse(JSONObject jsonObject) {
-                Log.e("selectAddress-success", jsonObject.toString());
-                AddressListBean addressListBean = GsonUtils.jsonToBean(jsonObject.toString(), AddressListBean.class);
-                if (addressListBean.getData() != null && addressListBean.getData().size() > 0) {
-                    AddressListAdapter addressListAdapter = new AddressListAdapter(addressListBean.getData(),
-                            R.layout.listitem_home_address_list, SelectAddressActivity.this, SelectAddressActivity.this);
-                    mAddressListView.setAdapter(addressListAdapter);
+        if (UserInfoUtils.getUserId(this) != null) {
+            KitchenHttpManager.getInstance().getAddressLists(UserInfoUtils.getUserId(this) + "", new OkJsonRequest.OKResponseCallback() {
+                @Override
+                public void onErrorResponse(VolleyError volleyError) {
+                    Log.e("selectAddress-error", volleyError.getMessage() + "");
                 }
-            }
-        });
+
+                @Override
+                public void onResponse(JSONObject jsonObject) {
+                    Log.e("selectAddress-success", jsonObject.toString());
+                    AddressListBean addressListBean = GsonUtils.jsonToBean(jsonObject.toString(), AddressListBean.class);
+                    if (addressListBean.getData() != null && addressListBean.getData().size() > 0) {
+                        AddressListAdapter addressListAdapter = new AddressListAdapter(addressListBean.getData(),
+                                R.layout.listitem_home_address_list, SelectAddressActivity.this, SelectAddressActivity.this);
+                        mAddressListView.setAdapter(addressListAdapter);
+                    }
+                }
+            });
+        }
     }
 
     @Override
@@ -105,15 +108,15 @@ public class SelectAddressActivity extends BaseActivity implements View.OnClickL
             case R.id.btn_add_address_list:
                 intent = new Intent();
                 intent.setClass(this, PersonalAddressAddActivity.class);
-                intent.putExtra("address_add_where","home_address");
-                startActivityForResult(intent,2);
+                intent.putExtra("address_add_where", "home_address");
+                startActivityForResult(intent, 2);
                 break;
             case R.id.btn_add_address_confirm:
-                if (mAddress != null){
-                    Toast.makeText(this,"选择地址成功",Toast.LENGTH_SHORT).show();
+                if (mAddress != null) {
+                    Toast.makeText(this, "选择地址成功", Toast.LENGTH_SHORT).show();
                     intent = new Intent();
-                    intent.putExtra("new_address",mAddress.getConsigneeAddress());
-                    setResult(1,intent);
+                    intent.putExtra("new_address", mAddress.getConsigneeAddress());
+                    setResult(1, intent);
                     finish();
                 }
                 break;
@@ -135,8 +138,8 @@ public class SelectAddressActivity extends BaseActivity implements View.OnClickL
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 2 && data != null){
-            if (data.getStringExtra("newAddress") != null ){
+        if (requestCode == 2 && data != null) {
+            if (data.getStringExtra("newAddress") != null) {
                 initData(null);
             }
         }

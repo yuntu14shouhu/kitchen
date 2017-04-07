@@ -83,8 +83,15 @@ public class KitchenHttpManager implements KitchenHttpApi<OkJsonRequest.OKRespon
     //http://192.168.0.110:8080/user/query?username=zhangsan
     @Override
     public void userLogin(@NonNull String userName, @NonNull String userPassword, @NonNull OkJsonRequest.OKResponseCallback callback) {
-        String requestUrl = ApiConstants.BASE_URL + "/user/query?username=" + userName;
-        get(requestUrl,callback);
+        String requestUrl = ApiConstants.BASE_URL + "/user/login";
+        JSONObject jsonRequest = new JSONObject();
+        try {
+            jsonRequest.put("userName", userName);
+            jsonRequest.put("password", userPassword);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        post(requestUrl, jsonRequest, callback);
     }
 
     private void get(String requestUrl, @NonNull OkJsonRequest.OKResponseCallback callback) {
@@ -102,34 +109,50 @@ public class KitchenHttpManager implements KitchenHttpApi<OkJsonRequest.OKRespon
     @Override
     public void orderList(@NonNull String uid, @Nullable OkJsonRequest.OKResponseCallback callback) {
         String requestUrl = ApiConstants.BASE_URL + "/orderDetailsModify/queryOrders";
-        get(requestUrl,callback);
+        get(requestUrl, callback);
     }
 
     //    http://localhost:8080/orderDetailsModify/query?orderId=e654298fce4e42b5965723bdea701313
     @Override
     public void orderDetail(@NonNull String orderId, @NonNull OkJsonRequest.OKResponseCallback callback) {
         String requestUrl = ApiConstants.BASE_URL + "/orderDetailsModify/query?orderId=" + orderId;
-        get(requestUrl,callback);
+        get(requestUrl, callback);
     }
 
     //    http://localhost:8080/user/queryByUserId?userId=a240611ed1174b4dbf3d6536517d3b6c
     @Override
     public void userData(@NonNull String uid, @Nullable OkJsonRequest.OKResponseCallback callback) {
         String requestUrl = ApiConstants.BASE_URL + "/user/queryByUserId";
-        get(requestUrl,callback);
+        get(requestUrl, callback);
     }
 
     //    http://localhost:8080/user/update
     @Override
     public void userDataUpdate(@NonNull String uid, @NonNull JSONObject jsonRequest, @NonNull OkJsonRequest.OKResponseCallback callback) {
         String requestUrl = ApiConstants.BASE_URL + "/user/update";
-        post(requestUrl,jsonRequest,callback);
+        post(requestUrl, jsonRequest, callback);
     }
 
     //    http://localhost:8080/user/save
     @Override
     public void userSave(@NonNull String uid, @NonNull JSONObject jsonRequest, @NonNull OkJsonRequest.OKResponseCallback callback) {
         String requestUrl = ApiConstants.BASE_URL + "/user/save";
-        post(requestUrl,jsonRequest,callback);
+        post(requestUrl, jsonRequest, callback);
+    }
+
+    //http://192.168.0.101:8080/product/popularitySearch?productName=%E5%93%88%E5%93%88
+    @Override
+    public void getHotSearchList(@NonNull String keyWord, @NonNull OkJsonRequest.OKResponseCallback callback) {
+
+    }
+
+    @Override
+    public void getHistorySearchList(@NonNull String uid, @NonNull String keyWord, @NonNull OkJsonRequest.OKResponseCallback callback) {
+
+    }
+
+    @Override
+    public void getAllSearchList(@NonNull String uid, @NonNull String keyWord, @NonNull OkJsonRequest.OKResponseCallback callback) {
+
     }
 }

@@ -104,15 +104,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     UserLoginBean userLoginBean = GsonUtils.jsonToBean(jsonObject.toString(), UserLoginBean.class);
                     UserBean userBean = userLoginBean.getData();
                     if (userBean != null && userBean.getId() != null) {
+                        //保存用户信息到本地sp文件中
                         Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
                         SharedPreferences sp = getSharedPreferences("user_info", MODE_PRIVATE);
                         SharedPreferences.Editor editor = sp.edit();
-                        editor.putString("user_name", userBean.getNickName());
+                        editor.putString("user_name", userBean.getUserName());
                         editor.putString("user_id", userBean.getId());
                         editor.apply();
-                        if (getIntent().getStringExtra("home_address") != null){
-                            setResult(2);
-                        }
+                        //登陆到首页
+                        Intent intent = new Intent();
+                        intent.setClass(LoginActivity.this, MainActivity.class);
+                        startActivity(intent);
                         finish();
                     } else {
                         Toast.makeText(LoginActivity.this, "登陆失败", Toast.LENGTH_SHORT).show();

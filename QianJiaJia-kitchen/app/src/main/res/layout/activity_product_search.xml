@@ -67,7 +67,7 @@
         android:paddingTop="15dp"
         android:text="热门搜索"
         android:textColor="@color/con_dark"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
 
     <android.support.v7.widget.RecyclerView
@@ -79,6 +79,7 @@
     </android.support.v7.widget.RecyclerView>
 
     <TextView
+        android:id="@+id/tv_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="15dp"
@@ -89,7 +90,7 @@
         android:paddingTop="15dp"
         android:text="历史搜索"
         android:textColor="@color/con_dark"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rcy_history_search"

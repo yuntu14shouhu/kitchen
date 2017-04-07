@@ -291,8 +291,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
                     startActivityForResult(intent, 1);
                 } else { //未登陆去登陆
                     intent.setClass(getActivity(), LoginActivity.class);
-                    intent.putExtra("home_address", "home_login");
-                    startActivityForResult(intent, 2);
+                    startActivity(intent);
                 }
                 break;
             default:

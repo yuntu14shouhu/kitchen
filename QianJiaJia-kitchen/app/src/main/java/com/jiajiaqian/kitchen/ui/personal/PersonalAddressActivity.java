@@ -16,6 +16,7 @@ import com.jiajiaqian.kitchen.common.entity.AddressListBean;
 import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
 import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
 import com.jiajiaqian.kitchen.common.utils.GsonUtils;
+import com.jiajiaqian.kitchen.common.utils.UserInfoUtils;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 
 import org.json.JSONObject;
@@ -50,23 +51,25 @@ public class PersonalAddressActivity extends BaseActivity {
     @Override
     public void initData(Bundle savedInstanceState) {
 
-        KitchenHttpManager.getInstance().getAddressLists("", new OkJsonRequest.OKResponseCallback() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
-                Log.e("error-address-pre-", volleyError.getMessage() + "");
-            }
+        if (UserInfoUtils.getUserId(this) != null) {
+            KitchenHttpManager.getInstance().getAddressLists(UserInfoUtils.getUserId(this)+"", new OkJsonRequest.OKResponseCallback() {
+                @Override
+                public void onErrorResponse(VolleyError volleyError) {
+                    Log.e("error-address-pre-", volleyError.getMessage() + "");
+                }
 
-            @Override
-            public void onResponse(JSONObject jsonObject) {
-                Log.e("error-address-pre-", jsonObject + "");
-                if (jsonObject != null) {
-                    AddressListBean addressListBean = GsonUtils.jsonToBean(jsonObject.toString(), AddressListBean.class);
-                    if (addressListBean.getData() != null) {
-                        getAddressData(addressListBean.getData());
+                @Override
+                public void onResponse(JSONObject jsonObject) {
+                    Log.e("error-address-pre-", jsonObject + "");
+                    if (jsonObject != null) {
+                        AddressListBean addressListBean = GsonUtils.jsonToBean(jsonObject.toString(), AddressListBean.class);
+                        if (addressListBean.getData() != null) {
+                            getAddressData(addressListBean.getData());
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
     }
 
     private void getAddressData(ArrayList<AddressBean> data) {
@@ -86,8 +89,8 @@ public class PersonalAddressActivity extends BaseActivity {
         mRecyclerView.setLayoutManager(new GridLayoutManager(mRecyclerView.getContext(), 1, GridLayoutManager.VERTICAL, false));
     }
 
-    public void editClick(View view){
-        Intent intent = new Intent(PersonalAddressActivity.this,PersonalAddressEditActivity.class);
+    public void editClick(View view) {
+        Intent intent = new Intent(PersonalAddressActivity.this, PersonalAddressEditActivity.class);
         startActivity(intent);
     }
 

@@ -21,6 +21,7 @@ import com.jiajiaqian.kitchen.common.appglobal.ACache;
 import com.jiajiaqian.kitchen.common.entity.AddressBean;
 import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
 import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
+import com.jiajiaqian.kitchen.common.utils.UserInfoUtils;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 
 import org.json.JSONObject;
@@ -160,27 +161,15 @@ public class PersonalAddressAddActivity extends BaseActivity implements View.OnC
                 Toast.makeText(this, "请输入收货地址", Toast.LENGTH_SHORT).show();
                 return null;
             }
-            if (!TextUtils.isEmpty(mUserName.getText() + "")) {
-                jsonObject.put("userId", "");
+            if (!TextUtils.isEmpty(UserInfoUtils.getUserId(this) + "")) {
+                jsonObject.put("userId", UserInfoUtils.getUserId(this));
+            }else {
+                Toast.makeText(this, "请首先登陆", Toast.LENGTH_SHORT).show();
+                return null;
             }
 
             if (mType != null) {
-                int typePosition = 0;
-                switch (mType) {
-                    case "公司":
-                        typePosition = 1;
-                        break;
-                    case "住宅":
-                        typePosition = 2;
-                        break;
-                    case "学校":
-                        typePosition = 3;
-                        break;
-                    case "其他":
-                        typePosition = 4;
-                        break;
-                }
-                jsonObject.put("addressType", typePosition);
+                jsonObject.put("addressType", mType);
             } else {
                 Toast.makeText(this, "请选择正确的地址类型", Toast.LENGTH_SHORT).show();
                 return null;
