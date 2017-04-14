@@ -6,7 +6,9 @@ import android.support.annotation.Nullable;
 import org.json.JSONObject;
 
 /**
- * Created by jasonxu on 2017/3/11.
+ *@author qianjiajia
+ * @version 1.0
+ * 2017/3/11.
  */
 
 public interface KitchenHttpApi<T> {
@@ -25,7 +27,7 @@ public interface KitchenHttpApi<T> {
 
     void deleteAddress(@NonNull String uid, @NonNull String addressId, @NonNull T callback);
 
-    void updateAddress(@NonNull String uid, @NonNull String addressId, @NonNull T callback);
+    void updateAddress( @NonNull String addressId,@NonNull JSONObject jsonRequest, @NonNull T callback);
 
     void addAddress(@NonNull String uid, @NonNull JSONObject jsonRequest, @NonNull T callback);
 
@@ -45,7 +47,11 @@ public interface KitchenHttpApi<T> {
 
     void getHistorySearchList(@NonNull String uid, @NonNull String keyWord, @NonNull T callback);
 
-    void getAllSearchList(@NonNull String uid, @NonNull String keyWord, @NonNull T callback);
+    void getDeleteAllSearchList(@NonNull String uid, @NonNull String keyWord, @NonNull T callback);
 
+    void getAddressDetails(@NonNull String addressId, @NonNull T callback);
 
+    void getFuzzy(@NonNull String productName,@NonNull T callback);
+
+    void saveSearchContent(@NonNull String uid,@NonNull JSONObject jsonObject,@NonNull T callback);
 }

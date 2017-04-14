@@ -1,6 +1,5 @@
 package com.jiajiaqian.kitchen.common.network;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
@@ -8,11 +7,9 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
- * @author yangxuewu .
+ * @author qianjiajia.
  * @version v1.0 .
  * @date 2016-6-7 .
  * @file OkStringRequest.java .

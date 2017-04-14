@@ -4,6 +4,10 @@ import android.app.Activity;
 import android.os.Handler;
 import android.widget.Toast;
 
+/**
+ * @author qianjiajia
+ * @version 1.0
+ */
 public final class ActivityUtil{
 
     /**

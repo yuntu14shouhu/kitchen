@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,7 +17,9 @@ import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
 import java.util.List;
 
 /**
- * Created by jasonxu on 2017/4/5.
+ *@author qianjiajia
+ * @version 1.0
+ * 2017/4/5.
  */
 
 public class GroupBuyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="130dp">
+    <View
+        style="@style/view_small"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+            <ImageView
+                android:id="@+id/iv_show_product"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_logo"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+            <TextView
+                android:layout_marginTop="15dp"
+                android:id="@+id/tv_show_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="老坛酸菜270克"
+                android:textSize="17sp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <TextView
+                android:layout_marginTop="80dp"
+                android:id="@+id/tv_show_price"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:text="吃饭"
+                android:textSize="17sp"/>
+
+            <ImageButton
+                android:id="@+id/imgBtn_show_add"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_shopping_plus" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

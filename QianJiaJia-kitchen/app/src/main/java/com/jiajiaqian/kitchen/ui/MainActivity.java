@@ -19,6 +19,10 @@ import com.jiajiaqian.kitchen.ui.personal.PersonalFragment;
 import com.jiajiaqian.kitchen.ui.shop.ShopFragment;
 import com.jiajiaqian.kitchen.ui.sort.SortFragment;
 
+/**
+ * @author qianjiajia
+ * @version 1.0
+ */
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener{
 
     private static final String FRAGMENT_HOME = "home";

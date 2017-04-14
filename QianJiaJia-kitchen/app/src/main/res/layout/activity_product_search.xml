@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/con_white"
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/ll_top"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:background="@color/colorPrimary"
@@ -44,65 +45,70 @@
 
         </LinearLayout>
 
+            <TextView
+                android:id="@+id/tv_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:text="搜索"
+                android:textColor="@color/con_white"
+                android:textSize="18sp" />
+        </LinearLayout>
+    <LinearLayout
+        android:layout_below="@+id/ll_top"
+        android:layout_above="@+id/rl_show_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <TextView
-            android:id="@+id/tv_search"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:text="搜索"
-            android:textColor="@color/con_white"
+            android:paddingBottom="15dp"
+            android:paddingEnd="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingStart="10dp"
+            android:paddingTop="15dp"
+            android:text="热门搜索"
+            android:textColor="@color/con_dark"
+            android:textSize="18sp" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcy_hot_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/con_grey_white2">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/tv_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"
+            android:paddingEnd="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingStart="10dp"
+            android:paddingTop="15dp"
+            android:text="历史搜索"
+            android:textColor="@color/con_dark"
             android:textSize="18sp" />
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rcy_history_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/con_grey_white">
+
+        </android.support.v7.widget.RecyclerView>
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="15dp"
-        android:paddingEnd="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingStart="10dp"
-        android:paddingTop="15dp"
-        android:text="热门搜索"
-        android:textColor="@color/con_dark"
-        android:textSize="18sp" />
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rcy_hot_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/con_grey_white2">
-
-    </android.support.v7.widget.RecyclerView>
-
-    <TextView
-        android:id="@+id/tv_history"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="15dp"
-        android:paddingEnd="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingStart="10dp"
-        android:paddingTop="15dp"
-        android:text="历史搜索"
-        android:textColor="@color/con_dark"
-        android:textSize="18sp" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rcy_history_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/con_grey_white">
-
-    </android.support.v7.widget.RecyclerView>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/rl_show_list"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:padding="15dp">
 
         <Button
@@ -114,7 +120,5 @@
             android:gravity="center"
             android:text="清除历史搜索"
             android:textSize="16sp" />
-
     </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

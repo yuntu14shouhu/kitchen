@@ -6,7 +6,9 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 
 /**
- * Created by t_xuz on 12/10/16.
+ * @author qianjiajia
+ * @version 1.0
+ * 12/10/16.
  * 该swipeRefreshLayout是为了解决嵌套子view时出现的子view的水平方向与其竖直方向出现的滑动冲突问题
  */
 

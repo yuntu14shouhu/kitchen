@@ -7,7 +7,8 @@ import com.jiajiaqian.kitchen.common.network.NetRequestManager;
 import org.xutils.x;
 
 /**
- * Created by t_xuz on 12/13/16.
+ *  @author qianjiajia
+ * @version 1.0
  */
 
 public class KitchenApplication extends Application {

@@ -3,7 +3,9 @@ package com.jiajiaqian.kitchen.common.entity;
 import java.io.Serializable;
 
 /**
- * Created by jasonxu on 2017/4/6.
+ *@author qianjiajia
+ * @version 1.0
+ * 2017/4/6.
  */
 
 public class UserBean implements Serializable{
@@ -156,5 +158,24 @@ public class UserBean implements Serializable{
 
     public void setQqnumber(String qqnumber) {
         this.qqnumber = qqnumber;
+    }
+
+    @Override
+    public String toString() {
+        return "UserBean{" +
+                "id='" + id + '\'' +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", salt='" + salt + '\'' +
+                ", status=" + status +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                ", createTime=" + createTime +
+                ", remark='" + remark + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", qqnumber='" + qqnumber + '\'' +
+                '}';
     }
 }

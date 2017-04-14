@@ -1,7 +1,9 @@
 package com.jiajiaqian.kitchen.common.network;
 
 /**
- * Created by t_xuz on 10/19/16.
+ * @author qianjiajia
+ * @version 1.0
+ * 10/19/16.
  * <p>
  * 获取网络数据接口回调
  */

@@ -10,7 +10,9 @@ import com.jiajiaqian.kitchen.common.entity.microbean.VegetableBean;
 import java.io.Serializable;
 
 /**
- * Created by jasonxu on 2017/3/20.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/3/20.
  */
 
 public class SortBean implements Serializable{

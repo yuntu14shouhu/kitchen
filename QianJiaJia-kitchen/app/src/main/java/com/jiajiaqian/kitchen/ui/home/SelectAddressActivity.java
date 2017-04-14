@@ -2,7 +2,6 @@ package com.jiajiaqian.kitchen.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,7 +26,9 @@ import com.jiajiaqian.kitchen.ui.personal.PersonalAddressAddActivity;
 import org.json.JSONObject;
 
 /**
- * Created by jasonxu on 2017/3/21.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/3/21.
  */
 
 public class SelectAddressActivity extends BaseActivity implements View.OnClickListener,

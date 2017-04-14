@@ -9,7 +9,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
 /**
- * Created by t_xuz on 10/9/16.
+ * @author qianjiajia
+ * @version 1.0
+ * 10/9/16.
  * manager volley queue
  */
 public class NetRequestManager {

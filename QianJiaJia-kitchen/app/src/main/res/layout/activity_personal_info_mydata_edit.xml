@@ -43,14 +43,14 @@
                 style="@style/RlInfoStyle">
 
                 <TextView
-                    android:id="@+id/tv_info_mydata_name_edit"
+                    android:id="@+id/tv_info_mydata_nickname_edit"
                     style="@style/tv_personal_info_address"
-                    android:text="用\t\t户\t\t名："/>
+                    android:text="昵\t\t\t\t\t\t称："/>
 
                 <EditText
                     android:id="@+id/et_info_mydata_name_edit"
                     style="@style/et_personal_info_address"
-                    android:layout_toRightOf="@id/tv_info_mydata_name_edit"
+                    android:layout_toRightOf="@id/tv_info_mydata_nickname_edit"
                     android:hint="请输入用户名称"/>
             </RelativeLayout>
 
@@ -60,14 +60,14 @@
                 style="@style/RlInfoStyle">
 
                 <TextView
-                    android:id="@+id/tv_info_mydata_nickname_edit"
+                    android:id="@+id/tv_info_mydata_remark_edit"
                     style="@style/tv_personal_info_address"
-                    android:text="昵\t\t\t\t\t\t称："/>
+                    android:text="备\t\t\t\t\t\t注："/>
 
                 <EditText
-                    android:id="@+id/et_info_mydata_nickname_edit"
+                    android:id="@+id/et_info_mydata_remark_edit"
                     style="@style/et_personal_info_address"
-                    android:layout_toRightOf="@id/tv_info_mydata_nickname_edit"
+                    android:layout_toRightOf="@id/tv_info_mydata_remark_edit"
                     android:hint="请输入用户名称"/>
             </RelativeLayout>
 
@@ -80,40 +80,12 @@
                     android:id="@+id/tv_info_mydata_sex_edit"
                     style="@style/tv_personal_info_address"
                     android:text="性\t\t\t\t\t\t别："/>
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                <EditText
+                    android:id="@+id/et_info_mydata_sex_edit"
+                    style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/tv_info_mydata_sex_edit"
-                    android:layout_toEndOf="@id/tv_info_mydata_sex_edit">
+                    android:hint="请输入用户性别"/>
 
-                    <RadioGroup
-                        android:layout_marginTop="5dp"
-                        android:gravity="center_vertical"
-                        android:id="@+id/radio_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-                        <RadioButton
-                            android:id="@+id/button1"
-                            android:layout_width="70dp"
-                            android:layout_height="wrap_content"
-                            android:button="@null"
-                            android:drawableRight="@android:drawable/btn_radio"
-                            android:paddingLeft="13dp"
-                            android:text="男" />
-
-                        <RadioButton
-                            android:id="@+id/button2"
-                            android:layout_width="70dp"
-                            android:layout_height="wrap_content"
-                            android:button="@null"
-                            android:checked="true"
-                            android:paddingLeft="13dp"
-                            android:drawableRight="@android:drawable/btn_radio"
-                            android:text="女" />
-                    </RadioGroup>
-                </RelativeLayout>
             </RelativeLayout>
 
             <View

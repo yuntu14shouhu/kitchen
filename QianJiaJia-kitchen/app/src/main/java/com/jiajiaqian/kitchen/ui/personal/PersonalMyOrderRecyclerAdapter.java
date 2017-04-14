@@ -12,20 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.android.volley.VolleyError;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.entity.OrderBean;
-import com.jiajiaqian.kitchen.common.entity.OrderProductImgBean;
-import com.jiajiaqian.kitchen.common.entity.OrderProductImgBeanList;
-import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
-import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
-import com.jiajiaqian.kitchen.common.utils.GsonUtils;
 import com.jiajiaqian.kitchen.ui.personal.adapter.FullyGridLayoutManager;
 
-import org.json.JSONObject;
-
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -64,53 +55,32 @@ public class PersonalMyOrderRecyclerAdapter extends RecyclerView.Adapter<Recycle
         }
     }
 
-    private void bindType(final MyViewHolder holder, int position) {
+    private void bindType(final MyViewHolder holder, final int position) {
 
-        if(orderbeanList != null && orderbeanList.size() > 0){
+        if(orderbeanList != null && orderbeanList.size() > 0) {
 
-            Log.e("--------------",getStrTime(orderbeanList.get(position).getOrderDate()));
-            if (!TextUtils.isEmpty(orderbeanList.get(position).getOrderDate())) {
-
-                holder.orderDate.setText(getStrTime(orderbeanList.get(position).getOrderDate()));
+            Log.e("--------------", getStrTime(orderbeanList.get(position).getDate() + ""));
+            if (!TextUtils.isEmpty(orderbeanList.get(position).getDate() + "")) {
+                holder.orderDate.setText(getStrTime(orderbeanList.get(position).getDate() + ""));
             }
 
-            if(orderbeanList.get(position).getTotalPrice() != 0 ){
-                holder.orderTotal.setText(orderbeanList.get(position).getTotalPrice()+"");
+            if (orderbeanList.get(position).getTotal() != 0) {
+                holder.orderTotal.setText(orderbeanList.get(position).getTotal() + "");
             }
+            Log.e("getProduct", "bindType: "+orderbeanList.get(position).getProduct() );
+            holder.item_recyc_type2.setLayoutManager(new FullyGridLayoutManager(holder.item_recyc_type2.getContext(), 1, GridLayoutManager.HORIZONTAL, false));
+            holder.item_recyc_type2.setAdapter(new PersonalMyOrderRecyclerAdapterItem(context,orderbeanList.get(position).getProduct(),orderbeanList.get(position).getId() ));
         }
-
-        KitchenHttpManager.getInstance().orderList("",new OkJsonRequest.OKResponseCallback(){
-            @Override
-            public void onResponse(JSONObject jsonObject) {
-                Log.e("success-imgList--", jsonObject + "");
-                if (jsonObject != null) {
-                    OrderProductImgBeanList imgListBean = GsonUtils.jsonToBean(jsonObject.toString(), OrderProductImgBeanList.class);
-                    //处理订单列表的图片数据
-                    if (imgListBean.getOrderProductImgBean() != null) {
-                        getImgListData(imgListBean.getOrderProductImgBean());
-                    }
-                }
-            }
-
-            private void getImgListData(ArrayList<OrderProductImgBean> orderProductImgBean) {
-                holder.item_recyc_type2.setLayoutManager(new FullyGridLayoutManager(holder.item_recyc_type2.getContext(), 1, GridLayoutManager.HORIZONTAL, false));
-                holder.item_recyc_type2.setAdapter(new PersonalMyOrderRecyclerAdapterItem(context, orderProductImgBean));
-            }
-
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
-                Log.e("error-imgList--", volleyError.getMessage() + "");
-            }
-        });
       holder.buttonOrderDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context,PersonalMyOrderDetailsActivity.class));
+                Intent intent = new Intent(context,PersonalMyOrderDetailsActivity.class);
+                intent.putExtra("orderId",orderbeanList.get(position).getId());
+                context.startActivity(intent);
             }
         });
         holder.item_recyc_type2.setNestedScrollingEnabled(false);
     }
-
 
 
     @Override
@@ -160,7 +130,7 @@ public class PersonalMyOrderRecyclerAdapter extends RecyclerView.Adapter<Recycle
      */
     public static String getStrTime(String timeStamp){
         String timeString = null;
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         long  l = Long.valueOf(timeStamp);
         timeString = sdf.format(new Date(l));//单位秒
         return timeString;

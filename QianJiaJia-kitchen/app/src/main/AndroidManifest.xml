@@ -55,9 +55,6 @@
         <activity android:name=".ui.shop.ShopAccountsActivity">
 
         </activity>
-        <activity android:name=".ui.ProductDetailsActivity">
-
-        </activity>
         <activity android:name=".ui.ProductSearchActivity">
 
         </activity>
@@ -79,6 +76,8 @@
         <activity android:name=".ui.personal.PersonalAddressAddActivity"></activity>
         <activity android:name=".ui.personal.PersonalMyOrderDetailsActivity"></activity>
         <activity android:name=".ui.shop.ShoppingCartPayAddressChoose"></activity>
+        <activity android:name=".ui.RegisterActivity"></activity>
+        <activity android:name=".ui.ProductSearchResultActivity"></activity>
 
     </application>
 

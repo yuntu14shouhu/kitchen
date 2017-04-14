@@ -22,7 +22,6 @@ import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author qianjiajia
@@ -40,8 +39,7 @@ public class PersonalAddressActivity extends BaseActivity {
     private TextView editAddress;
     private TextView topBarTitle;
 
-    private List<AddressBean> mAddressBean;
-    private PersonalAddressAdapter mAdapter;
+    private AddressBean mAddressBean;
 
     @Override
     public int getLayoutId() {

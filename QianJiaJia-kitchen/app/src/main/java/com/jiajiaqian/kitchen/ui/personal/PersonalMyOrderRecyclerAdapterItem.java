@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.jiajiaqian.kitchen.R;
-import com.jiajiaqian.kitchen.common.entity.OrderProductImgBean;
+import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
 
 import java.util.List;
 
@@ -25,11 +26,13 @@ import java.util.List;
 public class PersonalMyOrderRecyclerAdapterItem extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
-    private List<OrderProductImgBean> imgList;
+    private List<ProductBean> imgList;
+    private String orderId;
 
-    public PersonalMyOrderRecyclerAdapterItem(Context context, List<OrderProductImgBean> imgList) {
+    public PersonalMyOrderRecyclerAdapterItem(Context context, List<ProductBean> imgList,String orderId) {
         this.context = context;
         this.imgList = imgList;
+        this.orderId = orderId;
     }
 
     @Override
@@ -43,16 +46,17 @@ public class PersonalMyOrderRecyclerAdapterItem extends RecyclerView.Adapter<Rec
 //            bind((ItemViewHolder) holder,position);
 //        }
 
-        ItemViewHolder viewHolder = (ItemViewHolder) holder;
+        ItemViewHolder viewHolder = (ItemViewHolder) holder;//这句没意义 啊
         initView(viewHolder, position);
         initEvents(viewHolder, position);
     }
 
     private void initView(ItemViewHolder viewHolder, int position) {
         if (imgList != null && imgList.size() > 0) {
-            if (!TextUtils.isEmpty(imgList.get(position).getProductImg())) {
+            if (!TextUtils.isEmpty(imgList.get(position).getProductImageUrl())) {
+                Log.e("ProductImageUrl", "initView: "+imgList.get(position).getProductImageUrl() );
                 Glide.with(context)
-                        .load(imgList.get(position).getProductImg())
+                        .load(imgList.get(position).getProductImageUrl())
                         .centerCrop()
                         .into(viewHolder.img);
             }
@@ -63,7 +67,9 @@ public class PersonalMyOrderRecyclerAdapterItem extends RecyclerView.Adapter<Rec
         viewHolder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(new Intent(context,PersonalMyOrderDetailsActivity.class));
+                Intent intent = new Intent(context,PersonalMyOrderDetailsActivity.class);
+                intent.putExtra("orderId",orderId);
+                context.startActivity(intent);
             }
         });
     }

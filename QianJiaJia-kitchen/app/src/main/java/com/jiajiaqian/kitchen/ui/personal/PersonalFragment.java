@@ -31,7 +31,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by jasonxu on 2017/2/17.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/2/17.
  * 个人中心fragment
  */
 

@@ -3,6 +3,7 @@ package com.jiajiaqian.kitchen.ui.shop.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +11,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.jiajiaqian.kitchen.R;
-import com.jiajiaqian.kitchen.common.entity.OrderDetailsBean;
+import com.jiajiaqian.kitchen.common.entity.DetailsBean;
+import com.jiajiaqian.kitchen.common.entity.MyOrderDetailsBean;
 import com.jiajiaqian.kitchen.ui.shop.ShopProductDetailsActivity;
 
 import java.util.List;
@@ -27,20 +30,17 @@ public class ShopAccountActivityAdapter extends RecyclerView.Adapter<ShopAccount
 
     private Context context;
     private LayoutInflater mInflater;
-    private List<OrderDetailsBean> results;
+    private List<MyOrderDetailsBean.ProductBean> productList;
     private int srcId;
-
-    public List<OrderDetailsBean> getResults() {
-        return results;
-    }
+    private DetailsBean mDetailsBean;
 
 
-    public ShopAccountActivityAdapter(Context context, int srcId, List<OrderDetailsBean> results) {
+    public ShopAccountActivityAdapter(Context context, int srcId, List<MyOrderDetailsBean.ProductBean> productList) {
         this.context = context;
-        this.results = results;
+        this.productList = productList;
         this.srcId = srcId;
         mInflater = LayoutInflater.from(context);
-        Log.e("results", "PersonalMyOrderDetailsAdapter: "+results.toString());
+        Log.e("results", "PersonalMyOrderDetailsAdapter: "+productList.toString());
     }
 
     @Override
@@ -52,22 +52,39 @@ public class ShopAccountActivityAdapter extends RecyclerView.Adapter<ShopAccount
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        holder.productImgDetails.setImageResource(results.get(position).getProductImgDetails());
+        if (productList != null && productList.size() > 0) {
+            if (!TextUtils.isEmpty(productList.get(position).getProductImageUrl())) {
+                Log.e("ProductImageUrl", "initView: "+productList.get(position).getProductImageUrl() );
+                Glide.with(context)
+                        .load(productList.get(position).getProductImageUrl())
+                        .centerCrop()
+                        .into(holder.productImgDetails);
+            }
+            if(!TextUtils.isEmpty(productList.get(position).getProductName())){
+                holder.productNameDetails.setText(productList.get(position).getProductName());
+            }
+            if(!TextUtils.isEmpty(productList.get(position).getPrice()+"")){
+                holder.productPriceDetails.setText(productList.get(position).getPrice()+"");
+            }
+//            holder.productNumberDetails.setText(mDetailsBean.getOrderProductNumber());
+            if(!TextUtils.isEmpty(productList.get(position).getLimitNumber() +"")){
+                holder.productNumberDetails.setText(productList.get(position).getLimitNumber()+"");
+            }
+
+        }
+
         holder.productImgDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 context.startActivity(new Intent(context, ShopProductDetailsActivity.class));
             }
         });
-        holder.productNameDetails.setText(results.get(position).getProductNameDetails());
-        holder.productPriceDetails.setText(results.get(position).getProductPriceDetails()+"");
-        holder.productNumberDetails.setText(results.get(position).getProductNumberDetails()+"");
-//        holder.productDefaultsDetails.setText(results.get(position).getProductDefaultDetails());
+
     }
 
     @Override
     public int getItemCount() {
-        return results == null ? 0:results.size();
+        return productList == null ? 0:productList.size();
     }
 
 
@@ -77,14 +94,12 @@ public class ShopAccountActivityAdapter extends RecyclerView.Adapter<ShopAccount
         private TextView productNameDetails;
         private TextView productPriceDetails;
         private TextView productNumberDetails;
-        //        private TextView productDefaultsDetails;
         public MyViewHolder(View itemView) {
             super(itemView);
             productImgDetails = (ImageView) itemView.findViewById(R.id.iv_order_details_info);
             productNameDetails = (TextView) itemView.findViewById(R.id.tv_order_details_product_name);
             productPriceDetails = (TextView) itemView.findViewById(R.id.tv_order_details_product_price);
             productNumberDetails = (TextView) itemView.findViewById(R.id.tv_order_details_product_number);
-//            productDefaultsDetails = (TextView) itemView.findViewById(R.id.tv_order_defaults_details_product);
         }
     }
 }

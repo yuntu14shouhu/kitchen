@@ -1,7 +1,9 @@
 package com.jiajiaqian.kitchen.common.appglobal;
 
 /**
- * Created by jasonxu on 2017/4/4.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/4/4.
  * 一些常量的定义
  */
 

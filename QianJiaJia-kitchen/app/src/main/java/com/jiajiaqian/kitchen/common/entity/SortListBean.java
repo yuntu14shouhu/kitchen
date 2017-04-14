@@ -6,7 +6,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created by jasonxu on 2017/4/4.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/4/4.
  * 仅用于前端解析分类数据用
  */
 

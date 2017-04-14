@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include layout="@layout/activity_top_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_login_bg">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/ic_user_login"/>
+            </RelativeLayout>
+
+            <EditText
+                android:layout_marginTop="20dp"
+                android:id="@+id/et_login_register_username"
+                style="?android:attr/textViewStyle"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:paddingLeft="20dp"
+                android:background="@drawable/login__register_et_selector"
+                android:gravity="center_vertical"
+                android:textSize="18sp"
+                android:textColor="#0e932e"
+                android:hint="请输入用户名"/>
+
+
+
+            <EditText
+                android:id="@+id/et_login_register_password"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/login__register_et_selector"
+                android:gravity="center_vertical"
+                android:maxLength="18"
+                android:textSize="18sp"
+                android:paddingLeft="20dp"
+                android:textColor="#0e932e"
+                android:inputType="textPassword"
+                android:hint="请输入6~18位密码"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:textSize="11sp"
+                android:textColor="#ffffff"
+                android:text="密码长度为6~18位，由数字字母字符任意两种组成"/>
+
+            <EditText
+                android:id="@+id/et_login_register_password_agin"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/login__register_et_selector"
+                android:gravity="center_vertical"
+                android:maxLength="18"
+                android:textSize="18sp"
+                android:textColor="#0e932e"
+                android:paddingLeft="20dp"
+                android:inputType="textPassword"
+                android:hint="请确认密码"/>
+
+            <Button
+                android:id="@+id/btn_login_phonelogin_register"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="40dp"
+                android:text="注册"
+                android:background="@drawable/main_login_btn_shape"
+                android:textColor="#ffffff"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:textSize="11sp"
+                android:textColor="#ffffff"
+                android:text="您点击注册按钮，即代表你同意本协议，感谢您的支持"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

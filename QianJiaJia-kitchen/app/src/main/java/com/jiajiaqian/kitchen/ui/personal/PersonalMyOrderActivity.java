@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.jiajiaqian.kitchen.R;
-import com.jiajiaqian.kitchen.common.entity.MyOrderBean;
 import com.jiajiaqian.kitchen.common.entity.OrderBean;
+import com.jiajiaqian.kitchen.common.entity.OrderListBean;
 import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
 import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
 import com.jiajiaqian.kitchen.common.utils.GsonUtils;
@@ -39,7 +39,7 @@ public class PersonalMyOrderActivity extends BaseActivity implements SwipeRefres
     private PersonalMyOrderRecyclerAdapter adapter;
     private SwipeRefreshLayout mRefreshLayout;
 
-    private List<OrderBean> mOrderBeanList;
+    private List<OrderListBean> mOrderBeanList = new ArrayList<>();
 
     @Override
     public int getLayoutId() {
@@ -55,11 +55,9 @@ public class PersonalMyOrderActivity extends BaseActivity implements SwipeRefres
             public void onResponse(JSONObject jsonObject) {
                 Log.e("success-orderList--", jsonObject + "");
                 if (jsonObject != null) {
-                    MyOrderBean myOrderBean = GsonUtils.jsonToBean(jsonObject.toString(), MyOrderBean.class);
-                    //处理订单列表的数据
-                    if (myOrderBean.getOrderBeanList() != null) {
-                        getOrderListData(myOrderBean.getOrderBeanList());
-                    }
+                    OrderListBean orderListBean = GsonUtils.jsonToBean(jsonObject.toString(), OrderListBean.class);
+//                    mOrderBeanList= orderListBean.getOrder();
+                    getOrderListData(orderListBean.getOrder());
                 }
             }
 
@@ -70,8 +68,8 @@ public class PersonalMyOrderActivity extends BaseActivity implements SwipeRefres
         });
     }
 
-    private void getOrderListData(ArrayList<OrderBean> orderBeanList) {
-        PersonalMyOrderRecyclerAdapter adapter = new PersonalMyOrderRecyclerAdapter(PersonalMyOrderActivity.this, R.layout.activity_personal_info_order_edit, orderBeanList);
+    private void getOrderListData(List<OrderBean> order) {
+        PersonalMyOrderRecyclerAdapter adapter = new PersonalMyOrderRecyclerAdapter(PersonalMyOrderActivity.this, R.layout.activity_personal_info_order_edit, order);
         orderRecyclerView.setAdapter(adapter);
     }
 
@@ -120,11 +118,9 @@ public class PersonalMyOrderActivity extends BaseActivity implements SwipeRefres
             public void onResponse(JSONObject jsonObject) {
                 Log.e("success-orderList--", jsonObject + "");
                 if (jsonObject != null) {
-                    MyOrderBean myOrderBean = GsonUtils.jsonToBean(jsonObject.toString(), MyOrderBean.class);
-                    //处理订单列表的数据
-                    if (myOrderBean.getOrderBeanList() != null) {
-                        getOrderListData(myOrderBean.getOrderBeanList());
-                    }
+                    OrderListBean orderListBean = GsonUtils.jsonToBean(jsonObject.toString(), OrderListBean.class);
+//                    mOrderBeanList= orderListBean.getOrder();
+                    getOrderListData(orderListBean.getOrder());
                 }
             }
 

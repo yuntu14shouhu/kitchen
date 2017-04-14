@@ -8,7 +8,9 @@ import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 
 /**
- * Created by jasonxu on 2017/4/6.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/4/6.
  */
 
 public class SplashActivity extends BaseActivity {

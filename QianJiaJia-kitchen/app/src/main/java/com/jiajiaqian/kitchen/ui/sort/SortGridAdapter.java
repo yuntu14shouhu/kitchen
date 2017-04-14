@@ -8,7 +8,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,12 +15,13 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.entity.SortListBean;
-import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
 
 import java.util.List;
 
 /**
- * Created by jasonxu on 2017/4/4.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/4/4.
  */
 
 public class SortGridAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

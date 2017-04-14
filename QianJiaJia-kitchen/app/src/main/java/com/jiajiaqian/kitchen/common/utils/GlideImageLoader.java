@@ -7,7 +7,9 @@ import com.bumptech.glide.Glide;
 import com.yyydjk.library.BannerLayout;
 
 /**
- * Created by jasonxu on 2017/2/24.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/2/24.
  */
 
 public class GlideImageLoader implements BannerLayout.ImageLoader {

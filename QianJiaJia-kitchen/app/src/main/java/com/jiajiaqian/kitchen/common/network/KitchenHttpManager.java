@@ -9,7 +9,9 @@ import com.jiajiaqian.kitchen.common.appglobal.ApiConstants;
 import org.json.JSONObject;
 
 /**
- * Created by jasonxu on 2017/3/11.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/3/11.
  */
 
 public class KitchenHttpManager implements KitchenHttpApi<OkJsonRequest.OKResponseCallback> {
@@ -64,16 +66,21 @@ public class KitchenHttpManager implements KitchenHttpApi<OkJsonRequest.OKRespon
         get(requestUrl, callback);
     }
 
+    //http://localhost:8080/address/delete?addressId=
     @Override
     public void deleteAddress(@NonNull String uid, @NonNull String addressId, @NonNull OkJsonRequest.OKResponseCallback callback) {
-
+        String requestUrl = ApiConstants.BASE_URL + "/address/delete?addressId=" + addressId;
+        get(requestUrl,callback);
     }
 
+    //http://localhost:8080/address/update
     @Override
-    public void updateAddress(@NonNull String uid, @NonNull String addressId, @NonNull OkJsonRequest.OKResponseCallback callback) {
-
+    public void updateAddress(@NonNull String addressId, @NonNull JSONObject jsonRequest, @NonNull OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/address/update";
+        post(requestUrl,jsonRequest,callback);
     }
 
+    //http://localhost:8080/address/save
     @Override
     public void addAddress(@NonNull String uid, @NonNull JSONObject jsonRequest, @NonNull OkJsonRequest.OKResponseCallback callback) {
         String requestUrl = ApiConstants.BASE_URL + "/address/save";
@@ -140,19 +147,46 @@ public class KitchenHttpManager implements KitchenHttpApi<OkJsonRequest.OKRespon
         post(requestUrl, jsonRequest, callback);
     }
 
-    //http://192.168.0.101:8080/product/popularitySearch?productName=%E5%93%88%E5%93%88
+    //http://localhost:8080/search/aaqueryHot
     @Override
     public void getHotSearchList(@NonNull String keyWord, @NonNull OkJsonRequest.OKResponseCallback callback) {
-
+        String requestUrl = ApiConstants.BASE_URL + "/search/aaqueryHot";
+        get(requestUrl,callback);
     }
 
+   // http://localhost:8080/search/aaqueryHistory?userId=a240611ed1174b4dbf3d6536517d3b6c
     @Override
     public void getHistorySearchList(@NonNull String uid, @NonNull String keyWord, @NonNull OkJsonRequest.OKResponseCallback callback) {
-
+        String requestUrl = ApiConstants.BASE_URL + "/search/aaqueryHistory?userId=" + uid;
+        get(requestUrl,callback);
     }
 
+    //http://localhost:8080/search/deleteAll?userId=a240611ed1174b4dbf3d6536517d3b6c
     @Override
-    public void getAllSearchList(@NonNull String uid, @NonNull String keyWord, @NonNull OkJsonRequest.OKResponseCallback callback) {
-
+    public void getDeleteAllSearchList(@NonNull String uid, @NonNull String keyWord, @NonNull OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/search/deleteAll?userId=" + uid;
+        get(requestUrl,callback);
     }
+
+    //http://localhost:8080/address/queryDetails?addressId=
+    @Override
+    public void getAddressDetails(@NonNull String addressId, @NonNull OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/address/queryDetails?addressId=" + addressId;
+        get(requestUrl,callback);
+    }
+
+    //http://localhost:8080/product/fuzzyQuery?productName=%E7%B1%B3
+    @Override
+    public void getFuzzy(@NonNull String productName, @NonNull OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/product/fuzzyQuery?productName=" +productName;
+        get(requestUrl,callback);
+    }
+
+    //http://localhost:8080/search/save
+    @Override
+    public void saveSearchContent(@NonNull String uid, @NonNull JSONObject jsonObject, @NonNull OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/search/save";
+        post(requestUrl,jsonObject,callback);
+    }
+
 }

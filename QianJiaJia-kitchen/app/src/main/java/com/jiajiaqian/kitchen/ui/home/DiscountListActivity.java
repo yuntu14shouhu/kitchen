@@ -25,7 +25,9 @@ import com.jiajiaqian.kitchen.ui.home.adapter.DiscountListAdapter;
 import org.json.JSONObject;
 
 /**
- * Created by jasonxu on 2017/4/5.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/4/5.
  */
 
 public class DiscountListActivity extends BaseActivity implements View.OnClickListener{

@@ -1,7 +1,5 @@
 package com.jiajiaqian.kitchen.ui;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -32,7 +30,6 @@ import org.json.JSONObject;
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private Button mRegisterBtn;
-    private Button mForgetpwBtn;
     private Button mLoginBtn;
 
     private EditText mUsernameET;
@@ -59,8 +56,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public void initView() {
-        mRegisterBtn = (Button) findViewById(R.id.btn_main_login_register);
-        mForgetpwBtn = (Button) findViewById(R.id.btn_main_login_forgetpw);
+        mRegisterBtn = (Button) findViewById(R.id.btn_main_register);
         mLoginBtn = (Button) findViewById(R.id.btn_main_login);
         mUsernameET = (EditText) findViewById(R.id.et_main_login_username);
         mPasswordET = (EditText) findViewById(R.id.et_main_login_password);
@@ -69,17 +65,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     @Override
     public void initEvent() {
         mRegisterBtn.setOnClickListener(this);
-        mForgetpwBtn.setOnClickListener(this);
         mLoginBtn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_main_login_register:
-                alertDialog();
-            case R.id.btn_main_login_forgetpw:
-                startActivity(new Intent(LoginActivity.this, LoginFindpwWayActivity.class));
+            case R.id.btn_main_register:
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
             case R.id.btn_main_login:
                 // 登陆,获取EditText的内容,在数据库中查找是否该用户已经注册,以及密码是否正确
                 login();
@@ -126,41 +120,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
     }
 
-    /**
-     * 弹出单选对话框,以选择是手机注册还是邮箱注册
-     */
-    private void alertDialog() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setTitle("请选择注册方式")
-                .setSingleChoiceItems(R.array.leftmenu_register_way, 0, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        index = which;
-                    }
-                }).setPositiveButton("确定", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                String str = getResources().getStringArray(R.array.leftmenu_register_way)[index];
-                if (str.equals("手机注册")) {
-                    startActivity(new Intent(LoginActivity.this, LoginPhoneRegisterActivity.class));
-                    finish();
-                }
-                if (str.equals("邮箱注册")) {
-                    startActivity(new Intent(LoginActivity.this, LoginEmailRegisterActivity.class));
-                    finish();
-                }
-            }
-        }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        }).create().show();
-    }
 
 //    public Handler mHandler = new Handler() {
 //        public void handleMessage(Message msg) {

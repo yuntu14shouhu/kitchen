@@ -14,13 +14,14 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.jiajiaqian.kitchen.R;
-import com.jiajiaqian.kitchen.common.entity.SortListBean;
 import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
 
 import java.util.List;
 
 /**
- * Created by jasonxu on 2017/4/4.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/4/4.
  */
 
 public class SubSortListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

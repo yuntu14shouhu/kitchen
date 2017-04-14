@@ -3,7 +3,9 @@ package com.jiajiaqian.kitchen.common.entity;
 import java.io.Serializable;
 
 /**
- * Created by jasonxu on 2017/4/6.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/4/6.
  */
 
 public class UserLoginBean implements Serializable{

@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.jiajiaqian.kitchen.R;
@@ -16,13 +15,14 @@ import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
 import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
 import com.jiajiaqian.kitchen.common.utils.GsonUtils;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
-import com.jiajiaqian.kitchen.ui.home.adapter.DiscountListAdapter;
 import com.jiajiaqian.kitchen.ui.home.adapter.GroupBuyListAdapter;
 
 import org.json.JSONObject;
 
 /**
- * Created by jasonxu on 2017/4/5.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/4/5.
  */
 
 public class GroupBuyListActivity extends BaseActivity {

@@ -7,9 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,7 +16,9 @@ import com.jiajiaqian.kitchen.common.entity.AddressBean;
 import java.util.List;
 
 /**
- * Created by jasonxu on 2017/4/6.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/4/6.
  */
 
 public class AddressListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

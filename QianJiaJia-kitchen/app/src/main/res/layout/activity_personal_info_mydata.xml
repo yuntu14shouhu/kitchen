@@ -27,14 +27,14 @@
                 style="@style/RlInfoStyle">
 
                 <TextView
-                    android:id="@+id/info_mydata_name"
+                    android:id="@+id/info_mydata_nickname"
                     style="@style/tv_personal_info_address"
-                    android:text="用\t\t户\t\t名："/>
+                    android:text="昵\t\t\t\t\t\t称："/>
 
                 <TextView
-                    android:id="@+id/tv_info_mydata_name"
+                    android:id="@+id/tv_info_mydata_nickname"
                     style="@style/et_personal_info_address"
-                    android:layout_toRightOf="@id/info_mydata_name"
+                    android:layout_toRightOf="@id/info_mydata_nickname"
                     android:text="云图"/>
             </RelativeLayout>
 
@@ -45,14 +45,14 @@
                 style="@style/RlInfoStyle">
 
                 <TextView
-                    android:id="@+id/info_mydata_nickname"
+                    android:id="@+id/info_mydata_remark"
                     style="@style/tv_personal_info_address"
-                    android:text="昵\t\t\t\t\t\t称："/>
+                    android:text="备\t\t\t\t\t\t注："/>
 
                 <TextView
-                    android:id="@+id/tv_info_mydata_nickname"
+                    android:id="@+id/tv_info_mydata_remark"
                     style="@style/et_personal_info_address"
-                    android:layout_toRightOf="@id/info_mydata_nickname"
+                    android:layout_toRightOf="@id/info_mydata_remark"
                     android:text="守护"/>
             </RelativeLayout>
 
@@ -91,7 +91,7 @@
                     android:id="@+id/tv_info_mydata_birthdate"
                     style="@style/et_personal_info_address"
                     android:layout_toRightOf="@id/info_mydata_birthdate"
-                    android:hint="请输入用户名称"
+                    android:text="12"
                     android:inputType="number"/>
             </RelativeLayout>
 

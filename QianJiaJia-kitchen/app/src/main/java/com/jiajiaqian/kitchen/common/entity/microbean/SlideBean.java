@@ -3,8 +3,9 @@ package com.jiajiaqian.kitchen.common.entity.microbean;
 import java.io.Serializable;
 
 /**
- * Created by jasonxu on 2017/3/20.
- * lun
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/3/20.
  */
 
 public class SlideBean implements Serializable{

@@ -26,12 +26,12 @@ import com.jiajiaqian.kitchen.common.utils.GlideImageLoader;
 import com.jiajiaqian.kitchen.common.utils.GsonUtils;
 import com.jiajiaqian.kitchen.common.utils.UserInfoUtils;
 import com.jiajiaqian.kitchen.ui.LoginActivity;
-import com.jiajiaqian.kitchen.ui.ProductDetailsActivity;
 import com.jiajiaqian.kitchen.ui.ProductSearchActivity;
 import com.jiajiaqian.kitchen.ui.base.BaseFragment;
 import com.jiajiaqian.kitchen.ui.home.adapter.DiscountAdapter;
 import com.jiajiaqian.kitchen.ui.home.adapter.GroupBuyAdapter;
 import com.jiajiaqian.kitchen.ui.home.adapter.RecommendAdapter;
+import com.jiajiaqian.kitchen.ui.shop.ShopProductDetailsActivity;
 import com.yyydjk.library.BannerLayout;
 
 import org.json.JSONObject;
@@ -40,7 +40,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by jasonxu on 2017/2/17.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/2/17.
  * 首页fragment
  */
 
@@ -149,7 +151,7 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             @Override
             public void onItemClick(int position) {
                 Intent intent = new Intent();
-                intent.setClass(getActivity(), ProductDetailsActivity.class);
+                intent.setClass(getActivity(), ShopProductDetailsActivity.class);
                 intent.putExtra(KitchenConstants.PRODUCT_INTENT_KEY, KitchenConstants.ProductIntentValue.SLIDE);
                 if (mSlideDataList != null && mSlideDataList.size() > 0) {
                     intent.putExtra("slide", mSlideDataList.get(position));

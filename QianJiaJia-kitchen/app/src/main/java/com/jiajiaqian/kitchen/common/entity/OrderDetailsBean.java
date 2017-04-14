@@ -70,7 +70,7 @@ public class OrderDetailsBean implements Serializable {
 
     @Override
     public String toString() {
-        return "OrderDetailsBean{" +
+        return "MyOrderDetailsBean{" +
                 "productImgDetails=" + productImgDetails +
                 ", productNameDetails='" + productNameDetails + '\'' +
                 ", productPriceDetails=" + productPriceDetails +

@@ -17,7 +17,9 @@ import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
 import java.util.List;
 
 /**
- * Created by jasonxu on 2017/2/26.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/2/26.
  */
 
 public class DiscountAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

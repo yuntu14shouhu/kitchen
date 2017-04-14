@@ -6,7 +6,9 @@ import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 
 /**
- * Created by jasonxu on 2017/2/26.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/2/26.
  */
 
 public class ShopActivity extends BaseActivity{

@@ -6,7 +6,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created by jasonxu on 2017/4/5.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/4/5.
  * 优惠套餐，人气推荐，劲爆团购
  */
 

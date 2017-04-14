@@ -107,6 +107,7 @@
                     android:id="@+id/tv_personal_info_address_type"
                     android:text="地址类型:"/>
                 <RadioGroup
+                    android:id="@+id/radio_address"
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

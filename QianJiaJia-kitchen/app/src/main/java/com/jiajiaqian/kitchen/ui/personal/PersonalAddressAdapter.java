@@ -1,6 +1,7 @@
 package com.jiajiaqian.kitchen.ui.personal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -25,6 +26,8 @@ public class PersonalAddressAdapter extends RecyclerView.Adapter<PersonalAddress
     private LayoutInflater mInflater;
     private List<AddressBean> addressBeanList;
     private int srcId;
+
+    private AddressBean mAddressBean;
 
     public List<AddressBean> getResults() {
         return addressBeanList;
@@ -63,6 +66,16 @@ public class PersonalAddressAdapter extends RecyclerView.Adapter<PersonalAddress
                 holder.tvAddressType.setText(addressBeanList.get(position).getAddressType());
             }
         }
+
+        holder.tvAddressEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,PersonalAddressEditActivity.class);
+                intent.putExtra("addressId",addressBeanList.get(position).getId());
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -75,8 +88,10 @@ public class PersonalAddressAdapter extends RecyclerView.Adapter<PersonalAddress
         private TextView tvPhone;
         private TextView tvAddress;
         private TextView tvAddressType;
+        private TextView tvAddressEdit;
         public MyViewHolder(View itemView) {
             super(itemView);
+            tvAddressEdit = (TextView) itemView.findViewById(R.id.tv_edit_address);
             tvName = (TextView) itemView.findViewById(R.id.tv_personal_info_add_address_name);
             tvPhone = (TextView) itemView.findViewById(R.id.tv_personal_info_add_address_phone);
             tvAddress = (TextView) itemView.findViewById(R.id.tv_personal_info_add_address_address);

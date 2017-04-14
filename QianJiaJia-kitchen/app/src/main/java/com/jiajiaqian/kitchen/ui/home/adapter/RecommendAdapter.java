@@ -17,7 +17,9 @@ import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
 import java.util.List;
 
 /**
- * Created by jasonxu on 2017/4/5.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/4/5.
  */
 
 public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{

@@ -10,11 +10,10 @@ import com.google.gson.TypeAdapter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
- * @author he.liu .
+ * @author qianjiajia.
  * @version v1.0 .
  * @date 2016-6-12 .
  * @file GsonUtil.java .

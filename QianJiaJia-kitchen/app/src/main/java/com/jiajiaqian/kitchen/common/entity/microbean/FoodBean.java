@@ -6,7 +6,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created by jasonxu on 2017/3/20.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/3/20.
  */
 
 public class FoodBean implements Serializable{

@@ -1,7 +1,6 @@
 package com.jiajiaqian.kitchen.ui.sort;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -21,7 +20,6 @@ import com.jiajiaqian.kitchen.common.entity.microbean.FishBean;
 import com.jiajiaqian.kitchen.common.entity.microbean.FoodBean;
 import com.jiajiaqian.kitchen.common.entity.microbean.FruitBean;
 import com.jiajiaqian.kitchen.common.entity.microbean.MeatBean;
-import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
 import com.jiajiaqian.kitchen.common.entity.microbean.VegetableBean;
 import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
 import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
@@ -35,7 +33,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by jasonxu on 2017/2/17.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/2/17.
  * 分类 fragment
  */
 

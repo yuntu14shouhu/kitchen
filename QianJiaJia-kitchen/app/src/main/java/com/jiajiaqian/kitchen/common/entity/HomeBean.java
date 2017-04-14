@@ -7,7 +7,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created by jasonxu on 2017/2/26.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/2/26.
  * 首页服务器返回的数据源解析对应的bean
  */
 

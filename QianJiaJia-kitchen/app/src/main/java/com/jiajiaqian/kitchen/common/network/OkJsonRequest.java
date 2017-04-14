@@ -19,7 +19,7 @@ import java.util.Map;
 
 
 /**
- * @author yangxuewu.
+ * @author qianjiajia.
  * @version v1.0 .
  * @date 2016-6-7 .
  * @file OkJsonRequest.java .

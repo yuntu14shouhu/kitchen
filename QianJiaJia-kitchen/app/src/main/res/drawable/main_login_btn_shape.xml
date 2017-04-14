@@ -2,18 +2,18 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
  <item android:state_pressed="false">
      <shape>
-         <solid android:color="#06b7fc"/>
+         <solid android:color="#36ab60"/>
          <corners android:radius="15px"/>
-         <padding android:left="3dip" android:top="3dip" 
-                  android:right="3dip" android:bottom="3dip"/>
+         <padding android:left="3dp" android:top="3dp"
+                  android:right="3dp" android:bottom="3dp"/>
      </shape>
  </item>   
  <item android:state_pressed="true">
      <shape>
-         <solid android:color="#2cbff9"/>
+         <solid android:color="#36ab60"/>
          <corners android:radius="15px"/>
-         <padding android:left="3dip" android:top="3dip" 
-                  android:right="3dip" android:bottom="3dip"/>
+         <padding android:left="3dp" android:top="3dp"
+                  android:right="3dp" android:bottom="3dp"/>
      </shape>
  </item>
 

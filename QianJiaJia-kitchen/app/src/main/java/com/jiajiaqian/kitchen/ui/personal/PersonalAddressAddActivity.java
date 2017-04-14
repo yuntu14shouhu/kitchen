@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,11 +19,11 @@ import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.appglobal.ACache;
-import com.jiajiaqian.kitchen.common.entity.AddressBean;
 import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
 import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
 import com.jiajiaqian.kitchen.common.utils.UserInfoUtils;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
+import com.jiajiaqian.kitchen.utils.CustomToast;
 
 import org.json.JSONObject;
 
@@ -45,6 +46,8 @@ public class PersonalAddressAddActivity extends BaseActivity implements View.OnC
     private String addrSpStr = "成都市";
     private String mType;
     private ACache mACache;
+
+    private CustomToast toast;
 
     @Override
     public int getLayoutId() {
@@ -82,8 +85,8 @@ public class PersonalAddressAddActivity extends BaseActivity implements View.OnC
     }
 
     private void initSpinnerText() {
-        if (mACache.getAsString("addr") != null) {
-            addrSpStr = mACache.getAsString("addr");
+        if (mACache.getAsString("addrSpStr") != null) {
+            addrSpStr = mACache.getAsString("addrSpStr");
         }
     }
 
@@ -133,6 +136,7 @@ public class PersonalAddressAddActivity extends BaseActivity implements View.OnC
                         setResult(2, intent);
                         finish();
                     }
+                    toastMessage("地址保存成功！");
                 }
                 break;
             default:
@@ -146,19 +150,19 @@ public class PersonalAddressAddActivity extends BaseActivity implements View.OnC
             if (!TextUtils.isEmpty(mUserName.getText() + "")) {
                 jsonObject.put("consigneeName", mUserName.getText());
             } else {
-                Toast.makeText(this, "请输入收货名", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "请输入收货人姓名", Toast.LENGTH_SHORT).show();
                 return null;
             }
             if (!TextUtils.isEmpty(mUserPhone.getText() + "")) {
                 jsonObject.put("consigneePhone", mUserPhone.getText());
             } else {
-                Toast.makeText(this, "请输入收货电话", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "请输入收货人电话", Toast.LENGTH_SHORT).show();
                 return null;
             }
             if (!TextUtils.isEmpty(mAddress.getText() + "")) {
                 jsonObject.put("consigneeAddress", addrSpStr + mAddress.getText() + mRom.getText());
             } else {
-                Toast.makeText(this, "请输入收货地址", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "请输入收货人地址", Toast.LENGTH_SHORT).show();
                 return null;
             }
             if (!TextUtils.isEmpty(UserInfoUtils.getUserId(this) + "")) {
@@ -167,7 +171,6 @@ public class PersonalAddressAddActivity extends BaseActivity implements View.OnC
                 Toast.makeText(this, "请首先登陆", Toast.LENGTH_SHORT).show();
                 return null;
             }
-
             if (mType != null) {
                 jsonObject.put("addressType", mType);
             } else {
@@ -196,5 +199,12 @@ public class PersonalAddressAddActivity extends BaseActivity implements View.OnC
         });
     }
 
-
+    private void toastMessage(String content) {
+        if (toast != null) {
+            toast.hide();
+        }
+        toast = new CustomToast(PersonalAddressAddActivity.this,
+                (ViewGroup) this.findViewById(R.id.toast_custom_parent));
+        toast.show(content, 5000);
+    }
 }
