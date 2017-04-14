@@ -143,7 +143,7 @@ public class ProductDetailsBean implements Serializable {
 
     @Override
     public String toString() {
-        return "ProductDetailsBean{" +
+        return "ProductDetailsQueryBean{" +
                 "imgProductDetails=" + imgProductDetails +
                 ", nameProductDetails='" + nameProductDetails + '\'' +
                 ", smallClassProductDetails='" + smallClassProductDetails + '\'' +

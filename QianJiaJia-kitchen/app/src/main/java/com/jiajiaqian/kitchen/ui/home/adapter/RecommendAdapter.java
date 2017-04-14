@@ -1,6 +1,7 @@
 package com.jiajiaqian.kitchen.ui.home.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
+import com.jiajiaqian.kitchen.ui.shop.ShopProductDetailsActivity;
 
 import java.util.List;
 
@@ -80,8 +82,15 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
     }
 
-    private void initEvents(DataListVH dataListVH, int position) {
-
+    private void initEvents(DataListVH dataListVH, final int position) {
+        dataListVH.mProductImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext,ShopProductDetailsActivity.class);
+                intent.putExtra("productId",mDataList.get(position).getId());
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     private static class DataListVH extends RecyclerView.ViewHolder {

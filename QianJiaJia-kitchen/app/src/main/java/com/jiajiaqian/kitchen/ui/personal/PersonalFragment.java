@@ -11,21 +11,29 @@ import android.renderscript.Allocation;
 import android.renderscript.Element;
 import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.appglobal.ACache;
 import com.jiajiaqian.kitchen.common.entity.UserBean;
+import com.jiajiaqian.kitchen.common.entity.UserDataBean;
+import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
+import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
+import com.jiajiaqian.kitchen.common.utils.GsonUtils;
 import com.jiajiaqian.kitchen.common.utils.UserInfoUtils;
 import com.jiajiaqian.kitchen.ui.LoginActivity;
 import com.jiajiaqian.kitchen.ui.base.BaseFragment;
 import com.jiajiaqian.kitchen.utils.CircleImageView;
 import com.jiajiaqian.kitchen.utils.CustomScrollBar;
 import com.jiajiaqian.kitchen.utils.CustomScrollView;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -237,7 +245,25 @@ public class PersonalFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     protected void initData() {
+        KitchenHttpManager.getInstance().userData("", new OkJsonRequest.OKResponseCallback() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e("error-userdata-pre-", volleyError.getMessage() + "");
+            }
 
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                Log.e("success-userdata-pre-", jsonObject + "");
+                if (jsonObject != null) {
+                    UserDataBean userDataBean = GsonUtils.jsonToBean(jsonObject.toString(), UserDataBean.class);
+                    mUserBean = userDataBean.getData();
+                    if (mUserBean != null) {
+                        System.out.println(mUserBean.getUserName());
+                        mNicknameTv.setText(mUserBean.getNickName());
+                    }
+                }
+            }
+        });
     }
 
     /**

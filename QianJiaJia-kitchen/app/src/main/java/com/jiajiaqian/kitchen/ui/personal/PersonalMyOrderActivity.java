@@ -19,9 +19,7 @@ import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -56,7 +54,6 @@ public class PersonalMyOrderActivity extends BaseActivity implements SwipeRefres
                 Log.e("success-orderList--", jsonObject + "");
                 if (jsonObject != null) {
                     OrderListBean orderListBean = GsonUtils.jsonToBean(jsonObject.toString(), OrderListBean.class);
-//                    mOrderBeanList= orderListBean.getOrder();
                     getOrderListData(orderListBean.getOrder());
                 }
             }
@@ -71,11 +68,6 @@ public class PersonalMyOrderActivity extends BaseActivity implements SwipeRefres
     private void getOrderListData(List<OrderBean> order) {
         PersonalMyOrderRecyclerAdapter adapter = new PersonalMyOrderRecyclerAdapter(PersonalMyOrderActivity.this, R.layout.activity_personal_info_order_edit, order);
         orderRecyclerView.setAdapter(adapter);
-    }
-
-    private String getDate() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return format.format(new Date());
     }
 
     @Override

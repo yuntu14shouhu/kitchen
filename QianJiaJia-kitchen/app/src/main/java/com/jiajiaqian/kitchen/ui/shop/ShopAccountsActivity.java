@@ -12,14 +12,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jiajiaqian.kitchen.R;
-import com.jiajiaqian.kitchen.common.entity.OrderDetailsBean;
+import com.jiajiaqian.kitchen.common.entity.MyOrderDetailsBean;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 import com.jiajiaqian.kitchen.ui.personal.PersonalMyOrderDetailsActivity;
 import com.jiajiaqian.kitchen.ui.personal.PersonalMyOrderDetailsAdapter;
 import com.jiajiaqian.kitchen.utils.CustomToast;
 import com.jiajiaqian.kitchen.utils.MyCommonDialog;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,7 +32,7 @@ public class ShopAccountsActivity extends BaseActivity {
 
     private TextView topBarBack;
     private TextView topBarTitle;
-    private List<OrderDetailsBean> mOrderDetailsBeanList;
+    private List<MyOrderDetailsBean.ProductBean> mOrderDetailsBeanList;
     private RecyclerView mRecyclerView;
     private PersonalMyOrderDetailsAdapter mAdapter;
     private ImageView iv_pay_address;
@@ -49,24 +48,17 @@ public class ShopAccountsActivity extends BaseActivity {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        mOrderDetailsBeanList = new ArrayList<>();
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶三叶草三叶草三叶草三叶草三叶草三叶草三叶草",12.03,3,"300g"));
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
+//        mOrderDetailsBeanList = new ArrayList<>();
+//        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶三叶草三叶草三叶草三叶草三叶草三叶草三叶草",12.03,3,"300g"));
+//        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
+//        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
+//        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
+//        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
+//        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
     }
 
     @Override
     public void initView() {
-        mOrderDetailsBeanList = new ArrayList<>();
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶三叶草三叶草三叶草三叶草三叶草三叶草三叶草",12.03,3,"300g"));
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
-        mOrderDetailsBeanList.add(new OrderDetailsBean(R.drawable.ic_logo,"三叶草三叶草",12.03,3,"300g"));
 
         topBarBack = (TextView) findViewById(R.id.top_bar_back);
         topBarTitle = (TextView) findViewById(R.id.top_bar_title);

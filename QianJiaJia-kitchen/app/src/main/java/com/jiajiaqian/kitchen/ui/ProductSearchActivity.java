@@ -30,7 +30,9 @@ import org.json.JSONObject;
 import java.util.List;
 
 /**
- * Created by jasonxu on 2017/2/26.
+ * @author qianjiajia
+ * @version 1.0
+ * 2017/2/26.
  */
 
 public class ProductSearchActivity extends BaseActivity {

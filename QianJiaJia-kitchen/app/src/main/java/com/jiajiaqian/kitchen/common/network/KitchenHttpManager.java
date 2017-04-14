@@ -189,4 +189,11 @@ public class KitchenHttpManager implements KitchenHttpApi<OkJsonRequest.OKRespon
         post(requestUrl,jsonObject,callback);
     }
 
+    //http://localhost:8080/product/getById?productId=914700b55d714ce798a26fef0c0888bd
+    @Override
+    public void getProductDetails(@NonNull String productId, @NonNull OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/product/getById?productId=" + productId;
+        get(requestUrl,callback);
+    }
+
 }

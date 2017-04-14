@@ -73,7 +73,6 @@ public class PersonalMyOrderDetailsActivity extends BaseActivity {
                 Log.e("error-order--details--", volleyError.getMessage() + "");
             }
         });
-
     }
 
     private void getProductList(List<MyOrderDetailsBean.ProductBean> product) {

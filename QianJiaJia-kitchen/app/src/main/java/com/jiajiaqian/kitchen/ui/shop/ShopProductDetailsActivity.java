@@ -2,6 +2,7 @@ package com.jiajiaqian.kitchen.ui.shop;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -9,11 +10,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
+import com.bumptech.glide.Glide;
 import com.jiajiaqian.kitchen.R;
+import com.jiajiaqian.kitchen.common.entity.ProductDetailsQueryBean;
+import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
 import com.jiajiaqian.kitchen.common.entity.microbean.ProductDetailsBean;
+import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
+import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
+import com.jiajiaqian.kitchen.common.utils.GsonUtils;
 import com.jiajiaqian.kitchen.ui.MainActivity;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 import com.jiajiaqian.kitchen.utils.CustomToast;
+
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,12 +48,13 @@ public class ShopProductDetailsActivity extends BaseActivity {
     private TextView priceProductDetails;
     private TextView mCountTv;
     private TextView namePinProductDetails;
-    private TextView addreddProductDetails;
+    private TextView addressProductDetails;
     private TextView putawayProductDetails;
     private TextView typeProductDetails;
     private TextView manufactureDateProductDetails;
     private TextView describedProductdetails;
     private ImageView shopShowProductDetails;
+    private ImageView productDetailsIv;
 
     private CustomToast toast;
 
@@ -55,18 +66,43 @@ public class ShopProductDetailsActivity extends BaseActivity {
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        Intent it = getIntent();
+        KitchenHttpManager.getInstance().getProductDetails(it.getStringExtra("productId"), new OkJsonRequest.OKResponseCallback() {
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                Log.e("success-order-details--", jsonObject + "");
+                if (jsonObject != null) {
+                    ProductDetailsQueryBean productDetailsQueryBean = GsonUtils.jsonToBean(jsonObject.toString(), ProductDetailsQueryBean.class);
+                    if (productDetailsQueryBean.getData() != null) {
+                        getProductDetailsData(productDetailsQueryBean.getData());
+                    }
+                }
+            }
 
-        nameProductDetails.setText(mProductDetailsBean.getNameProductDetails());
-        mCountTv.setText(mProductDetailsBean.getNumberProductDetails()+"");
-        smallClassProductDetails.setText("时令水果--");
-        priceProductDetails.setText(14.0+"");
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e("error-order--details--", volleyError.getMessage() + "");
+            }
+        });
+    }
 
-        namePinProductDetails.setText("麒麟瓜--");
-        addreddProductDetails.setText("中国--");
-        putawayProductDetails.setText(getDate());
-        typeProductDetails.setText("1000g");
-        manufactureDateProductDetails.setText(getDate());
-        describedProductdetails.setText("haaaaaaaaaaaaahaaaaaaaaa");
+    private void getProductDetailsData(ProductBean data) {
+
+        Glide.with(this)
+                .load(data.getProductImageUrl())
+                .centerCrop()
+                .into(productDetailsIv);
+        nameProductDetails.setText(data.getProductName());
+        smallClassProductDetails.setText(data.getKeyClass());
+        priceProductDetails.setText(data.getPrice()+"");
+        mCountTv.setText(data.getLimitNumber()+"");
+        namePinProductDetails.setText(data.getProductName());
+        addressProductDetails.setText(data.getAddress());
+        putawayProductDetails.setText(getStrTime(data.getPutawayDate()+""));
+        typeProductDetails.setText(data.getProductTypes());
+        manufactureDateProductDetails.setText(getStrTime(data.getProductionDate()+""));
+        describedProductdetails.setText(data.getDescribed());
+
     }
 
     @Override
@@ -74,13 +110,14 @@ public class ShopProductDetailsActivity extends BaseActivity {
         topBarBack = (ImageView) findViewById(R.id.top_bar_back);
         numberPlus = (ImageView) findViewById(R.id.iv_plus_product_details);
         numberMinus = (ImageView) findViewById(R.id.iv_minus_product_details);
+        productDetailsIv = (ImageView) findViewById(R.id.iv_product_details);
         addShopCart = (Button) findViewById(R.id.bt_product_details_add);
         nameProductDetails = (TextView) findViewById(R.id.tv_product_name_details);
         smallClassProductDetails = (TextView) findViewById(R.id.tv_product_small_class_name_details);
         priceProductDetails = (TextView) findViewById(R.id.tv_product_one_price_details);
         mCountTv = (TextView) findViewById(R.id.tv_number_product_details);
         namePinProductDetails = (TextView) findViewById(R.id.tv_pinming_context_product_details);
-        addreddProductDetails = (TextView) findViewById(R.id.tv_chandi_context_product_details);
+        addressProductDetails = (TextView) findViewById(R.id.tv_chandi_context_product_details);
         putawayProductDetails = (TextView) findViewById(R.id.tv_shangjiariqi_context_product_details);
         typeProductDetails = (TextView) findViewById(R.id.tv_guige_context_product_details);
         manufactureDateProductDetails = (TextView) findViewById(R.id.tv_shengchanriqi_context_product_details);
@@ -160,8 +197,11 @@ public class ShopProductDetailsActivity extends BaseActivity {
     }
 
 
-    private String getDate() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        return format.format(new Date());
+    public static String getStrTime(String timeStamp){
+        String timeString = null;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        long  l = Long.valueOf(timeStamp);
+        timeString = sdf.format(new Date(l));//单位秒
+        return timeString;
     }
 }

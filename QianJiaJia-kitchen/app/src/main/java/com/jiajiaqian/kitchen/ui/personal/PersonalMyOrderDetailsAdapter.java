@@ -1,18 +1,17 @@
 package com.jiajiaqian.kitchen.ui.personal;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.jiajiaqian.kitchen.R;
-import com.jiajiaqian.kitchen.common.entity.OrderDetailsBean;
-import com.jiajiaqian.kitchen.ui.shop.ShopProductDetailsActivity;
+import com.jiajiaqian.kitchen.common.entity.MyOrderDetailsBean;
 
 import java.util.List;
 
@@ -25,22 +24,16 @@ import java.util.List;
  */
 public class PersonalMyOrderDetailsAdapter extends RecyclerView.Adapter<PersonalMyOrderDetailsAdapter.MyViewHolder> {
 
-    private Context context;
+    private Context mContext;
     private LayoutInflater mInflater;
-    private List<OrderDetailsBean> results;
+    private List<MyOrderDetailsBean.ProductBean> mDataList;
     private int srcId;
-
-    public List<OrderDetailsBean> getResults() {
-        return results;
-    }
-
-
-    public PersonalMyOrderDetailsAdapter(Context context, int srcId, List<OrderDetailsBean> results) {
-        this.context = context;
-        this.results = results;
+    
+    public PersonalMyOrderDetailsAdapter(Context context, int srcId, List<MyOrderDetailsBean.ProductBean> mDataList) {
+        this.mContext = context;
+        this.mDataList = mDataList;
         this.srcId = srcId;
         mInflater = LayoutInflater.from(context);
-        Log.e("results", "PersonalMyOrderDetailsAdapter: " + results.toString());
     }
 
     @Override
@@ -52,22 +45,29 @@ public class PersonalMyOrderDetailsAdapter extends RecyclerView.Adapter<Personal
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        holder.productImgDetails.setImageResource(results.get(position).getProductImgDetails());
-        holder.productImgDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                context.startActivity(new Intent(context, ShopProductDetailsActivity.class));
+        if (mDataList != null && mDataList.size() > 0) {
+            if (!TextUtils.isEmpty(mDataList.get(position).getProductImageUrl())) {
+                Glide.with(mContext)
+                        .load(mDataList.get(position).getProductImageUrl())
+                        .centerCrop()
+                        .into(holder.productImgDetails);
             }
-        });
-        holder.productNameDetails.setText(results.get(position).getProductNameDetails());
-        holder.productPriceDetails.setText(results.get(position).getProductPriceDetails() + "");
-        holder.productNumberDetails.setText(results.get(position).getProductNumberDetails() + "");
-//        holder.productDefaultsDetails.setText(results.get(position).getProductDefaultDetails());
+            if (!TextUtils.isEmpty(mDataList.get(position).getProductName())) {
+                holder.productNameDetails.setText(mDataList.get(position).getProductName());
+            }
+            if (!TextUtils.isEmpty(mDataList.get(position).getPrice()+"")) {
+                holder.productPriceDetails.setText(mDataList.get(position).getPrice()+"");
+            }
+            if (!TextUtils.isEmpty(mDataList.get(position).getLimitNumber()+"")) {
+                holder.productNumberDetails.setText(mDataList.get(position).getLimitNumber()+"");
+            }
+
+        }
     }
 
     @Override
     public int getItemCount() {
-        return results == null ? 0 : results.size();
+        return mDataList == null ? 0 : mDataList.size();
     }
 
 

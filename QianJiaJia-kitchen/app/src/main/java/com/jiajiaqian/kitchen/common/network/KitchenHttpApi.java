@@ -54,4 +54,6 @@ public interface KitchenHttpApi<T> {
     void getFuzzy(@NonNull String productName,@NonNull T callback);
 
     void saveSearchContent(@NonNull String uid,@NonNull JSONObject jsonObject,@NonNull T callback);
+
+    void getProductDetails(@NonNull String productId,@NonNull T callback);
 }

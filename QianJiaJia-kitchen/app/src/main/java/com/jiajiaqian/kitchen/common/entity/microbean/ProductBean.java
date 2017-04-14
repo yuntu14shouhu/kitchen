@@ -21,8 +21,8 @@ public class ProductBean implements Serializable{
     private String address;
     private String described;
     private long productionDate;
-    private float price;
-    private float discountPrice;
+    private double  price;
+    private double discountPrice;
     private int isDiscount; //0非优惠商品，1优惠商品
     private int limitNumber;
     private int kindNumber;
@@ -30,7 +30,7 @@ public class ProductBean implements Serializable{
     private long endDate;
     private int carriage;
     private int isGroupBuy; //0非团购商品，1团购商品
-    private float groupBuyPrice;
+    private double groupBuyPrice;
     private int  groupBuyPersonNumber;
     private long  startGroupBuyDate;
     private long  endGroupBuyDate;
@@ -129,19 +129,19 @@ public class ProductBean implements Serializable{
         this.productionDate = productionDate;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public float getDiscountPrice() {
+    public double getDiscountPrice() {
         return discountPrice;
     }
 
-    public void setDiscountPrice(float discountPrice) {
+    public void setDiscountPrice(double discountPrice) {
         this.discountPrice = discountPrice;
     }
 
@@ -201,11 +201,11 @@ public class ProductBean implements Serializable{
         this.isGroupBuy = isGroupBuy;
     }
 
-    public float getGroupBuyPrice() {
+    public double getGroupBuyPrice() {
         return groupBuyPrice;
     }
 
-    public void setGroupBuyPrice(float groupBuyPrice) {
+    public void setGroupBuyPrice(double groupBuyPrice) {
         this.groupBuyPrice = groupBuyPrice;
     }
 

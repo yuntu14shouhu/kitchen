@@ -1,7 +1,6 @@
 package com.jiajiaqian.kitchen.ui.shop.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,9 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.jiajiaqian.kitchen.R;
-import com.jiajiaqian.kitchen.common.entity.DetailsBean;
 import com.jiajiaqian.kitchen.common.entity.MyOrderDetailsBean;
-import com.jiajiaqian.kitchen.ui.shop.ShopProductDetailsActivity;
 
 import java.util.List;
 
@@ -32,8 +29,6 @@ public class ShopAccountActivityAdapter extends RecyclerView.Adapter<ShopAccount
     private LayoutInflater mInflater;
     private List<MyOrderDetailsBean.ProductBean> productList;
     private int srcId;
-    private DetailsBean mDetailsBean;
-
 
     public ShopAccountActivityAdapter(Context context, int srcId, List<MyOrderDetailsBean.ProductBean> productList) {
         this.context = context;
@@ -66,20 +61,11 @@ public class ShopAccountActivityAdapter extends RecyclerView.Adapter<ShopAccount
             if(!TextUtils.isEmpty(productList.get(position).getPrice()+"")){
                 holder.productPriceDetails.setText(productList.get(position).getPrice()+"");
             }
-//            holder.productNumberDetails.setText(mDetailsBean.getOrderProductNumber());
             if(!TextUtils.isEmpty(productList.get(position).getLimitNumber() +"")){
                 holder.productNumberDetails.setText(productList.get(position).getLimitNumber()+"");
             }
 
         }
-
-        holder.productImgDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                context.startActivity(new Intent(context, ShopProductDetailsActivity.class));
-            }
-        });
-
     }
 
     @Override
