@@ -225,37 +225,37 @@ public class SortFragment extends BaseFragment implements View.OnClickListener {
         initViewState();
         switch (view.getId()) {
             case R.id.ll_shuCai:
-                mVegetableTv.setTextColor(ContextCompat.getColor(getActivity(), R.color.con_yellow));
+                mVegetableTv.setTextColor(ContextCompat.getColor(getActivity(), R.color.con_green));
                 mVegetableLayout.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.con_font_gray2));
                 mVegetableTv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.con_font_gray2));
                 mVegetableImg.setVisibility(View.VISIBLE);
                 break;
             case R.id.ll_shuiGuo:
-                mFruitTv.setTextColor(ContextCompat.getColor(getActivity(), R.color.con_yellow));
+                mFruitTv.setTextColor(ContextCompat.getColor(getActivity(), R.color.con_green));
                 mFruitLayout.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.con_font_gray2));
                 mFruitTv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.con_font_gray2));
                 mFruitImg.setVisibility(View.VISIBLE);
                 break;
             case R.id.ll_rouLei:
-                mMeatTv.setTextColor(ContextCompat.getColor(getActivity(), R.color.con_yellow));
+                mMeatTv.setTextColor(ContextCompat.getColor(getActivity(), R.color.con_green));
                 mMeatLayout.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.con_font_gray2));
                 mMeatTv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.con_font_gray2));
                 mMeatImg.setVisibility(View.VISIBLE);
                 break;
             case R.id.ll_qinDan:
-                mEggTv.setTextColor(ContextCompat.getColor(getActivity(), R.color.con_yellow));
+                mEggTv.setTextColor(ContextCompat.getColor(getActivity(), R.color.con_green));
                 mEggLayout.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.con_font_gray2));
                 mEggTv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.con_font_gray2));
                 mEggImg.setVisibility(View.VISIBLE);
                 break;
             case R.id.ll_shuiChan:
-                mFishTv.setTextColor(ContextCompat.getColor(getActivity(), R.color.con_yellow));
+                mFishTv.setTextColor(ContextCompat.getColor(getActivity(), R.color.con_green));
                 mFishLayout.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.con_font_gray2));
                 mFishTv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.con_font_gray2));
                 mFishImg.setVisibility(View.VISIBLE);
                 break;
             case R.id.ll_liangYou:
-                mFoodTv.setTextColor(ContextCompat.getColor(getActivity(), R.color.con_yellow));
+                mFoodTv.setTextColor(ContextCompat.getColor(getActivity(), R.color.con_green));
                 mFoodLayout.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.con_font_gray2));
                 mFoodTv.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.con_font_gray2));
                 mFoodImg.setVisibility(View.VISIBLE);

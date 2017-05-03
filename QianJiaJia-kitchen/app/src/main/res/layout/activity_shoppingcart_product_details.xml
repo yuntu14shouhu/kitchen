@@ -2,13 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+    <include
+        android:id="@+id/include_details"
+        layout="@layout/activity_top_bar"/>
 
     <ScrollView
+        android:layout_below="@id/include_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
         android:background="#ffffff"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
@@ -20,9 +23,6 @@
                 android:id="@+id/rl_product_details"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
-                <include
-                    layout="@layout/activity_top_bar_product_details"/>
 
                 <ImageView
                     android:id="@+id/iv_product_details"
@@ -92,7 +92,8 @@
                     android:layout_marginBottom="5dp"
                     android:layout_marginRight="24dp"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/ic_shopping_plus"/>
+                    android:src="@drawable/ic_shopping_plus"
+                    android:visibility="gone"/>
                 <TextView
                     android:id="@+id/tv_number_product_details"
                     android:layout_width="30dp"
@@ -102,7 +103,8 @@
                     android:gravity="center"
                     android:text="1"
                     android:textColor="#444444"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:visibility="gone"/>
                 <ImageView
                     android:id="@+id/iv_minus_product_details"
                     android:layout_width="23dp"
@@ -110,7 +112,8 @@
                     android:layout_toLeftOf="@id/tv_number_product_details"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="3dp"
-                    android:src="@drawable/ic_shopping_minus"/>
+                    android:src="@drawable/ic_shopping_minus"
+                    android:visibility="gone"/>
 
             </RelativeLayout>
             <View
@@ -226,13 +229,86 @@
                 android:id="@+id/view3_product_details"
                 android:layout_below="@id/rl_product_details_show_context"
                 style="@style/view_big"/>
+
             <RelativeLayout
+                android:id="@+id/rl1_product_details"
                 android:layout_below="@id/view3_product_details"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:padding="15dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/product_describe_shape">
+                <ImageView
+                    android:id="@+id/iv_small1"
+                    android:layout_marginLeft="2dp"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_small_error"/>
+                <TextView
+                    android:id="@+id/tv_tui1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@+id/iv_small1"
+                    android:text="不支持七天包退"/>
+                <ImageView
+                    android:id="@+id/iv_small2"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_small_error"
+                    android:layout_toRightOf="@+id/tv_tui1"
+                    android:layout_marginLeft="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_toRightOf="@+id/iv_small2"
+                    android:id="@+id/tv_tui2"
+                    android:layout_marginLeft="5dp"
+                    android:text="不支持七天包换"/>
+                <ImageView
+                    android:id="@+id/iv_small3"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_small_right1"
+                    android:layout_below="@+id/iv_small1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_toRightOf="@+id/iv_small3"
+                    android:layout_below="@+id/tv_tui1"
+                    android:id="@+id/tv_tui3"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Kitchen发货"/>
+                <TextView
+                    android:id="@+id/tv_more"
+                    android:layout_width="20dp"
+                    android:layout_height="22dp"
+                    android:layout_alignParentRight="true"
+                    android:text="..."
+                    android:textColor="#444444"
+                    android:textSize="20sp"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_below="@id/rl1_product_details"
+                android:id="@+id/view4_product_details"
+                style="@style/view_big"/>
+
+            <RelativeLayout
+                android:layout_below="@id/view4_product_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="100dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="21dp"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp"
                 android:background="@drawable/product_describe_shape">
 
                 <TextView
@@ -248,7 +324,7 @@
                     android:layout_toRightOf="@id/tv_miaoshu_product_details"
                     android:id="@+id/tv_miaoshu_context_product_details"
                     android:textSize="14sp"
-                    android:layout_marginLeft="2dp"
+                    android:layout_marginLeft="4dp"
                     android:layout_marginTop="3dp"
                     android:text="麒麟瓜是西瓜的一种。麒麟瓜是一个经过培植的科研新品种，对生长环境和土壤以及日照的要求是非常高的，但是由于从种下到开花、从开花到收瓜只需60天左右，因此即使种植讲究但因周期短、口感好、效益见得快，因此温州和海南的农民还是很乐意种植的。
 “小麒麟”西瓜原名“XQL02”，属早熟花皮黄瓤西瓜品种， 由南京利华蔬菜研究所以WR06-11×WR11-16 配组，江苏中江种业股份有限公司申请审定（苏审瓜200601）。"/>
@@ -259,24 +335,25 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="70dp"
         android:id="@+id/rl_product_details_shop"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:background="#ffffff">
         <View
             style="@style/view_small"/>
         <Button
             android:id="@+id/bt_product_details_add"
             android:layout_width="280dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
             android:textColor="#ffffff"
             android:textSize="16sp"
             android:text="加入购物车"
-            android:gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/button_add_shop"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="25dp"/>
         <RelativeLayout
             android:layout_width="60dp"
             android:layout_height="wrap_content">
@@ -285,7 +362,7 @@
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginLeft="18dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_alignParentLeft="true"
                 android:src="@drawable/ic_product_add_shop"/>
             <TextView
@@ -299,7 +376,7 @@
                 android:textColor="#ffffff"
                 android:gravity="center"
                 android:padding="2dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/circle_product_number_shape"/>
         </RelativeLayout>
     </RelativeLayout>

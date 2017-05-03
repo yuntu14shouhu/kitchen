@@ -3,10 +3,13 @@ package com.jiajiaqian.kitchen.ui.shop;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +41,7 @@ import java.util.Date;
  */
 public class ShopProductDetailsActivity extends BaseActivity {
 
-    private ImageView topBarBack;
+    private TextView topBarBack;
     private ImageView numberPlus;
     private ImageView numberMinus;
     private ProductDetailsBean mProductDetailsBean = new ProductDetailsBean();
@@ -55,6 +58,9 @@ public class ShopProductDetailsActivity extends BaseActivity {
     private TextView describedProductdetails;
     private ImageView shopShowProductDetails;
     private ImageView productDetailsIv;
+    private TextView moreTv;
+    private PopupWindow mPopWindow;
+    private Button popupBt;
 
     private CustomToast toast;
 
@@ -107,7 +113,8 @@ public class ShopProductDetailsActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        topBarBack = (ImageView) findViewById(R.id.top_bar_back);
+        moreTv = (TextView) findViewById(R.id.tv_more);
+        topBarBack = (TextView) findViewById(R.id.top_bar_back);
         numberPlus = (ImageView) findViewById(R.id.iv_plus_product_details);
         numberMinus = (ImageView) findViewById(R.id.iv_minus_product_details);
         productDetailsIv = (ImageView) findViewById(R.id.iv_product_details);
@@ -185,6 +192,30 @@ public class ShopProductDetailsActivity extends BaseActivity {
             }
         });
 
+        moreTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopupWindow();
+            }
+        });
+
+    }
+
+    private void showPopupWindow() {
+        View contentView = LayoutInflater.from(ShopProductDetailsActivity.this).inflate(R.layout.activity_popup, null);
+        mPopWindow = new PopupWindow(contentView,
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+
+        popupBt = (Button)contentView.findViewById(R.id.bt_popup);
+        popupBt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPopWindow.dismiss();
+            }
+        });
+
+        View rootview = LayoutInflater.from(ShopProductDetailsActivity.this).inflate(getLayoutId(), null);
+        mPopWindow.showAtLocation(rootview, Gravity.BOTTOM, 0, 0);
     }
 
     private void toastMessage(String content) {
