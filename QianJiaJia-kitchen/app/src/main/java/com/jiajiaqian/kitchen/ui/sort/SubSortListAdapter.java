@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +14,15 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
+import com.jiajiaqian.kitchen.common.network.KitchenHttpManager;
+import com.jiajiaqian.kitchen.common.network.OkJsonRequest;
 import com.jiajiaqian.kitchen.ui.shop.ShopProductDetailsActivity;
+
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -100,6 +106,13 @@ public class SubSortListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             @Override
             public void onClick(View v) {
                 mSortListCallback.shopAddClick(mDataList.get(position));
+                ProductBean productBean = mDataList.get(position);
+                productBean.getId();
+
+                if(saveProductToShop() != null){
+                    postProductToShop(saveProductToShop());
+                }
+
             }
         });
 
@@ -111,6 +124,26 @@ public class SubSortListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 mContext.startActivity(intent);
             }
         });
+    }
+
+    private void postProductToShop(JSONObject jsonObject) {
+        KitchenHttpManager.getInstance().addProductToShop("", jsonObject, new OkJsonRequest.OKResponseCallback() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e("error", volleyError.getMessage() + "");
+            }
+
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                Log.e("success", jsonObject + "");
+            }
+        });
+    }
+
+    private JSONObject saveProductToShop() {
+        JSONObject jsonObject = new JSONObject();
+
+        return jsonObject;
     }
 
     private static class DataListVH extends RecyclerView.ViewHolder {

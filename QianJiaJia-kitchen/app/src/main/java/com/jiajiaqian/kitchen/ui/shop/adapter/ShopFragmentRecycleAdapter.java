@@ -3,6 +3,7 @@ package com.jiajiaqian.kitchen.ui.shop.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.jiajiaqian.kitchen.R;
-import com.jiajiaqian.kitchen.common.entity.ShopBean;
+import com.jiajiaqian.kitchen.common.entity.ShopBeanN;
 import com.jiajiaqian.kitchen.ui.shop.ShopProductDetailsActivity;
 
 import java.util.List;
@@ -27,15 +29,31 @@ public class ShopFragmentRecycleAdapter extends RecyclerView.Adapter<ShopFragmen
 
     private Context context;
     private LayoutInflater mInflater;
-    private List<ShopBean> results;
+    private List<ShopBeanN.DataBean> results;
     private int srcId;
 
-    public List<ShopBean> getResults() {
+    public List<ShopBeanN.DataBean> getResults() {
         return results;
     }
+    //将adapter的方法回调给View层
+    public interface ShopAdapterCall{
+        void dealNumChanged(List<ShopBeanN.DataBean> results);
+    }
+    public ShopAdapterCall mShopAdapterCall;
+    public void setShopAdapterCall(ShopAdapterCall mShopAdapterCall){
+        this.mShopAdapterCall = mShopAdapterCall;
+    }
 
+    //刷新数据源
+    public void upData(List<ShopBeanN.DataBean> results){
+        if (this.results!=null) {
+            results.clear();
+            this.results.addAll(results);
+            notifyDataSetChanged();
+        }
+    }
 
-    public ShopFragmentRecycleAdapter(Context context, int srcId, List<ShopBean> results) {
+    public ShopFragmentRecycleAdapter(Context context, int srcId, List<ShopBeanN.DataBean> results) {
         this.context = context;
         this.results = results;
         this.srcId = srcId;
@@ -52,16 +70,32 @@ public class ShopFragmentRecycleAdapter extends RecyclerView.Adapter<ShopFragmen
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        holder.productImage.setImageResource(results.get(position).getProductImg());
-        holder.productImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                context.startActivity(new Intent(context,ShopProductDetailsActivity.class));
+        if(results != null && results.size() > 0){
+            if (!TextUtils.isEmpty(results.get(position).getImageUrl())) {
+                Glide.with(context)
+                        .load(results.get(position).getImageUrl())
+                        .centerCrop()
+                        .into(holder.productImage);
             }
-        });
-        holder.productName.setText(results.get(position).getProductName());
-        holder.productNumber.setText(results.get(position).getProductNumber()+"");
-        holder.productPrice.setText(results.get(position).getProductPrice()+"");
+            holder.productImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context,ShopProductDetailsActivity.class);
+                    intent.putExtra("productId",results.get(position).getProductId());
+                    context.startActivity(intent);
+                }
+            });
+            if (!TextUtils.isEmpty(results.get(position).getProductName())) {
+                holder.productName.setText(results.get(position).getProductName());
+            }
+            if (!TextUtils.isEmpty(results.get(position).getProductNumber()+"")) {
+                holder.productNumber.setText(results.get(position).getProductNumber()+"");
+            }
+            if (!TextUtils.isEmpty(results.get(position).getPrice()+"")) {
+                holder.productPrice.setText(results.get(position).getPrice()+"");
+            }
+        }
+
         holder.productMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +106,7 @@ public class ShopFragmentRecycleAdapter extends RecyclerView.Adapter<ShopFragmen
                 }else {
                     Toast.makeText(context,"不能再减少了",Toast.LENGTH_SHORT).show();
                 }
+                mShopAdapterCall.dealNumChanged(results);
             }
         });
         holder.productPlus.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +115,7 @@ public class ShopFragmentRecycleAdapter extends RecyclerView.Adapter<ShopFragmen
                 int num = results.get(position).getProductNumber()+1;
                 results.get(position).setProductNumber(num);
                 notifyDataSetChanged();
+                mShopAdapterCall.dealNumChanged(results);
             }
         });
         holder.productDelete.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +123,7 @@ public class ShopFragmentRecycleAdapter extends RecyclerView.Adapter<ShopFragmen
             public void onClick(View v) {
                 results.remove(holder.getLayoutPosition());
                 notifyItemRemoved(holder.getLayoutPosition());
+                mShopAdapterCall.dealNumChanged(results);
             }
         });
     }

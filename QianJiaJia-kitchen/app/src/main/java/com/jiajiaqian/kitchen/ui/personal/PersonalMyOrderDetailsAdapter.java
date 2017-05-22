@@ -46,9 +46,9 @@ public class PersonalMyOrderDetailsAdapter extends RecyclerView.Adapter<Personal
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         if (mDataList != null && mDataList.size() > 0) {
-            if (!TextUtils.isEmpty(mDataList.get(position).getProductImageUrl())) {
+            if (!TextUtils.isEmpty(mDataList.get(position).getImageUrl())) {
                 Glide.with(mContext)
-                        .load(mDataList.get(position).getProductImageUrl())
+                        .load(mDataList.get(position).getImageUrl())
                         .centerCrop()
                         .into(holder.productImgDetails);
             }
@@ -58,8 +58,8 @@ public class PersonalMyOrderDetailsAdapter extends RecyclerView.Adapter<Personal
             if (!TextUtils.isEmpty(mDataList.get(position).getPrice()+"")) {
                 holder.productPriceDetails.setText(mDataList.get(position).getPrice()+"");
             }
-            if (!TextUtils.isEmpty(mDataList.get(position).getLimitNumber()+"")) {
-                holder.productNumberDetails.setText(mDataList.get(position).getLimitNumber()+"");
+            if (!TextUtils.isEmpty(mDataList.get(position).getProductNumber()+"")) {
+                holder.productNumberDetails.setText(mDataList.get(position).getProductNumber()+"");
             }
 
         }

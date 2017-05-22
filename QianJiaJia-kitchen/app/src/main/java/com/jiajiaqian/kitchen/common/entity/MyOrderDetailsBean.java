@@ -14,8 +14,8 @@ public class MyOrderDetailsBean implements Serializable{
 
 
     /**
-     * product : [{"id":"5dab487bbe784d989638a00e0ebb00dd","putawayDate":1489456895835,"kinds":"string","productName":"咸蛋","productImageUrl":"http://omkwzwj7w.bkt.clouddn.com/17-3-14/4646980-file_1489421080445_ee32.jpg","status":0,"productTypes":"string","producer":"string","address":"string","described":"string","productionDate":1489454726124,"price":5.9,"discountPrice":0,"isDiscount":0,"limitNumber":0,"kindNumber":0,"startDate":1489454726124,"endDate":1489454726124,"carriage":8,"isGroupBuy":0,"groupBuyPrice":0,"groupBuyPersonNumber":0,"startGroupBuyDate":1489454726124,"endGroupBuyDate":1489454726124,"keyClass":"加工蛋","bigKeyClass":"禽蛋","keyword":"string"},{"id":"25c73f8774af4db5a6cdbb1b08dd5ff2","putawayDate":1489457045031,"kinds":"string","productName":"鹅蛋","productImageUrl":"http://omkwzwj7w.bkt.clouddn.com/17-3-14/73112233-file_1489421088240_16b0f.png","status":0,"productTypes":"string","producer":"string","address":"string","described":"string","productionDate":1489454726124,"price":8.9,"discountPrice":0,"isDiscount":0,"limitNumber":0,"kindNumber":0,"startDate":1489454726124,"endDate":1489454726124,"carriage":8,"isGroupBuy":0,"groupBuyPrice":0,"groupBuyPersonNumber":0,"startGroupBuyDate":1489454726124,"endGroupBuyDate":1489454726124,"keyClass":"鲜蛋","bigKeyClass":"禽蛋","keyword":"string"}]
-     * details : {"id":"e654298fce4e42b5965723bdea701313","userId":"a240611ed1174b4dbf3d6536517d3b6c","orderConsigneeName":"云图","orderConsigneePhone":"18482173219","orderConsigneeAddress":"四川省成都市一环路南四段16号","orderCarriage":0,"orderStatus":"1","orderCreateDate":1491467356811,"orderRef":"4d867aa615f8446dbe58ce31ff807e09","orderActualPayment":0,"orderTotalPayment":1.11,"orderProductNumber":1,"orderProductId":"5dab487bbe784d989638a00e0ebb00dd,25c73f8774af4db5a6cdbb1b08dd5ff2,"}
+     * product : [{"imageUrl":"http://omkwzwj7w.bkt.clouddn.com/17-3-13/31730734-file_1489395785033_746b.jpg","productName":"去皮莴笋","price":2.9,"productNumber":1,"productId":"ff04e39740094196bb686ec731911f04","pageSize":10,"page":1,"firstResult":0},{"imageUrl":"http://omkwzwj7w.bkt.clouddn.com/17-3-13/30831266-file_1489395785146_13ae0.jpg","productName":"香芋丁","price":6.9,"productNumber":1,"productId":"04e9a9f6f4a640f6ae000ea330eccebe","pageSize":10,"page":1,"firstResult":0}]
+     * details : {"id":"07a5292143654c108b1d6a6a9188891c","userId":"2664c4233dbb4f109631c2d1b6246774","orderConsigneeName":"发货今年","orderConsigneePhone":"789","orderConsigneeAddress":"山西省督公湖支付宝","orderCarriage":0,"orderStatus":"1","orderCreateDate":1495383156592,"orderRef":"2a292b1d56104e3e8a1e9c1d1cd0d6da","orderActualPayment":9.8,"orderTotalPayment":9.8,"orderProductNumber":null,"orderProductId":"ff04e39740094196bb686ec731911f04,04e9a9f6f4a640f6ae000ea330eccebe"}
      */
 
     private DetailsBean details;
@@ -39,19 +39,19 @@ public class MyOrderDetailsBean implements Serializable{
 
     public static class DetailsBean {
         /**
-         * id : e654298fce4e42b5965723bdea701313
-         * userId : a240611ed1174b4dbf3d6536517d3b6c
-         * orderConsigneeName : 云图
-         * orderConsigneePhone : 18482173219
-         * orderConsigneeAddress : 四川省成都市一环路南四段16号
+         * id : 07a5292143654c108b1d6a6a9188891c
+         * userId : 2664c4233dbb4f109631c2d1b6246774
+         * orderConsigneeName : 发货今年
+         * orderConsigneePhone : 789
+         * orderConsigneeAddress : 山西省督公湖支付宝
          * orderCarriage : 0
          * orderStatus : 1
-         * orderCreateDate : 1491467356811
-         * orderRef : 4d867aa615f8446dbe58ce31ff807e09
-         * orderActualPayment : 0
-         * orderTotalPayment : 1.11
-         * orderProductNumber : 1
-         * orderProductId : 5dab487bbe784d989638a00e0ebb00dd,25c73f8774af4db5a6cdbb1b08dd5ff2,
+         * orderCreateDate : 1495383156592
+         * orderRef : 2a292b1d56104e3e8a1e9c1d1cd0d6da
+         * orderActualPayment : 9.8
+         * orderTotalPayment : 9.8
+         * orderProductNumber : null
+         * orderProductId : ff04e39740094196bb686ec731911f04,04e9a9f6f4a640f6ae000ea330eccebe
          */
 
         private String id;
@@ -59,13 +59,13 @@ public class MyOrderDetailsBean implements Serializable{
         private String orderConsigneeName;
         private String orderConsigneePhone;
         private String orderConsigneeAddress;
-        private int orderCarriage;
+        private double orderCarriage;
         private String orderStatus;
         private long orderCreateDate;
         private String orderRef;
-        private int orderActualPayment;
+        private double orderActualPayment;
         private double orderTotalPayment;
-        private int orderProductNumber;
+        private Object orderProductNumber;
         private String orderProductId;
 
         public String getId() {
@@ -108,7 +108,7 @@ public class MyOrderDetailsBean implements Serializable{
             this.orderConsigneeAddress = orderConsigneeAddress;
         }
 
-        public int getOrderCarriage() {
+        public double getOrderCarriage() {
             return orderCarriage;
         }
 
@@ -140,11 +140,11 @@ public class MyOrderDetailsBean implements Serializable{
             this.orderRef = orderRef;
         }
 
-        public int getOrderActualPayment() {
+        public double getOrderActualPayment() {
             return orderActualPayment;
         }
 
-        public void setOrderActualPayment(int orderActualPayment) {
+        public void setOrderActualPayment(double orderActualPayment) {
             this.orderActualPayment = orderActualPayment;
         }
 
@@ -156,11 +156,11 @@ public class MyOrderDetailsBean implements Serializable{
             this.orderTotalPayment = orderTotalPayment;
         }
 
-        public int getOrderProductNumber() {
+        public Object getOrderProductNumber() {
             return orderProductNumber;
         }
 
-        public void setOrderProductNumber(int orderProductNumber) {
+        public void setOrderProductNumber(Object orderProductNumber) {
             this.orderProductNumber = orderProductNumber;
         }
 
@@ -175,85 +175,31 @@ public class MyOrderDetailsBean implements Serializable{
 
     public static class ProductBean {
         /**
-         * id : 5dab487bbe784d989638a00e0ebb00dd
-         * putawayDate : 1489456895835
-         * kinds : string
-         * productName : 咸蛋
-         * productImageUrl : http://omkwzwj7w.bkt.clouddn.com/17-3-14/4646980-file_1489421080445_ee32.jpg
-         * status : 0
-         * productTypes : string
-         * producer : string
-         * address : string
-         * described : string
-         * productionDate : 1489454726124
-         * price : 5.9
-         * discountPrice : 0
-         * isDiscount : 0
-         * limitNumber : 0
-         * kindNumber : 0
-         * startDate : 1489454726124
-         * endDate : 1489454726124
-         * carriage : 8
-         * isGroupBuy : 0
-         * groupBuyPrice : 0
-         * groupBuyPersonNumber : 0
-         * startGroupBuyDate : 1489454726124
-         * endGroupBuyDate : 1489454726124
-         * keyClass : 加工蛋
-         * bigKeyClass : 禽蛋
-         * keyword : string
+         * imageUrl : http://omkwzwj7w.bkt.clouddn.com/17-3-13/31730734-file_1489395785033_746b.jpg
+         * productName : 去皮莴笋
+         * price : 2.9
+         * productNumber : 1
+         * productId : ff04e39740094196bb686ec731911f04
+         * pageSize : 10
+         * page : 1
+         * firstResult : 0
          */
 
-        private String id;
-        private long putawayDate;
-        private String kinds;
+        private String imageUrl;
         private String productName;
-        private String productImageUrl;
-        private int status;
-        private String productTypes;
-        private String producer;
-        private String address;
-        private String described;
-        private long productionDate;
         private double price;
-        private int discountPrice;
-        private int isDiscount;
-        private int limitNumber;
-        private int kindNumber;
-        private long startDate;
-        private long endDate;
-        private int carriage;
-        private int isGroupBuy;
-        private int groupBuyPrice;
-        private int groupBuyPersonNumber;
-        private long startGroupBuyDate;
-        private long endGroupBuyDate;
-        private String keyClass;
-        private String bigKeyClass;
-        private String keyword;
+        private int productNumber;
+        private String productId;
+        private int pageSize;
+        private int page;
+        private int firstResult;
 
-        public String getId() {
-            return id;
+        public String getImageUrl() {
+            return imageUrl;
         }
 
-        public void setId(String id) {
-            this.id = id;
-        }
-
-        public long getPutawayDate() {
-            return putawayDate;
-        }
-
-        public void setPutawayDate(long putawayDate) {
-            this.putawayDate = putawayDate;
-        }
-
-        public String getKinds() {
-            return kinds;
-        }
-
-        public void setKinds(String kinds) {
-            this.kinds = kinds;
+        public void setImageUrl(String imageUrl) {
+            this.imageUrl = imageUrl;
         }
 
         public String getProductName() {
@@ -264,62 +210,6 @@ public class MyOrderDetailsBean implements Serializable{
             this.productName = productName;
         }
 
-        public String getProductImageUrl() {
-            return productImageUrl;
-        }
-
-        public void setProductImageUrl(String productImageUrl) {
-            this.productImageUrl = productImageUrl;
-        }
-
-        public int getStatus() {
-            return status;
-        }
-
-        public void setStatus(int status) {
-            this.status = status;
-        }
-
-        public String getProductTypes() {
-            return productTypes;
-        }
-
-        public void setProductTypes(String productTypes) {
-            this.productTypes = productTypes;
-        }
-
-        public String getProducer() {
-            return producer;
-        }
-
-        public void setProducer(String producer) {
-            this.producer = producer;
-        }
-
-        public String getAddress() {
-            return address;
-        }
-
-        public void setAddress(String address) {
-            this.address = address;
-        }
-
-        public String getDescribed() {
-            return described;
-        }
-
-        public void setDescribed(String described) {
-            this.described = described;
-        }
-
-        public long getProductionDate() {
-            return productionDate;
-        }
-
-        public void setProductionDate(long productionDate) {
-            this.productionDate = productionDate;
-        }
-
         public double getPrice() {
             return price;
         }
@@ -328,124 +218,44 @@ public class MyOrderDetailsBean implements Serializable{
             this.price = price;
         }
 
-        public int getDiscountPrice() {
-            return discountPrice;
+        public int getProductNumber() {
+            return productNumber;
         }
 
-        public void setDiscountPrice(int discountPrice) {
-            this.discountPrice = discountPrice;
+        public void setProductNumber(int productNumber) {
+            this.productNumber = productNumber;
         }
 
-        public int getIsDiscount() {
-            return isDiscount;
+        public String getProductId() {
+            return productId;
         }
 
-        public void setIsDiscount(int isDiscount) {
-            this.isDiscount = isDiscount;
+        public void setProductId(String productId) {
+            this.productId = productId;
         }
 
-        public int getLimitNumber() {
-            return limitNumber;
+        public int getPageSize() {
+            return pageSize;
         }
 
-        public void setLimitNumber(int limitNumber) {
-            this.limitNumber = limitNumber;
+        public void setPageSize(int pageSize) {
+            this.pageSize = pageSize;
         }
 
-        public int getKindNumber() {
-            return kindNumber;
+        public int getPage() {
+            return page;
         }
 
-        public void setKindNumber(int kindNumber) {
-            this.kindNumber = kindNumber;
+        public void setPage(int page) {
+            this.page = page;
         }
 
-        public long getStartDate() {
-            return startDate;
+        public int getFirstResult() {
+            return firstResult;
         }
 
-        public void setStartDate(long startDate) {
-            this.startDate = startDate;
-        }
-
-        public long getEndDate() {
-            return endDate;
-        }
-
-        public void setEndDate(long endDate) {
-            this.endDate = endDate;
-        }
-
-        public int getCarriage() {
-            return carriage;
-        }
-
-        public void setCarriage(int carriage) {
-            this.carriage = carriage;
-        }
-
-        public int getIsGroupBuy() {
-            return isGroupBuy;
-        }
-
-        public void setIsGroupBuy(int isGroupBuy) {
-            this.isGroupBuy = isGroupBuy;
-        }
-
-        public int getGroupBuyPrice() {
-            return groupBuyPrice;
-        }
-
-        public void setGroupBuyPrice(int groupBuyPrice) {
-            this.groupBuyPrice = groupBuyPrice;
-        }
-
-        public int getGroupBuyPersonNumber() {
-            return groupBuyPersonNumber;
-        }
-
-        public void setGroupBuyPersonNumber(int groupBuyPersonNumber) {
-            this.groupBuyPersonNumber = groupBuyPersonNumber;
-        }
-
-        public long getStartGroupBuyDate() {
-            return startGroupBuyDate;
-        }
-
-        public void setStartGroupBuyDate(long startGroupBuyDate) {
-            this.startGroupBuyDate = startGroupBuyDate;
-        }
-
-        public long getEndGroupBuyDate() {
-            return endGroupBuyDate;
-        }
-
-        public void setEndGroupBuyDate(long endGroupBuyDate) {
-            this.endGroupBuyDate = endGroupBuyDate;
-        }
-
-        public String getKeyClass() {
-            return keyClass;
-        }
-
-        public void setKeyClass(String keyClass) {
-            this.keyClass = keyClass;
-        }
-
-        public String getBigKeyClass() {
-            return bigKeyClass;
-        }
-
-        public void setBigKeyClass(String bigKeyClass) {
-            this.bigKeyClass = bigKeyClass;
-        }
-
-        public String getKeyword() {
-            return keyword;
-        }
-
-        public void setKeyword(String keyword) {
-            this.keyword = keyword;
+        public void setFirstResult(int firstResult) {
+            this.firstResult = firstResult;
         }
     }
 }

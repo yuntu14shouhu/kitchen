@@ -12,8 +12,8 @@ import android.widget.TextView;
 import com.jiajiaqian.kitchen.KitchenApplication;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
+import com.jiajiaqian.kitchen.ui.MainActivity;
 import com.jiajiaqian.kitchen.ui.ProductSearchActivity;
-import com.jiajiaqian.kitchen.ui.ShopActivity;
 import com.jiajiaqian.kitchen.ui.base.BaseActivity;
 import com.jiajiaqian.kitchen.ui.shop.ShopProductDetailsActivity;
 
@@ -94,9 +94,9 @@ public class SubSortListActivity extends BaseActivity implements View.OnClickLis
                 startActivity(intent);
                 break;
             case R.id.imageBtn_shop:
-                intent = new Intent();
-                intent.setClass(this, ShopActivity.class);
-                startActivity(intent);
+                Intent intent1 = new Intent(this,MainActivity.class);
+                intent1.putExtra("shop",2);
+                startActivity(intent1);
                 break;
             default:
                 break;

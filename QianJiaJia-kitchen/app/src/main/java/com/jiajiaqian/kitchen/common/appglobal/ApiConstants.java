@@ -12,7 +12,9 @@ public class ApiConstants {
 
     public static String BASE_URL = "http://192.168.191.1:8080";
 
-//    public static String BASE_URL = "http://192.168.1.5:8080";
+    //public static String BASE_URL = "http://192.168.1.2:8080";
+
+//    public static String BASE_URL = "http://192.168.6.55:8080";
 
 
 }

@@ -56,4 +56,10 @@ public interface KitchenHttpApi<T> {
     void saveSearchContent(@NonNull String uid,@NonNull JSONObject jsonObject,@NonNull T callback);
 
     void getProductDetails(@NonNull String productId,@NonNull T callback);
+
+    void getShopList(@NonNull T callback);
+
+    void addProductToShop(@NonNull String productId,@NonNull JSONObject jsonObject,@NonNull T callback);
+
+    void submitOrder(@NonNull String orderId,@NonNull String addressId,@NonNull JSONObject jsonObject,@NonNull T callback);
 }

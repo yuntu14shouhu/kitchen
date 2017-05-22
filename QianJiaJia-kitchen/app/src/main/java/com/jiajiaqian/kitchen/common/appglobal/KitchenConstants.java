@@ -9,6 +9,7 @@ package com.jiajiaqian.kitchen.common.appglobal;
 
 public class KitchenConstants {
 
+    public static final String PRODUCT_INTENT_KEY1="productId";
     public static final String PRODUCT_INTENT_KEY = "product_where";
     public static final String PRODUCT_LIST_INTENT_KEY = "product_list_where";
 

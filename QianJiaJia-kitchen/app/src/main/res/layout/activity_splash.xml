@@ -4,14 +4,26 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/ic_login_bg">
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="欢迎使用Kitchen"
-    android:textSize="20sp"
-    android:textColor="#ffffff"
-    android:gravity="center"
-    android:layout_marginTop="200dp"/>
+    <TextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:gravity="center"
+        android:text="欢迎使用Kitchen"
+        android:textColor="#ffffff"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_below="@+id/tv_welcome"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="可以装进口袋的生鲜市场"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,6 +33,6 @@
         android:gravity="center_horizontal"
         android:text="kitchen\n\n\nVersion 1.0.0"
         android:textColor="#ffffff"
-        android:textSize="20sp" />
+        android:textSize="20sp"/>
 
 </RelativeLayout>

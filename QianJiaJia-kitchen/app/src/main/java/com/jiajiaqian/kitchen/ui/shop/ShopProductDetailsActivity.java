@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
+import com.jiajiaqian.kitchen.KitchenApplication;
 import com.jiajiaqian.kitchen.R;
 import com.jiajiaqian.kitchen.common.entity.ProductDetailsQueryBean;
 import com.jiajiaqian.kitchen.common.entity.microbean.ProductBean;
@@ -61,6 +62,8 @@ public class ShopProductDetailsActivity extends BaseActivity {
     private TextView moreTv;
     private PopupWindow mPopWindow;
     private Button popupBt;
+    private TextView topTitle;
+    private TextView mShopNumTv;
 
     private CustomToast toast;
 
@@ -72,6 +75,14 @@ public class ShopProductDetailsActivity extends BaseActivity {
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        //先判断购物车里是否有添加商品，有的话，显示商品数量
+        if (KitchenApplication.mShopNum != 0) {
+            mShopNumTv.setVisibility(View.VISIBLE);
+            mShopNumTv.setText(KitchenApplication.mShopNum + "");
+        } else {
+            mShopNumTv.setVisibility(View.GONE);
+        }
+
         Intent it = getIntent();
         KitchenHttpManager.getInstance().getProductDetails(it.getStringExtra("productId"), new OkJsonRequest.OKResponseCallback() {
             @Override
@@ -114,6 +125,8 @@ public class ShopProductDetailsActivity extends BaseActivity {
     @Override
     public void initView() {
         moreTv = (TextView) findViewById(R.id.tv_more);
+        topTitle = (TextView)findViewById(R.id.top_bar_title);
+        topTitle.setText("商品详情");
         topBarBack = (TextView) findViewById(R.id.top_bar_back);
         numberPlus = (ImageView) findViewById(R.id.iv_plus_product_details);
         numberMinus = (ImageView) findViewById(R.id.iv_minus_product_details);
@@ -130,7 +143,7 @@ public class ShopProductDetailsActivity extends BaseActivity {
         manufactureDateProductDetails = (TextView) findViewById(R.id.tv_shengchanriqi_context_product_details);
         describedProductdetails = (TextView) findViewById(R.id.tv_miaoshu_context_product_details);
         shopShowProductDetails = (ImageView) findViewById(R.id.iv_shop_product_details);
-
+        mShopNumTv = (TextView) findViewById(R.id.tv_count_product_details);
 
 //        Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/SIMYOU.TTF");
 //        nameProductDetails.setTypeface(typeface);
@@ -179,6 +192,15 @@ public class ShopProductDetailsActivity extends BaseActivity {
                  * 把商品（mProductDetailsBean）的id和数量传到购物车页面去，通过id看是否是添加新物品，
                  * 如果已存在，就将传过去的数量与原有的数量相加
                  */
+                KitchenApplication.mShopNum += 1;
+                mShopNumTv.setVisibility(View.VISIBLE);
+                mShopNumTv.setText(KitchenApplication.mShopNum + "");
+
+                if(saveProductToShop() != null){
+                    postProductToShop(saveProductToShop());
+                }
+
+
                 toastMessage("添加购物车成功");
             }
         });
@@ -199,6 +221,26 @@ public class ShopProductDetailsActivity extends BaseActivity {
             }
         });
 
+    }
+
+    private void postProductToShop(JSONObject jsonObject) {
+        KitchenHttpManager.getInstance().addProductToShop("", jsonObject, new OkJsonRequest.OKResponseCallback() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.e("error", volleyError.getMessage() + "");
+            }
+
+            @Override
+            public void onResponse(JSONObject jsonObject) {
+                Log.e("success", jsonObject + "");
+            }
+        });
+    }
+
+    private JSONObject saveProductToShop() {
+        JSONObject jsonObject = new JSONObject();
+
+        return jsonObject;
     }
 
     private void showPopupWindow() {
@@ -235,4 +277,5 @@ public class ShopProductDetailsActivity extends BaseActivity {
         timeString = sdf.format(new Date(l));//单位秒
         return timeString;
     }
+
 }

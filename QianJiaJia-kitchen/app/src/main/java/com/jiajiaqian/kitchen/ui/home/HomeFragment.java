@@ -152,8 +152,10 @@ public class HomeFragment extends BaseFragment implements SwipeRefreshLayout.OnR
             public void onItemClick(int position) {
                 Intent intent = new Intent();
                 intent.setClass(getActivity(), ShopProductDetailsActivity.class);
+
                 intent.putExtra(KitchenConstants.PRODUCT_INTENT_KEY, KitchenConstants.ProductIntentValue.SLIDE);
                 if (mSlideDataList != null && mSlideDataList.size() > 0) {
+//                    intent.putExtra("productId",mSlideDataList.get(position).getId());
                     intent.putExtra("slide", mSlideDataList.get(position));
                 }
                 startActivity(intent);

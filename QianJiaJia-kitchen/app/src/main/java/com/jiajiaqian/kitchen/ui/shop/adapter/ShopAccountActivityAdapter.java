@@ -48,10 +48,10 @@ public class ShopAccountActivityAdapter extends RecyclerView.Adapter<ShopAccount
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         if (productList != null && productList.size() > 0) {
-            if (!TextUtils.isEmpty(productList.get(position).getProductImageUrl())) {
-                Log.e("ProductImageUrl", "initView: "+productList.get(position).getProductImageUrl() );
+            if (!TextUtils.isEmpty(productList.get(position).getImageUrl())) {
+                Log.e("ProductImageUrl", "initView: "+productList.get(position).getImageUrl() );
                 Glide.with(context)
-                        .load(productList.get(position).getProductImageUrl())
+                        .load(productList.get(position).getImageUrl())
                         .centerCrop()
                         .into(holder.productImgDetails);
             }
@@ -61,8 +61,8 @@ public class ShopAccountActivityAdapter extends RecyclerView.Adapter<ShopAccount
             if(!TextUtils.isEmpty(productList.get(position).getPrice()+"")){
                 holder.productPriceDetails.setText(productList.get(position).getPrice()+"");
             }
-            if(!TextUtils.isEmpty(productList.get(position).getLimitNumber() +"")){
-                holder.productNumberDetails.setText(productList.get(position).getLimitNumber()+"");
+            if(!TextUtils.isEmpty(productList.get(position).getProductNumber() +"")){
+                holder.productNumberDetails.setText(productList.get(position).getProductNumber()+"");
             }
 
         }

@@ -196,4 +196,25 @@ public class KitchenHttpManager implements KitchenHttpApi<OkJsonRequest.OKRespon
         get(requestUrl,callback);
     }
 
+    //http://localhost:8080/shoppingCart/queryShop
+    @Override
+    public void getShopList(@NonNull OkJsonRequest.OKResponseCallback callback) {
+       String requestUrl = ApiConstants.BASE_URL + "/shoppingCart/queryShop" ;
+        get(requestUrl,callback);
+    }
+
+    //http://localhost:8080/shoppingCart/saveShop
+    @Override
+    public void addProductToShop(@NonNull String productId, @NonNull JSONObject jsonObject, @NonNull OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/shoppingCart/saveShop";
+        post(requestUrl,jsonObject,callback);
+    }
+
+    //http://localhost:8080/orderDetailsModify/submitOrder
+    @Override
+    public void submitOrder(@NonNull String orderId, @NonNull String addressId, @NonNull JSONObject jsonObject, @NonNull OkJsonRequest.OKResponseCallback callback) {
+        String requestUrl = ApiConstants.BASE_URL + "/orderDetailsModify/submitOrder";
+        post(requestUrl,jsonObject,callback);
+    }
+
 }
